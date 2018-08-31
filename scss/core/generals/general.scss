@@ -1,0 +1,636 @@
+/*----------------------------------------------------------------------------------*/
+/* General Body
+/*----------------------------------------------------------------------------------*/
+html{
+	height: 100%;
+	position: relative;
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Básico para el body
+/*----------------------------------------------------------------------------------*/
+body {
+	background-color: #fff;
+	color: #333;
+	font-size: 16px;
+	font-family: $fontweb !important;
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	display:flex;
+	justify-content: flex-start;
+	align-items:center;
+	flex-direction: column;
+	overflow-x: hidden;
+
+	> * {
+		width: 100%;
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
+	&.fixed {
+		overflow: hidden;
+	}
+}
+
+/** Resize: max-width 960 **/
+@media (max-width: 991px){
+	html{
+		&.fixed {
+			overflow: hidden;
+			body{
+				top: 0 !important;
+				left: 0 !important;
+				position: fixed !important;
+				min-height: 100vh !important;
+				width: 100%;
+				overflow: hidden;
+			}
+			header{
+				max-height: 0;
+				opacity: 0;
+				overflow: auto;
+			}
+		}
+	}
+}
+
+/** Modales en celulares **/
+@media (max-width: 640px){
+  html{
+    &.modal_mobile {
+      overflow: hidden;
+      body{
+        top: 0;
+        left: 0;
+        position: fixed !important;
+        min-height: 100vh !important;
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Autocomplete
+/*----------------------------------------------------------------------------------*/
+#auc_city_dropdown{
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.33) !important;
+  >li{
+    &:hover{
+      background: $colorweb !important;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Reseteando imagen
+/*----------------------------------------------------------------------------------*/
+img{
+  text-indent: -999999px;
+  overflow: hidden;
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Botones
+/*----------------------------------------------------------------------------------*/
+.clidxboost-btn-link,
+.clidxboost-btn{
+  height: 45px;
+  width: auto;
+  display: inline-block;
+  min-width: 250px;
+  span{
+    background-color: #333;
+    border: 1px solid #333;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all .3s;
+    font-weight: 600;
+    font-size: 14/16*1rem;
+    padding: 0 2rem;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  &:hover{
+    span{
+      background-color: #FFF;
+      color: #333;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Google Map
+/*----------------------------------------------------------------------------------*/
+.flex-shown-map {
+	display: block;
+	width: 112px;
+	height: 35px;
+	line-height: 29px;
+	text-transform: uppercase;
+	font-weight: bold;
+	background: rgba(0,0,0,0.75);
+	color: #fff;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	position: absolute;
+	left: -121px;
+	top: 0;
+
+	&:after, 
+	&:before {
+		left: 100%;
+		top: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	&:before {
+		border-color: rgba(36, 31, 31, 0);
+		border-left-color: #313131;
+		border-width: 8px;
+		margin-top: -8px;
+	}
+}
+
+.map-controls-ct {
+	top: 51px !important;
+	right: 11px !important;
+}
+
+.dgt-map-controls-ct {
+  width: 35px;
+  height: 105px;
+  >div{
+		height: 35px;
+		margin-bottom: 4px;
+		cursor: pointer;
+		background-image: url(../images/ico-map.png);
+		background-repeat: no-repeat;
+		background-color: #FFF;
+		&.dgt-map-zoomIn {
+			background-position: 7px 10px;
+		}
+		&.dgt-map-zoomOut {
+			background-position: 7px -32px;
+		}
+  }
+}
+
+.dgt-richmarker-group, 
+.dgt-richmarker-single {
+	font-family: $opensans;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 3px 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  width: auto;
+  display: inline-block;
+  font-size: 10px;
+  transition: all .35s ease;
+	&:after {
+		content: '';
+		width: 0px;
+		height: 0px;
+		border-left: 3px solid transparent;
+		border-right: 3px solid transparent;
+		border-top: 5px solid #333;
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		transition: all .35s ease;
+	}
+}
+
+
+/*----------------------------------------------------------------------------------*/
+/* Preloading Search
+/*----------------------------------------------------------------------------------*/
+#flex-spinner-load{
+	width: 100%;
+	background-color: #FFF;
+	z-index: 10;
+	padding: 4rem 0;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	.flex-spinner-content{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding-top: 70px;
+		position: relative;
+		&:before{
+			content: "";
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			border: 10px solid #ccc;
+			border-top-color: #333;
+			border-width: 5px;
+			-webkit-animation: spin 1s infinite linear;
+			animation: spin 1s infinite linear;
+			z-index: 2;
+
+			top: 36px;
+			left: 50%;
+			position: absolute;
+		}
+		
+		p{
+			font-size: 1rem;
+			font-weight: 600;
+			margin: 1rem 0;
+		}
+	}
+}
+
+.flex-map-controls-ct{
+	> div{
+		position: relative;
+	}
+}
+
+.mapview-container{
+	.mapviwe-header{
+		.closeInfo {
+			width: 100% !important;
+			background-color: transparent !important;
+			span {
+				text-indent: -999999999px !important;
+				display: block !important;
+				overflow: hidden !important;
+				&:after {
+					position: absolute !important;
+					right: 10px !important;
+				}
+			}
+		}
+	}
+}
+
+#code-map{
+	.js-info-bubble-close {
+	  width: 100% !important;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Header Filters
+/*----------------------------------------------------------------------------------*/
+#header-filters{
+	.idx_logo_web{
+		.idx_site_text{
+			display: block;
+			.text-logo{
+				height: 55px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				h1.idx_site_text_tit{
+					line-height: 1.1 !important;
+					font-family: $opensans;
+					font-weight: 700;
+				}
+				span{
+					display: block;
+					font-family: $opensans;
+					font-size: 13/16*1rem;
+					line-height: normal;
+					margin-top: -3px;
+				}
+			}
+		}
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Facebook Share
+/*----------------------------------------------------------------------------------*/
+.fb_iframe_widget{
+	span, iframe{
+		width: 100% !important;
+    height: 100% !important;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Header fixeado search
+/*----------------------------------------------------------------------------------*/
+.temporal-color-header{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	z-index: -1;
+	@media (max-width: 767px){
+		display: none;
+	}
+}
+
+.clidxboost-nmap{
+	.temporal-color-header{
+		display: block !important;
+	}
+}
+
+.clidxboost-modal-form{
+  background: #f5f5f9;
+  padding: 2rem 0;
+  .modal_cm {
+    margin: 0 auto;
+  }
+  .list-check{
+    margin-bottom: 1rem
+  }
+  .content_md{
+  	width: 96% !important;
+  	max-width: 350px !important;
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Shortcode Login Register
+/*----------------------------------------------------------------------------------*/
+.external-login{
+  display: inline-block;
+  .external-lg-btn{
+    display: flex;
+    align-items: center;
+    .external-lg-item{
+      &:after{
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 10px;
+        background-color: #ccc;
+        margin: 0 10px;
+      }
+      &:last-child{
+        &:after{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .external-lg-active-user{
+    position: relative;
+
+    .external-lg-user{
+      display: block;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .external-lg-menu{
+      background-color: #FFF;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 210px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height .3s;
+        opacity: 0;
+        border: 1px solid #ccc;
+        margin-bottom: -1px;
+      }
+    }
+
+    &:hover{
+      .external-lg-menu{
+        li{
+          height: 35px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Estructuras FullPage
+/*----------------------------------------------------------------------------------*/
+@media screen and (min-width: 1200px){
+	.active-full-page{
+		overflow: hidden;
+		#footer{
+			display: none !important;
+		}
+		main{
+			padding-bottom: 0;
+		}
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Validaciones varias
+/*----------------------------------------------------------------------------------*/
+#header {
+	.wrap-menu{
+		.gwr{
+			>.hamburger-content{
+				overflow: hidden;
+			}
+		}
+
+		#show-filters{
+			width: 38px;
+			height: 38px;
+			margin-left: 10px;
+			overflow: hidden;
+			text-indent: -999999px;
+			position: relative;
+			background: transparent;
+			border-radius: 100%;
+			background: $gris-lineas;
+			color: #333;
+			margin-right: -50px;
+			transition: all .6s;
+	    span{
+	    	position: absolute;
+	    	top: 0;
+	    	left: 0;
+	    	width: 100%;
+	    	height: 100%;
+				&:before{
+					content: "\e93b";
+					display: flex;
+					width: 100%;
+					height: 100%;
+					font-size: 16px;
+					font-family: $web-icons;
+					text-indent: 0;
+					align-items: center;
+					justify-content: center;
+					transition: all .3s;
+				}
+	    }
+		}
+	}
+}
+
+#header .wrap-menu .gwr .menu-responsive .hamburger-content {
+  height: auto !important;
+}
+
+.r-overlay{
+	visibility: hidden !important;
+}
+
+.opened-menu header .r-overlay {
+  visibility: visible !important;
+  opacity: 0.5;
+}
+
+.gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom{
+	display: none;
+}
+
+#wrap-neighborhood{
+	.ps-scrollbar-y-rail{
+		display: none !important;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Validaciones varias
+/*----------------------------------------------------------------------------------*/
+.chk_save{
+	&.working{
+		span{
+			&:before{
+				margin: 0 !important;
+				content: ""!important;
+				position: relative!important;
+				top: 8px!important;
+				width: 20px!important;
+				height: 20px!important;
+				margin-left: 20px!important;
+				/* left: 50%!important; */
+				border-radius: 50%!important;
+				border: 2px solid #ccc!important;
+				border-top-color: #333!important;
+				border-width: 2px!important;
+				-webkit-animation: spin 1s infinite linear!important;
+				animation: spin 1s infinite linear!important;
+				z-index: 2!important;
+				display: block!important;
+				background-image: none!important;
+			}
+		}
+	}
+}
+
+#full-main{
+	.title-conteiner{
+		.content-fixed{
+			.content-fixed-title{
+				.breadcrumb-options{
+					.working{
+						span {
+							height: 25px !important;
+							overflow: hidden;
+							&:before{
+								top: 12px !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.clidxboost-wrapper-smb{
+	margin-top: 30px;
+}
+.page-result{
+	.saved-list{
+		min-height: calc(100vh - 476px);
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Info Windows luxury condos
+/*----------------------------------------------------------------------------------*/
+.mapview-container .mapviwe-body .mapviwe-item h2,
+.mapview-container .mapviwe-header h2{
+	font-family: $opensans !important;
+}
+
+#luxury-condo-page{
+	.mapview-container .mapviwe-body .mapviwe-item ul li {
+	  font-size: 14px !important;
+	  margin-bottom: 3px;
+	}
+	.mapview-container .mapviwe-body .mapviwe-item h2 {
+		font-size: 18px !important;
+		font-family: $opensans;
+		font-weight: 800;
+	}
+	.mapview-container .mapviwe-header h2{
+		font-family: $opensans;
+	}
+	.view-map{
+		#paginator-cnt{
+			display: none !important;
+		}
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* Estructuras generales
+/*----------------------------------------------------------------------------------*/
+@import '../helpers/resources/basic-testimonials.scss';
+@import '../helpers/resources/contact-form-basic-theme.scss';
+@import '../helpers/resources/breadcrumbs.scss';
+@import '../helpers/resources/paginator.scss';
+@import '../helpers/resources/message.scss';
+@import '../helpers/resources/modals.scss';
+@import '../helpers/resources/modal-register.scss';
+@import '../helpers/resources/modal-full-slider.scss';
+@import '../helpers/resources/full-slider.scss';
+@import '../helpers/resources/sliders.scss';
+/*@import '../helpers/resources/full-slider_conantiguoslider.scss';
+@import '../helpers/resources/sliders_conantiguoslider.scss';*/
+@import '../helpers/resources/similar-properties.scss';
+@import '../helpers/resources/autocomplete-home.scss';
+@import '../helpers/resources/basic-form.scss';
+@import '../helpers/resources/preloader.scss';
+@import '../helpers/resources/collapse.scss';
+@import '../helpers/resources/quick-search.scss';
+@import '../helpers/resources/great-slider.scss';
+@import '../helpers/resources/neighborhoods-list-home.scss';
+@import '../helpers/resources/neighborhood-menu.scss';
+@import '../helpers/resources/neighborhood-home-list.scss';
+@import '../helpers/resources/ppc.scss';
