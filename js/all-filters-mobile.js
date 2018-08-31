@@ -37,8 +37,10 @@
   /*----------------------------------------------------------------------------------*/
   $(document).on('click', '#ib-apply-clear', function() {
     $('#ib-autocomplete-input').val('');
-    $('#ib-min-price, #ib-bedrooms-from, #ib-min-living, #ib-min-land, #ib-min-year').val('0').change();
-    $('#ib-max-price, #ib-bedrooms-to, #ib-max-living, #ib-max-land, #ib-max-year').val('any').change();
+    $('#ib-min-price, #ib-min-living, #ib-min-land, #ib-min-year').val('0').change();
+    $('#ib-max-price, #ib-max-living, #ib-max-land, #ib-max-year').val('any').change();
+    $('#ib-bedrooms-from').val('').change();
+    $('#ib-bedrooms-to').val('').change();
     $('.ib-body-modal-filters-mobile').find('input:checked').prop('checked', false);
     $('.ib-body-modal-filters-mobile').find('input:radio[value=0]').prop('checked', true);
   });
