@@ -249,6 +249,18 @@
 							margin-right: 5px;
 						}
 					}
+					&#ib-apply-clear{
+						&:before{
+							content: "\e91f";
+							display: inline-block;
+							vertical-align: middle;
+							font-family: $web-icons;
+							font-weight: 100;
+							font-size: 18px;
+							margin-top: -5px;
+							margin-right: 5px;
+						}
+					}
 				}
 			}
 		}

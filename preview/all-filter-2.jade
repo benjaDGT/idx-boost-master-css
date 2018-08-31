@@ -40,7 +40,7 @@ html(lang='en')
 								.ib-body-collpase
 									.ib-wrap-fm
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-min-price", name="min-price")
 												option(value="0") 0
 												option(value="---", disabled="") ---
 												option(value="100") $100
@@ -50,7 +50,7 @@ html(lang='en')
 											span.ib-label-wrap-fm Min Price
 										.ib-item-wrap-fm.ib-sp-fm.ib-sp-fm-tp to
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-max-price", name="max-price")
 												option(value="any") Any
 												option(value="---", disabled="") ---
 												option(value="100") $100
@@ -60,7 +60,7 @@ html(lang='en')
 											span.ib-label-wrap-fm Max Price
 
 							//BEDROOMS
-							.ib-item-collapse
+							.ib-item-collapse#ib-bedrooms-collapse
 								h2.ib-header-collapse Bedrooms
 								.ib-body-collpase
 									ul.ib-wrap-fm
@@ -88,8 +88,8 @@ html(lang='en')
 
 									ul.ib-wrap-fm
 										li.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
-												option(value="from") From
+											select(id="ib-bedrooms-from", name="ib-bedrooms-from")
+												option(value="") From
 												option(value="---", disabled="") ---
 												option(value="studio") Studio
 												option(value="1") 1
@@ -98,8 +98,8 @@ html(lang='en')
 												option(value="4") 4
 												option(value="5") 5
 										li.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
-												option(value="to") to
+											select(id="ib-bedrooms-to", name="ib-bedrooms-to")
+												option(value="") To
 												option(value="---", disabled="") ---
 												option(value="studio") Studio
 												option(value="1") 1
@@ -178,7 +178,7 @@ html(lang='en')
 								.ib-body-collpase
 									.ib-wrap-fm
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-min-living", name="ib-min-living")
 												option(value="0") 0 Sq.Ft.
 												option(value="---", disabled="") ---
 												option(value="100") 100 Sq.Ft.
@@ -187,7 +187,7 @@ html(lang='en')
 											span.ib-label-wrap-fm Min size
 										.ib-item-wrap-fm.ib-sp-fm.ib-sp-fm-tp to
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-max-living", name="ib-max-living")
 												option(value="any") Any
 												option(value="---", disabled="") ---
 												option(value="100") 100 Sq.Ft.
@@ -201,7 +201,7 @@ html(lang='en')
 								.ib-body-collpase
 									.ib-wrap-fm
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-min-land", name="ib-min-land")
 												option(value="0") 0 Sq.Ft.
 												option(value="---", disabled="") ---
 												option(value="100") 100 Sq.Ft.
@@ -210,7 +210,7 @@ html(lang='en')
 											span.ib-label-wrap-fm Min size
 										.ib-item-wrap-fm.ib-sp-fm.ib-sp-fm-tp to
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-max-land", name="ib-max-land")
 												option(value="any") Any
 												option(value="---", disabled="") ---
 												option(value="100") 100 Sq.Ft.
@@ -224,7 +224,7 @@ html(lang='en')
 								.ib-body-collpase
 									.ib-wrap-fm
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMin", name="minyear")
+											select(id="ib-min-year", name="ib-min-year")
 												option(value="any") Any
 												option(value="---", disabled="") ---
 												option(value="2020") 2020
@@ -254,7 +254,7 @@ html(lang='en')
 												option(value="1980") 1980
 										.ib-item-wrap-fm.ib-sp-fm to
 										.ib-item-wrap-fm.ib-wrap-content-select
-											select(id="ib-range-yearMax", name="maxyear")
+											select(id="ib-max-year", name="ib-max-year")
 												option(value="any") Any
 												option(value="---", disabled="") ---
 												option(value="2020") 2020
@@ -329,7 +329,8 @@ html(lang='en')
 					//Footer modal
 					.ib-footer-modal-filters-mobile
 						.ib-group-buttons-content
-							button#ib-apply-save-btn Save Search
+							button#ib-apply-clear Clear
+							//button#ib-apply-save-btn Save Search
 							button#ib-apply-filters-btn View 
 								span 50 
 								|Properties
@@ -340,4 +341,4 @@ html(lang='en')
 		script(type="text/javascript", src="../js/plugins/jquery-ui.min.js")
 		//script(type="text/javascript", src="../js/plugins/jquery.ui.touch-punch.min.js")
 		//script(type="text/javascript", src="../js/dgt-master_X.js")
-		script(type="text/javascript", src="../js/idx-js.js")
+		script(type="text/javascript", src="../js/all-filters-mobile.js")
