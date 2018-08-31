@@ -338,6 +338,7 @@ body{
     background-color: #FFF;
     font-size: 14px;
     font-weight: 600;
+    float: left;
     span{
       display: flex;
       padding: 0 10px;
@@ -357,6 +358,11 @@ body{
 
     &:first-child{
       border: 0;
+    }
+
+    &.ib-show{
+      display: inline-block;
+      text-align: left;
     }
 
     &#save-button-responsive{
@@ -391,6 +397,11 @@ body{
         }
       }
     }
+
+    &#idx-bta-remove{
+			font-size: 12px;
+			line-height: 1.1;
+    }
   }
   .idx-btn-content{
     white-space: nowrap;
@@ -398,6 +409,7 @@ body{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.19);
     border-radius: 20px;
     border: 1px solid #eaeaea;
+    height: 46px;
   }
   .idx-bg-group{
     display: inline-block;
@@ -446,7 +458,8 @@ body{
     }
     .content-rsp-btn{
       #idx-bta-grid,
-      #idx-bta-list{
+      #idx-bta-list,
+      #idx-bta-remove{
         display: inline-block;
       }
     }
