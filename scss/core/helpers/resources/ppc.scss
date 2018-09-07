@@ -142,6 +142,10 @@
 					}
 				}
 			}
+
+			&.ib-center-btn{
+				justify-content: center;
+			}
 		}
 
 		&.active-video{
@@ -173,5 +177,36 @@ body:not(.clidxboost-nmap) .wrap-result.view-map{
 	.ppc-content.ppc-video-box {
 		position: relative;
 		height: 350px;
+	}
+}
+
+.overlay_modal {
+	&.ppc-contact{
+		.content_md{
+			.heder_md{
+				padding: 1rem;
+				text-align: center;
+				h2{
+					margin-top: 1rem;
+				}
+				h3, p{
+					font-size: 14px;
+					margin: 10px 0;
+					text-align: center;
+				}
+			}
+		}
+
+		.form-search{
+			.flex-content-form{
+				.form-item{
+					.clidxboost-btn-link {
+						span{
+							border: 1px solid #333;
+						}
+					}
+				}
+			}
+		}
 	}
 }
