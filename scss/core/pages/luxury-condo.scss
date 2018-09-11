@@ -42,6 +42,13 @@
               &.tg-building-links{
                 display: none;
               }
+
+              &.unit,
+              &.year{
+                span{
+                  display: none;
+                }
+              }
             }
           }
         }
@@ -243,6 +250,51 @@ body{
               >h2{
                 display: none;
               }
+
+              &.ib-grid-full{
+                .#{$prefijo}features{
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  li{
+                    width: 100%;
+                    &.#{$prefijo}name{
+                      text-align: center;
+                      font-family: $opensans;
+                      font-weight: 700;
+                      font-size: 1rem;
+                      margin-bottom: 10/16*1rem;
+                    }
+                    &.#{$prefijo}address{
+                      display: block;
+                      font-size: 14/16*1rem;
+                      text-align: center;
+                    }
+                    &.#{$prefijo}unit,
+                    &.#{$prefijo}year{
+                      display: flex;
+                      height: 35px;
+                      align-items: center;
+                      width: 50%;
+                      font-family: $opensans;
+                      font-size: 14/16*1rem;
+                      border-top: 1px solid $gris-lineas;
+                      span{
+                        font-weight: 600;
+                      }
+                    }
+                    &.#{$prefijo}unit{
+                      justify-content: flex-start;
+                    }
+                    &.#{$prefijo}year{
+                      justify-content: flex-end;
+                    }
+                  }
+                }
+                >h2{
+                  display: none;
+                }
+              }
             }
           }
         }
@@ -329,6 +381,11 @@ body{
               &.#{$prefijo}unit,
               &.#{$prefijo}year,
               &.#{$prefijo}type{
+                display: none;
+              }
+
+              &.#{$prefijo}unit,
+              &.#{$prefijo}year{
                 display: none;
               }
 
