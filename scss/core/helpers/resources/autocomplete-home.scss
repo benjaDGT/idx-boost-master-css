@@ -26,10 +26,11 @@
 	.#{$prefijo}cities-list{
 		ul{
 			height: 160px;
-		}
+		} 
 	}
 	.ui-autocomplete{
 		height: 160px;
+		max-height: 100%;
 	}
 
 	.#{$prefijo}flex-bubble-header{
