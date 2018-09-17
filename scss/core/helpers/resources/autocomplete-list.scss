@@ -5,9 +5,7 @@
 .#{$prefijo}cities-list,
 ##{$prefijo}cities-list{
 	position: absolute;
-	top: 100%;
 	left: 0;
-	width: 100%;
 	z-index: 32;
 	background: #FFF;
 	ul{
@@ -59,17 +57,13 @@
 /*----------------------------------------------------------------------------------*/
 .ui-autocomplete{
 	height: auto;
-	max-height: 300px;
 	background: #FFF;
 	border-top: 2px solid $colorweb;
 	position: absolute;
-	top: 100% !important;
-	left: 0 !important;
-	width: 100% !important;
 	overflow: hidden;
 	overflow-y: auto;
 	z-index: 33;
-	width: 100% !important;
+	max-width: 300px;
 
 	&::-webkit-scrollbar {
 		width: 10px;

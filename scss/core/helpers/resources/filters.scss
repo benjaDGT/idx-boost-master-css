@@ -296,7 +296,18 @@
 			}
 		}
 	}
+
+	.ui-autocomplete,
+	.#{$prefijo}cities-list,
+	##{$prefijo}cities-list{
+		height: auto;
+		left: 0 !important;
+		max-height: 300px;
+		top: 100% !important;
+		width: 100% !important;
+	}
 }
+
 
 /** Sub filtros **/
 ##{$prefijo}wrap-subfilters{
