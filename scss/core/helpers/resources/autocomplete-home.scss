@@ -33,6 +33,16 @@
 		max-height: 100%;
 	}
 
+
+	##{$prefijo}cities-list,
+	.#{$prefijo}cities-list,
+	.ui-autocomplete{
+		left: 0 !important;
+		top: 100% !important;
+		width: 100% !important;
+		max-width: auto;
+	}
+
 	.#{$prefijo}flex-bubble-header{
 		display: flex;
 		width: 100%;

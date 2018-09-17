@@ -17,6 +17,7 @@
         .#{$prefijo}filters,
         ##{$prefijo}filters{
           flex-wrap: wrap;
+          width: 100%;
           li{
             &.#{$prefijo}all{
               button{
