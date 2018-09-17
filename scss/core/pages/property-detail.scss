@@ -597,6 +597,12 @@
                 content: "\e923";
               }
             }
+
+            &.#{$prefijo}ico-brochure{
+              &:before{
+                content: "\e93e";
+              }
+            }
           }
         }
       }
