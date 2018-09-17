@@ -231,3 +231,112 @@
 .idx-icon-comment-o:before {
   content: "\e93d";
 }
+
+
+@font-face {
+  font-family: "idx-boost-icons";
+  src:url("fonts/idx-boost-icons.eot");
+  src:url("fonts/idx-boost-icons.eot?#iefix") format("embedded-opentype"),
+    url("fonts/idx-boost-icons.woff") format("woff"),
+    url("fonts/idx-boost-icons.ttf") format("truetype"),
+    url("fonts/idx-boost-icons.svg#idx-boost-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "idx-boost-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="ib-icon-"]:before,
+[class*=" ib-icon-"]:before {
+  font-family: "idx-boost-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ib-icon-darrow:before {
+  content: "\61";
+}
+.ib-icon-carrow:before {
+  content: "\63";
+}
+.ib-icon-save:before {
+  content: "\64";
+}
+.ib-icon-search:before {
+  content: "\62";
+}
+.ib-icon-map:before {
+  content: "\65";
+}
+.ib-icon-grid:before {
+  content: "\67";
+}
+.ib-icon-arrow:before {
+  content: "\66";
+}
+.ib-icon-heart:before {
+  content: "\68";
+}
+.ib-icon-heart-active:before {
+  content: "\69";
+}
+.ib-icon-tarrow:before {
+  content: "\6a";
+}
+.ib-icon-building:before {
+  content: "\6b";
+}
+.ib-icon-facebook:before {
+  content: "\6c";
+}
+.ib-icon-twitter:before {
+  content: "\6d";
+}
+.ib-icon-calculator:before {
+  content: "\6e";
+}
+.ib-icon-close-modal:before {
+  content: "\6f";
+}
+.ib-icon-email:before {
+  content: "\70";
+}
+.ib-icon-full-screen:before {
+  content: "\71";
+}
+.ib-icon-open-link:before {
+  content: "\72";
+}
+.ib-icon-print:before {
+  content: "\73";
+}
+.ib-icon-share:before {
+  content: "\74";
+}
+.ib-icon-email2:before {
+  content: "\75";
+}
+.ib-icon-check:before {
+  content: "\76";
+}
+.ib-icon-checkb:before {
+  content: "\77";
+}
