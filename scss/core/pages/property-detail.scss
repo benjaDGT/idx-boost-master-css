@@ -1318,3 +1318,42 @@
 		}
 	}
 }
+
+
+// Título y numeración en FS
+
+  // para esconder el título y la numeración cuando no está FS
+    .clidxboost-full-slider:not(.gs-infs), .ib-pvslider:not(.gs-infs) {
+      .ib-pvsititle, .ib-pvsinumber {
+        display: none;
+      }
+    }
+  //
+
+  .ib-pvsititle, .ib-pvsinumber {
+      position: absolute;
+      background-color: rgba(0,0,0,0.5);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      padding: 0 10px;
+      z-index: 1;
+  }
+
+  .ib-pvsititle {
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    height: 30px;
+  }
+
+  .ib-pvsinumber {
+    height: 35px;
+    font-size: 17px;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+//
