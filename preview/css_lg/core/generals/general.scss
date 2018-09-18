@@ -64,3 +64,7 @@ $prefijo : '';
     max-width: 1100px;
   }
 }
+
+#drift-widget-container{
+	z-index: 4 !important;
+}
