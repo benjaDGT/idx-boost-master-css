@@ -826,8 +826,13 @@
 /* Modal - Force Registration
 /*----------------------------------------------------------------------------------*/
 .#{$prefijo}registration_forced{
-	.#{$prefijo}overlay_modal_closer{
+	/*.#{$prefijo}overlay_modal_closer{
 		display: none;
+	}*/
+
+	.close-modal {
+		display: block !important;
+		visibility: visible !important;
 	}
 }
 
