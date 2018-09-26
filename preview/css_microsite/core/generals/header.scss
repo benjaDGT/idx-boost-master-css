@@ -2,8 +2,6 @@
 /* Header
 /*----------------------------------------------------------------------------------*/
 ##{$prefijo}header{
-	border-bottom: 1px solid $gris-lineas;
-	background-color: #FFF;
 
 	/*----------------------------------------------------------------------------------*/
 	/* Sección superior
@@ -13,6 +11,10 @@
 
 		@media screen and (min-width: 991px){
 			border-bottom: 0;
+		}
+
+		@media screen and (min-width: 1024px){
+			padding: 5px 0;
 		}
 
 		.#{$prefijo}gwr{
@@ -31,13 +33,11 @@
 			/*----------------------------------------------------------------------------------*/
 			##{$prefijo}call-us{
 				display: none;
-				//font-family: $oswald;
-				
-				font-size: 13/16*1rem;
-				//letter-spacing: 0.33px;
-
+				font-family: $opensans;
+				font-size: 12/16*1rem;
 				font-weight: 600;
 				margin-right: 1rem;
+
 				@media screen and (min-width: 640px){
 					display: flex;
 					height: 100%;
@@ -190,9 +190,7 @@
 				li{
 					position: relative;
 					padding-right: 1rem;
-					//font-family: $oswald;
-					//font-size: 1rem;
-					//letter-spacing: 0.33px;
+					font-family: $opensans;
 
 					&:after{
 						content: "";
@@ -214,14 +212,13 @@
 
 					a{
 						font-weight: 600;
+						font-size: 10/16*1rem;
 						text-transform: uppercase;
-						//font-family: $oswald;
-						font-size: 13/16*1rem;
-						//letter-spacing: 0.33px;
+						font-family: $opensans;
 
-						/*@media screen and (min-width: 768px){
-							font-size: 14/16*1rem;
-						}*/
+						@media screen and (min-width: 640px){
+							font-size: 12/16*1rem;
+						}
 					}
 				}
 
@@ -314,11 +311,13 @@
 				height: 100%;
 				justify-content: center;
 				color: #333;
-				//font-family: $oswald;
-				font-size: 13/16*1rem;
+				font-family: $opensans;
+				font-size: 10/16*1rem;
 				font-weight: 600;
 				text-transform: uppercase;
-
+				@media screen and (min-width: 640px){
+					font-size: 12/16*1rem;
+				}
 
 				##{$prefijo}languages-map{
 					height: 16px;
@@ -386,22 +385,21 @@
 					align-items: center;
 					justify-content: center;
 					color: #FFF;
-					//font-family: $oswald;
-					font-size: 12/16*1rem;
+					font-family: $opensans;
+					font-size: 10/16*1rem;
 					font-weight: 600;
 					text-transform: uppercase;
 					transition: all .3s;
 					overflow: hidden;
 					opacity: 0;
 					@media screen and (min-width: 640px){
-						font-size: 1rem;
+						font-size: 12/16*1rem;
 					}
 
 					span{
 						width: 25px;
 						display: inline-block;
 						text-align: center;
-						font-size: 13/16*1rem;
 					}
 
 					&.active{
@@ -501,14 +499,12 @@
 				justify-content: center;
 				align-items: center;
 				display: flex;
-				margin-right: 20px;
 				/*----------------------------------------------------------------------------------*/
 				/* Logo con imagen
 				/*----------------------------------------------------------------------------------*/
 				img{
 					max-height: 50px;
 					width: auto;
-					max-width: 100%;
 				}
 				/*----------------------------------------------------------------------------------*/
 				/* Logo con Texto
@@ -534,7 +530,6 @@
 			/*----------------------------------------------------------------------------------*/
 			.idx_site_text{
 				position: relative;
-				top: -10px;
 				@media screen and (min-width: 991px){
 					position: absolute;
 					height: 100px;
@@ -551,13 +546,13 @@
 				justify-content: center;
 				height: 100%;
 				.idx_site_text_tit{
-					font-family: $oswald;
-					font-weight: 600;
+					font-family: $opensans;
+					font-weight: 700;
 					font-size: 26/16*1rem;
 				}
 				span{
 					display: block;
-					font-family: $oswald;
+					font-family: $opensans;
 					font-size: 1rem;
 					margin-top: -3px;
 				}
@@ -569,7 +564,7 @@
 			##{$prefijo}menu-main{
 				display: none;
 
-				@media screen and (min-width: 1300px){
+				@media screen and (min-width: 1024px){
 					display: block;
 					margin-right: 1rem;
 				}
@@ -600,19 +595,16 @@
 
 						&:hover{
 							&:after{
-								height: 3px;
+								height: 4px;
 								opacity: 1;
 							}
 						}
 
 						a{
-							//font-family: $oswald;
-							/*font-size: 12/16*1rem;*/
+							font-family: $opensans;
+							font-size: 12/16*1rem;
 							font-weight: 600;
 							text-transform: uppercase;
-
-							font-size: 13/16*1rem;
-							//letter-spacing: 0.33px;
 						}
 
 						.#{$prefijo}sub-menu{
@@ -646,14 +638,11 @@
 									line-height: 1.1;
 									color: #FFF;
 									padding: 0 1rem;
-
-									font-weight: 400;
+									font-family: $opensans;
+									font-size: 12/16*1rem;
+									font-weight: 600;
 									text-transform: uppercase;
 									transition: all .3s;
-									//font-family: $oswald;
-									font-size: 13/16*1rem;
-									//letter-spacing: 0.33px;
-
 									&:hover{
 										background-color: rgba(0,0,0,0.6);
 									}
@@ -734,11 +723,7 @@
 				transform: translate(100%, 0%);
 				overflow: hidden;
 				transition: all .3s ease-in-out;
-				
-				/*background-color: $colorweb;*/
-				/*background-color: rgba(0,0,0,0.8);*/
-				background-color: #171717;
-
+				background-color: $colorweb;
 				padding-top: 45px;
 				opacity: 0;
 
@@ -799,17 +784,13 @@
 
 						a{
 							color: #FFF;
-							//font-family: $oswald;
+							font-family: $opensans;
 							display: flex;
 							align-items: center;
 							height: 35px;
 							padding: 0 1rem;
-							position: relative;
-
 							font-size: 14/16*1rem;
-							//letter-spacing: 0.5px;
-							font-weight: 600;
-							text-transform: uppercase;
+							position: relative;
 						}
 
 						&.#{$prefijo}menu-item-has-children{
@@ -874,6 +855,48 @@
 			}
 		}
 	}
+
+	/*----------------------------------------------------------------------------------*/
+	/* Header en el home
+	/*----------------------------------------------------------------------------------*/
+	&.page-frontpage{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		background-color: rgba($colorweb,0.8);
+		*{
+			color: #FFF !important;
+		}
+
+		.wrap-options{
+			border-bottom-color: rgba(255,255,255,0.15);
+			.gwr{
+				#user-options{
+					li{
+						&:after{
+							background-color: #FFF;
+						}
+					}
+				}
+			}
+		}
+
+		.wrap-menu{
+			.gwr{
+				.hamburger-content{
+					#hamburger{
+						span,
+						span:after,
+						span:before{
+							background: #FFF;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -920,106 +943,4 @@
 /*----------------------------------------------------------------------------------*/
 .#{$prefijo}skiptranslate {
   display: none;
-}
-
-/*----------------------------------------------------------------------------------*/
-/* Menú en el Home
-/*----------------------------------------------------------------------------------*/
-##{$prefijo}header{
-	&.#{$prefijo}header-home{
-		border: 0;
-		z-index: 999;
-		position: absolute !important;
-		top: 0;
-		left: 0;
-		width: 100%;
-		background-color: transparent;
-		@media screen and (min-width: 640px){
-			padding: 0 18/16*1rem;
-			padding-top: 1rem;
-		}
-		.#{$prefijo}wrap-options{
-			border: 0 !important;
-			.#{$prefijo}gwr{
-
-				.#{$prefijo}social-networks{
-					li{
-						&:before{
-							color: #FFF;
-							text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-						}
-					}
-				}
-
-				##{$prefijo}call-us{
-					color: #FFF;
-					text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-				}
-
-				##{$prefijo}available-languages{
-					.#{$prefijo}languages-text{
-						color: #FFF;
-						text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-					}
-				}
-
-				##{$prefijo}user-options{
-					li{
-						a{
-							color: #FFF;
-							text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-						}
-						&:after{
-							background-color: #FFF;
-							box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-						}
-					}
-				}
-				
-				##{$prefijo}available-languages{
-					&:after {
-						border-top: 7px solid #FFF;
-					}
-				}
-			}
-		}
-		
-		.#{$prefijo}wrap-menu{
-			.#{$prefijo}gwr{
-				.#{$prefijo}text-logo{
-					span{
-						color: #FFF !important;
-						text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-					}
-				}
-
-				##{$prefijo}menu-main{
-					>ul{
-						>li{
-							a{
-								color: #FFF;
-								text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-							}
-						}
-					}
-				}
-				
-				.#{$prefijo}hamburger-content{
-					##{$prefijo}hamburger{
-						span{
-							background-color: #FFF;
-							&:after, &:before{
-								background-color: #FFF;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		h1.#{$prefijo}idx_site_text_tit{
-			color: #FFF !important;
-			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-		}
-	}
 }
