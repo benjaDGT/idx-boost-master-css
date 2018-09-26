@@ -4,22 +4,35 @@
 .#{$prefijo}wrap-result,
 ##{$prefijo}wrap-result{
 	&.#{$prefijo}view-map{
+		position: relative;
+
+		>.gwr{
+			position: relative;
+		}
 
 		.#{$prefijo}gwr{
 			margin-left: auto;
 			margin-right: auto;
-			position:relative;
 			@media (max-width: 767px){
 				width: 100% !important;
 			}
-			
+		}
+		
+		@media screen and (min-width: 1024px){
+			.paginator-cnt,
 			#paginator-cnt{
 				position: absolute;
 				left: 0;
 				bottom: 0;
 				right: 0;
+				margin-left: 20px;
+				@media screen and (min-width: 1790px){
+					margin-left: auto;
+				}
+				.nav-results,
 				#nav-results{
-    			margin-bottom: 0;
+					justify-content: flex-start;
+	  			margin-bottom: 0;
 				}
 			}
 		}
@@ -34,8 +47,9 @@
 			height: calc(100vh - 87px);
 			margin-bottom: 0;
 			@media screen and (min-width: 768px){
-				height: calc(100vh - 230px);
+				height: calc(100vh - 290px);
 			}
+
 			##{$prefijo}code-map{
 				width: 100%;
 				height: 100%;
@@ -49,9 +63,43 @@
 					position: absolute;
 				}
 			}
+
 			##{$prefijo}map-actions{
 				display: none;
 			}
+		}
+
+		.view-map-detail{
+			width: 35px;
+			height: 35px;
+			display: block;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			z-index: 5;
+			text-indent: -999999px;
+			cursor: pointer;
+			&:before{
+				font-family: "idx-icons"!important;
+				display: flex;
+				width: 35px;
+				height: 35px;
+				font-size: 21px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				content: "\e91e";
+				text-indent: 0;
+				align-items: center;
+				justify-content: center;
+				color: #333;
+			}
+		}
+	}
+
+	&:not(.view-map){
+		.view-map-detail{
+			display:none;
 		}
 	}
 }
@@ -223,7 +271,7 @@ body{
 					##{$prefijo}wrap-list-result{
 						width: 50%;
 						display: block;
-						height: calc(100vh - 285px);
+						height: calc(100vh - 340px);
 						overflow: hidden;
 						overflow-y: auto;
 						flex-grow: 1;
@@ -482,7 +530,14 @@ body{
 							}
 
 							.#{$prefijo}view-detail{
-								display: none;
+								text-indent: -999999px;
+								overflow:hidden;
+								position:absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								z-index: 3;
 							}
 						}
 					}
