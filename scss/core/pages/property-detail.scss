@@ -155,7 +155,7 @@
         width: 100%;
         .#{$prefijo}title-page{
           font-size: 20/16*1rem;
-          font-weight: 700;
+          font-weight: 600;
           width: 100%;
           display: block;
           overflow: hidden;
@@ -273,7 +273,7 @@
         flex-direction: column;
         display: flex;
         font-size: 18/16*1rem;
-        font-weight: 700;
+        font-weight: 600;
         span{
           display: block;
           font-weight: 600;
@@ -284,7 +284,7 @@
 
         &.#{$prefijo}price-property{
           width: 100%;
-          font-weight: 700;
+          font-weight: 600;
           font-size: 26/16*1rem;
           align-items: flex-start;
           margin-top: 5/16*1rem;
@@ -617,7 +617,7 @@
       h2, h3, h4, h5, h6{
         margin: 1rem 0;
         font-size: 18/16*1rem;
-        font-weight: 700;
+        font-weight: 600;
       }
 
       p{
@@ -837,7 +837,7 @@
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			font-family: $opensans;
-			font-weight: 700;
+			font-weight: 600;
 		}
 		.#{$prefijo}phone-avatar{
 			font-family: $opensans;

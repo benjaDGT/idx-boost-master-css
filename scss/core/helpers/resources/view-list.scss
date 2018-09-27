@@ -43,7 +43,7 @@
 					position: relative;
 					z-index: 1;
 					color: #333;
-					font-weight: 700;
+					font-weight: 600;
 
 					margin-bottom: 5/16*1rem;
 					span{
@@ -81,7 +81,7 @@
 						}
 						&.#{$prefijo}price{
 							line-height: 1.2;
-							font-weight: 700;
+							font-weight: 600;
 							font-family: $opensans;
 							font-size: 14/16*1rem;
 							color: #333;
@@ -466,7 +466,7 @@
 							&.#{$prefijo}address,
 							&.#{$prefijo}name{
 								overflow: hidden;
-								font-weight: 700;
+								font-weight: 600;
 								justify-content: flex-start;
 								span{
 									display: block;

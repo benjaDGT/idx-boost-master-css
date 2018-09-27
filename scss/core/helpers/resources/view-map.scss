@@ -5,6 +5,7 @@
 ##{$prefijo}wrap-result{
 	&.#{$prefijo}view-map{
 		position: relative;
+		margin-bottom: 30px;
 
 		>.gwr{
 			position: relative;
@@ -295,6 +296,11 @@ body{
 							max-width: 0;
 							opacity: 0;
 						}
+
+						&.closed + .wrap-map,
+						&.closed + #wrap-map{
+							margin-bottom: 55px;
+						}
 					}
 
 					##{$prefijo}head-list{
@@ -309,16 +315,28 @@ body{
 							position: relative;
 							margin-bottom: 10/16*1rem;
 							padding-bottom: 10/16*1rem;
-							padding-left: 110px;
+							padding-left: 145px;
 							padding-right: 35px;
 							transition: all .3s;
-							min-height: 76px;
+							min-height: 93px;
+							display: flex;
+							align-items: center;
+
 							h2{
 								display: none;
 							}
 
 							.#{$prefijo}flex-property-new-listing{
-								display: none;
+								display: block;
+								position: absolute;
+								top: 10px;
+								left: 2px;
+								z-index: 3;
+								font-size: 11px;
+								color: #FFF;
+								background-color: rgba(0,0,0,0.6);
+								padding: 5px 15px;
+								text-transform: uppercase;
 							}
 
 							.#{$prefijo}features{
@@ -326,7 +344,7 @@ body{
 								position: relative;
 								z-index: 1;
 								line-height: 1.1;
-								margin-bottom: 7/16*1rem;
+								//margin-bottom: 7/16*1rem;
 								display: flex;
 								flex-wrap: wrap;
 								-webkit-flex-wrap: wrap;
@@ -342,7 +360,7 @@ body{
 										width: 100%;
 										font-size: 14/16*1rem;
 										order: 3;
-										margin-top: 7/16*1rem;
+										margin-top: 10/16*1rem;
 										>span{
 											display: block;
 											text-overflow: ellipsis;
@@ -354,11 +372,12 @@ body{
 									&.#{$prefijo}price{
 										order: 1;
 										line-height: 1.4;
-										font-weight: 700;
+										font-weight: 600;
 										font-family: $opensans;
 										font-size: 20/16*1rem;
 										color: #333;
 										width: 100%;
+										margin-bottom: 5px;
 									}
 									&.#{$prefijo}beds,
 									&.#{$prefijo}baths,
@@ -383,6 +402,7 @@ body{
 										}
 										span{
 											font-weight: 400;
+											font-size: 12/16*1rem;
 										}
 									}
 									&.#{$prefijo}living-size{
@@ -411,7 +431,9 @@ body{
 								width: 100%;
 								>ul{
 									position: relative;
-									width: 100px;
+									width: 125px;
+									padding: 1px;
+									border: 1px solid $gris-lineas;
 									>li{
 										position: relative;
 										width: 100%;
@@ -427,12 +449,12 @@ body{
 											position: absolute;
 											top: 50%;
 											left: 50%;
-											width: 50px;
-											height: 50px;
+											width: 30px;
+											height: 30px;
 											border-radius: 50%;
 											border: 10px solid #ccc;
 											border-top-color: #333;
-											border-width: 5px;
+											border-width: 3px;
 											-webkit-animation: spin 1s infinite linear;
 											animation: spin 1s infinite linear;
 											z-index: 2;
@@ -553,7 +575,7 @@ body{
 							top: 1rem;
 							left: 1rem;
 							button{
-								padding: 5/16*1rem 1rem;
+								padding: 7/16*1rem 30/16*1rem;
 								background-color: rgba(0,0,0,0.6);
 								font-size: 14/16*1rem;
 								color: #FFF;

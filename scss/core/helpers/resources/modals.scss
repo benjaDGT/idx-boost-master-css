@@ -174,7 +174,7 @@
 			padding-right: 50/16*1rem;
 			h2, font{
 				margin: 0;
-				font-weight: 700;
+				font-weight: 600;
 				color: #333;
 				font-size: 22/16*1rem;
 				transition: all .3s;
@@ -619,7 +619,7 @@
 		}
 		h2{
 			margin-top: 1rem;
-			font-weight: 700;
+			font-weight: 600;
 			font-size: 24/16*1rem;
 			font-family: $opensans;
 		}
@@ -764,7 +764,7 @@
 			h3{
 				font-family: $opensans;
 				font-size: 20/16*1rem;
-				font-weight: 700;
+				font-weight: 600;
 				border-bottom: 3px solid #333;
 				margin-bottom: 10/16*1rem;
 				padding-bottom: 10/16*1rem;
@@ -786,7 +786,7 @@
 						}
 						&.text-bold{
 							padding-right: 0;
-							font-weight: 700;
+							font-weight: 600;
 							color: #333;
 							&.mtotal{
 								font-size: 22/16*1rem;
@@ -891,7 +891,7 @@
     			order: 2;
     			padding: 10px;
     			font-size: 24/16*1rem;
-    			font-weight: 700;
+    			font-weight: 600;
     			font-family: $opensans;
     			width: 100%;
     			span{
@@ -1081,7 +1081,7 @@
 .alt-ss{
 	.alt-ss-title{
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     font-family: $opensans;
     &:after{
@@ -1202,7 +1202,7 @@
 						padding: 7px 10px;
 						.title-page{
 							font-size: 1.25rem;
-							font-weight: 700;
+							font-weight: 600;
 							width: 100%;
 							display: block;
 							overflow: hidden;

@@ -109,11 +109,14 @@ body{
 										margin-top: -1px;
 									}
 								}
+
+								&.#{$prefijo}price{
+									margin-bottom: 5px;
+								}
 							}
 						}
 					}
 				}
-				
 			}
 		}
 	}

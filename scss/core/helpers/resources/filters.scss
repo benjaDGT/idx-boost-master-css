@@ -488,15 +488,14 @@
 			text-align: left;
 			position: relative;
 			width: 100%;
-			font-size: 12/16*1rem;
+			font-size: 13/16*1rem;
 			font-family: $opensans;
 			color: $gris-intermedio;
-			font-weight: 600;
+			font-weight: 400;
 			padding: 12/16*1rem 1rem;
 			@media screen and (min-width: 768px){
 				padding-left: 0;
 			}
-
 		}
 	}
 }
@@ -1009,14 +1008,14 @@
 	##{$prefijo}wrap-subfilters{
 		.#{$prefijo}gwr{
 			##{$prefijo}info-subfilters{
-				display: block;
+				/*display: block;*/
 				text-align: center;
 				position: absolute;
-				width: 100%;
+				/*width: 100%;
 				font-size: 12/16*1rem;
 				font-family: $opensans;
 				color: $gris-intermedio;
-				font-weight: 600;
+				font-weight: 600;*/
 			}
 		}
 	}

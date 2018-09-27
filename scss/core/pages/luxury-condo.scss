@@ -276,7 +276,7 @@
             li{
               &.#{$prefijo}name{
                 font-family: $opensans;
-                font-weight: 700;
+                font-weight: 600;
                 font-size: 1rem;
                 width: 100%;
               }
@@ -847,7 +847,7 @@
           align-items: center;
           justify-content: center;
           transition: transform .3s;
-          font-weight: 700;
+          font-weight: 600;
         }
       }
 
