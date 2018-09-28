@@ -348,6 +348,15 @@
 							display: none;
 						}
 						
+						&.#{$prefijo}cities{
+							.cities-list,
+							#cities-list{
+								ul{
+									border: 0;
+								}
+							}
+						}
+
 						&.#{$prefijo}features{
 							.#{$prefijo}wrap-checks{
 								>ul{

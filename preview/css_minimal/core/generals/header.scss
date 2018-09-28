@@ -725,8 +725,8 @@
 				transform: translate(100%, 0%);
 				overflow: hidden;
 				transition: all .3s ease-in-out;
-				background-color: $colorweb;
-				padding-top: 45px;
+				background-color: rgba($colorweb,0.95);
+				padding-top: 60px;
 				opacity: 0;
 
 				.#{$prefijo}hamburger-content{
@@ -734,7 +734,7 @@
 				}
 
 				@media screen and (min-width: 768px){
-					max-width: 450px;
+					max-width: 300px;
 				}
 
 				.#{$prefijo}logo{
@@ -744,7 +744,7 @@
 				##{$prefijo}hamburger-r{
 					width: 35px;
 					height: 35px;
-					top: 7px;
+					top: 13px;
 					right: 5px;
 					position: absolute;
 					z-index: 4;
@@ -790,9 +790,10 @@
 							display: flex;
 							align-items: center;
 							height: 35px;
-							padding: 0 1rem;
+							padding: 0 20px;
 							font-size: 14/16*1rem;
 							position: relative;
+							text-transform: uppercase;
 						}
 
 						&.#{$prefijo}menu-item-has-children{

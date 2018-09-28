@@ -223,8 +223,9 @@ $colorp: #333333;
 			.#{$pref}mghtitle {
 				color: $colorp;
 				font-size: 1.3em;
-				font-weight: 800;
-				line-height: 1;
+				font-weight: 600;
+				line-height: 1.2;
+				margin-bottom: 15px;
 			}
 		//
 
@@ -278,10 +279,12 @@ $colorp: #333333;
 				background-color: $colorp;
 				font-weight: 600;
 				transition: all .2s linear;
+				border:1px solid $colorp;
 
 				&:hover {
 					cursor:pointer;
-					background-color: darken($colorp, 10%)
+					background-color: #FFF;
+					color: #333;
 				}
 			}
 
@@ -337,7 +340,7 @@ $colorp: #333333;
 		.#{$pref}mcsubtitle {
 			color: $colorp;
 			font-size: 1.6em;
-			font-weight: 800;
+			font-weight: 600;
 			line-height: 1;
 			padding-bottom: 12px;
 			border-bottom: 2px solid $colorp;
@@ -376,7 +379,7 @@ $colorp: #333333;
 
 		.#{$pref}mcdinumbers {
 			color: $colorp;
-			font-weight: 800;
+			font-weight: 600;
 			line-height: 1;
 		}
 	//

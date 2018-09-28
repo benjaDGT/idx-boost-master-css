@@ -50,14 +50,14 @@
 		.#{$prefijo}flex-bubble-title{
 			order: 2;
 			font-family: $opensans;
-			font-weight: 600;
-			font-size: 24/16*1rem;
+			font-weight: 400;
+			font-size: 27/16*1rem;
 			line-height: 1.1;
 			color: #FFF;
 			text-transform: uppercase;
 			margin: 10/16*1rem 0;
 			@media screen and (min-width: 640px){
-				font-size: 31/16*1rem;
+				font-size: 37/16*1rem;
 			}
 		}
 		.#{$prefijo}flex-bubble-sub-title{

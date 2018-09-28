@@ -20,13 +20,18 @@
       }
       @media screen and (min-width: 1024px){
         .property-information,
-        .panel-options{
-          margin-left: 1rem;
-          margin-right: 1rem;
+        .panel-options,
+        .main-content{
+          margin-left: 0;
+          margin-right: 0;
           &.ltd.d-hidden{
             margin-left: 0;
             margin-right: 0;
           }
+        }
+        .main-content{
+          padding-left: 0;
+          padding-right: 0;
         }
       }
     }
@@ -85,7 +90,8 @@
     left: 0;
     right: 0;
     width: 100%;
-    max-width: 1465px;
+    max-width: 1460px;
+    //max-width: 1230px;
     margin: 0 auto;
     .#{$prefijo}slider-option{
       position: absolute; 
@@ -149,6 +155,7 @@
     .#{$prefijo}content-fixed{
       width: 100%;
       max-width: 1430px;
+      //max-width: 1200px;
       margin: 0 auto;
       position: relative;
       .#{$prefijo}content-fixed-title{
@@ -249,7 +256,7 @@
     left: 0;
     top: 0;
     background-color: #f7f7f7;
-    border-bottom: 1px solid #e5e5e5;
+    /*border-bottom: 1px solid #e5e5e5;*/
     border-top: 1px solid #e5e5e5;
     z-index: 0;
     opacity: 0;
@@ -276,8 +283,8 @@
         font-weight: 600;
         span{
           display: block;
-          font-weight: 600;
-          font-size: 10/16*1rem;
+          font-weight: 400;
+          font-size: 12/16*1rem;
           text-transform: uppercase;
           color: $gris-intermedio;
         }
@@ -296,11 +303,11 @@
             color: $gris-intermedio;
             font-weight: 400;
             display: block;
-            font-size: 10/16*1rem;
+            font-size: 12/16*1rem;
             text-transform: uppercase;
             margin-top: 3/16*1rem;
             span{
-              font-size: 10/16*1rem;
+              font-size: 11/16*1rem;
               display: inline;
               margin-left: 5px;
             }
@@ -338,7 +345,7 @@
         &.#{$prefijo}btn-save{
           position: absolute;
           top: 15/16*1rem;
-          right: 10/16*1rem;
+          right: 15/16*1rem;
           font-family: $opensans;
           .#{$prefijo}chk_save{
             background-color: transparent;
@@ -349,8 +356,8 @@
               align-items: center;
               justify-content: center;
               flex-direction: column;
-              font-weight: 600;
-              font-size: 11/16*1rem;
+              font-weight: 400;
+              font-size: 12/16*1rem;
               &:before{
                 content: "";
                 background-image: url('../images/corazon.png');
@@ -427,7 +434,7 @@
 
         ##{$prefijo}show-shared{
           display: block;
-          height: 35px;
+          height: 40px;
           text-indent: -999999px;
           width: 100%;
           position: relative;
@@ -436,7 +443,7 @@
           border-right: 1px solid $gris-lineas;
           transition: all .3s;
           font-family: $opensans;
-          font-size: 11px;
+          font-size: 12px;
           text-transform: uppercase;
           font-weight: 600;
           cursor: default;
@@ -552,7 +559,7 @@
             display: block;
             height: 100%;
             text-indent: -999999px;
-            height: 35px;
+            height: 40px;
             position: relative;
             color: $gris-intermedio;
             transition: all .3s;
@@ -613,7 +620,8 @@
     .#{$prefijo}property-description{
       padding: 1rem 0;
       background-color: #f7f7f7;
-      
+      margin-bottom: 20px;
+
       h2, h3, h4, h5, h6{
         margin: 1rem 0;
         font-size: 18/16*1rem;
@@ -663,8 +671,10 @@
         font-size: 1rem;
         font-family: $opensans;
         font-weight: 600;
-        padding: 10/16*1rem;
-        border-top: 1px solid $gris-lineas;
+        padding: 13/16*1rem;
+        //border-top: 1px solid $gris-lineas;
+
+        border-top: 0;
         border-bottom: 1px solid $gris-lineas;
         padding-right: 30/16*1rem;
         position: relative;
@@ -688,8 +698,9 @@
 
       &.#{$prefijo}active{
         >ul{
-          max-height: 900px;
+          max-height: 100%;
           opacity: 1;
+          margin-bottom: 20px;
         }
         .#{$prefijo}title-details,
         .#{$prefijo}title-amenities{
@@ -712,7 +723,7 @@
         -webkit-flex-wrap: wrap;
         justify-content: space-between;
         li{
-          padding: 10/16*1rem 0;
+          padding: 13/16*1rem 0;
           display: flex;
           width: 100%;
           justify-content: space-between;
@@ -929,6 +940,7 @@
 							display: flex;
 							padding-left: 25/16*1rem;
 							align-items: center;
+              transition: color .3s;
 							&:before{
 								content: "\e902";
 								font-family: $web-icons;
@@ -941,6 +953,9 @@
 								font-weight: 100;
 								position: absolute;
 							}
+              &:hover{
+                color: #036dad;
+              }
 						}
 
 						.#{$prefijo}link-search{
@@ -953,10 +968,10 @@
 						.#{$prefijo}btn-request{
 							display: none;
 							padding: 10/16*1rem 1rem;
-							background-color: #333;
 							color: #FFF;
 							border: 1px solid #333;
 							transition: all .3s;
+              background-color: $colorweb;
 							&:hover{
 								background-color: #FFF;
 								color: #333;
@@ -1124,12 +1139,12 @@
 					.#{$prefijo}content-fixed-title{
 						.#{$prefijo}title-page{
 							font-size: 24/16*1rem;
-							/*padding-left: 35/16*1rem;*/
+							padding-left: 50/16*1rem;
 						}
 						.#{$prefijo}breadcrumb-options{
 							.#{$prefijo}link-back{
 								position: absolute;
-								left: -40px;
+								left: 0px;
 								text-indent: -99999px;
 								overflow: hidden;
 								width: 30px;
@@ -1137,12 +1152,20 @@
 								padding: 0;
 								display: block;
 								height: 100%;
-								border-right: 1px solid $gris-lineas;
+								border-left: 1px solid $gris-lineas;
+                border-right: 1px solid $gris-lineas;
+                transition: color .3s;
 								&:before{
 									text-indent: 0;
 									left: 7px;
 								}
+                &:hover{
+                  color: #036dad;
+                }
 							}
+              .#{$prefijo}clidxboost-icon-search{
+                display: none;
+              }
 							.#{$prefijo}btn-request{
 								display: inline-block;
 							}
@@ -1226,7 +1249,8 @@
 	  	display: block;
 	  	width: 320px;
 	  	flex-shrink: 0;
-	  	margin-right: 1rem;
+	  	//margin-right: 1rem;
+      margin-right: 0;
       margin-left: 20/16*1rem;
       margin-top: 1rem;
 	  }
@@ -1236,7 +1260,8 @@
 				display: flex;
 				justify-content: space-between;
 				margin: 0 auto;
-        max-width: 1460px;
+        max-width: 1430px;
+        //max-width: 1200px;
 			}
 		}
 
@@ -1250,7 +1275,7 @@
 				li{
 					flex-grow: 0;
 					span{
-						font-size: 11/16*1rem;
+						font-size: 12/16*1rem;
 					}
 					&.#{$prefijo}price-property{
 						width: auto;
@@ -1258,8 +1283,8 @@
 						padding: 0;
 						border: none;
 						span{
-							font-size: 11/16*1rem;
-							font-weight: 600;
+							font-size: 12/16*1rem;
+							font-weight: 400;
 						}
 					}
 

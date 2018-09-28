@@ -94,6 +94,7 @@ body{
 .#{$prefijo}wrap-neighborhood-list{
   position: relative;
   margin: 0 -10px;
+  padding-bottom: 40px;
   &:after{
     content: "";
     clear: both;

@@ -32,6 +32,11 @@ body {
 	&.fixed {
 		overflow: hidden;
 	}
+
+	>main{
+		margin: auto;
+		margin-top: 0;
+	}
 }
 
 /** Resize: max-width 960 **/
@@ -596,7 +601,7 @@ img{
 	.mapview-container .mapviwe-body .mapviwe-item h2 {
 		font-size: 18px !important;
 		font-family: $opensans;
-		font-weight: 800;
+		font-weight: 600;
 	}
 	.mapview-container .mapviwe-header h2{
 		font-family: $opensans;

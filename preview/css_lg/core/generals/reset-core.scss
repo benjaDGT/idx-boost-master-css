@@ -5,7 +5,7 @@
 	##{$prefijo}full-main{
 		.#{$prefijo}main{
 			.#{$prefijo}gwr {
-				max-width: 1431px;
+				max-width: 1430px;
 			}
 		}
 	}
@@ -18,7 +18,7 @@
 	##{$prefijo}wrap-filters{
 		.#{$prefijo}gwr-filters{
 			margin-top: -1px;
-			max-width: 100% !important;
+			//max-width: 100% !important;
 			width: 100% !important;
 		}
 	}
@@ -28,7 +28,7 @@
 	.content-filters{
 		#wrap-filters{
 			.gwr-filters {
-				max-width: 1790px !important;
+				max-width: 1430px !important;
 			}
 		}
 	}

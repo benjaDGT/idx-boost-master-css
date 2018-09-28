@@ -16,7 +16,7 @@
   }
 
   .#{$prefijo}title-block{
-    font-weight: 600;
+    font-weight: 400;
     font-family: $opensans;
     text-align: center;
     margin-bottom: 1rem;
@@ -148,6 +148,7 @@
       ##{$prefijo}result-search{
         >li{
           .wrap-slider{
+            height: auto;
             >ul{
               &:before{
                 display: none;

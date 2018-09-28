@@ -394,22 +394,26 @@
 	.#{$prefijo}buildingPage{
 		#full-main{
 			.main-content{
-				.container .wrap-subfilters{
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				.container{
+					.wrap-subfilters{
+						padding-left: 0;
+						padding-right: 0;
+					}
+					#view_grip,
+					#view_list{
+						padding-left: 1rem;
+						padding-right: 1rem;
+					}
+				}
+			}
+			>.gwr{
+				.main-content{
 					padding-left: 0;
 					padding-right: 0;
 				}
 			}
 		}
-	}
-
-	#full-main .main>.gwr .main-content{
-		padding-left: 0;
-		padding-right: 0;
-	}
-	
-	.buildingPage #full-main .main-content .container #view_grip, 
-	.buildingPage #full-main .main-content .container #view_list{
-		padding-left: 1rem;
-		padding-right: 1rem;
 	}
 }

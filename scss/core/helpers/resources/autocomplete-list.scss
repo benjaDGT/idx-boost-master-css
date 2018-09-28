@@ -11,12 +11,13 @@
 	ul{
 		height: 300px;
 		background: #FFF;
-		/*border: 1px solid $gris-lineas;*/
+		border: 1px solid $gris-lineas;
 		border-top: 2px solid $colorweb;
 		overflow: hidden;
 		z-index: 5;
 		width: 100%;
 		overflow-y: auto;
+
 		&::-webkit-scrollbar {
 			width: 10px;
 		}
