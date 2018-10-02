@@ -525,11 +525,11 @@
 
 				.#{$prefijo}logo-content{
 					position: absolute;
-					height: 100px;
+					height: 80px;
 					left: 0;
 					top: -100%;
 					img{
-						max-height: 90px;
+						max-height: 80px;
 						padding: 5px 0;
 					}
 				}
@@ -574,7 +574,7 @@
 			##{$prefijo}menu-main{
 				display: none;
 
-				@media screen and (min-width: 1400px){
+				@media screen and (min-width: 1200px){
 					display: block;
 					margin-right: 1rem;
 				}
@@ -866,13 +866,6 @@
 			}
 		}
 	}
-
-	&.ib-internal-header{
-		.lg-ct-header{
-			max-width: 1460px;
-			margin: 0 auto;
-		}
-	}
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -925,12 +918,13 @@
 /* Menú en el Home
 /*----------------------------------------------------------------------------------*/
 ##{$prefijo}header{
-	height: 112px;
+	//height: 112px;
+	height: 101px;
 	@media screen and (min-width: 1024px){
 		height: 90px;
 	}
 
-	&.#{$prefijo}header-home{
+	&.#{$prefijo}ib-home-header{
 		border: 0;
 		z-index: 999;
 		position: fixed !important;
@@ -1036,25 +1030,23 @@
 	}
 }
 
-/*
-@media (max-width: 640px){
-	#header{
-		.wrap-menu{
+#header{
+	&.ib-home-header{
+		.wrap-options{
 			.gwr{
-				.logo-content{
-					img{
-						max-width: 160px;
+				#user-options{
+					li{
+						&.show_modal_login_active{
+							&:after{
+								display: none;
+							}
+							&:before{
+								border-top: 7px solid #FFF;
+							}
+						}
 					}
 				}
 			}
 		}
 	}
-}*/
-
-#header.header-home .wrap-options .gwr #user-options li.show_modal_login_active:after{
-	display: none;
-}
-
-#header.header-home .wrap-options .gwr #user-options .show_modal_login_active:before {
-  border-top: 7px solid #FFF;
 }

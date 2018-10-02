@@ -1,4 +1,4 @@
-$colorp: #46B6B8;
+$colorp: #FFF;
 
 // MIXINS
 
@@ -25,20 +25,32 @@ $colorp: #46B6B8;
 	.ib-form-buyandsell {
 		@include flexpa();
 		position: relative;
-		min-height: 100vh;
+		min-height: calc(100vh - 169px);
 		overflow: hidden;
+		&:before{
+			content: "";
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(0,0,0,0.33);
+			z-index: 2;
+		}
 	}
 //
 
 // LAYOUT
 	.ib-form-bg {
 		position: absolute;
-		width: auto;
+		width: 100%;
 		height: 100%;
 		z-index: 1;
 		top: 0;
-		left: 50%;
-		transform: translateX(-50%);
+		left: 0;
+		object-fit: cover;
+		/*transform: translateX(-50%);
 
 		@media screen and (min-width: 1800px) {
 			width:100%;
@@ -46,7 +58,7 @@ $colorp: #46B6B8;
 			transform: translateY(-50%);
 			top: 50%;
 			height: auto;
-		}
+		}*/
 	}
 
 	.ib-fbscontainer {
@@ -180,8 +192,11 @@ $colorp: #46B6B8;
 		}
 
 		&.ib-fsrnumbers {
-			.ib-filabel {
+			/*.ib-filabel {
 				font-size: 1.05em;
+			}*/
+			.ib-filabel {
+				font-size: 15px;
 			}
 
 			@media screen and (min-width: 1024px) {
@@ -189,9 +204,9 @@ $colorp: #46B6B8;
 					min-width: 134px;
 				}
 
-				.ib-filabel {
-					font-size: 1.2em;
-				}
+				/*.ib-filabel {
+					font-size: 14px;
+				}*/
 			}
 		}
 	}
@@ -263,15 +278,14 @@ $colorp: #46B6B8;
 		height: 81.25%;
 		width: 86.6667%;
 		background-color: rgba( $colorp, .8);
-		color: #fff;
+		color: #333;
 		text-transform: uppercase;
 		padding: 0 7px;
 		@include flexpa();
 		font-size: .8em;
 		text-align: center;
 		transition: all .2s linear;
-		text-shadow: 2px 2px 2px rgba(#000, .25);
-		transition: all .2s linear;
+		//text-shadow: 2px 2px 2px rgba(#000, .25);
 
 		@media screen and (min-width: 480px) and (max-width: 639px) {
 			font-size: .9em
@@ -282,7 +296,8 @@ $colorp: #46B6B8;
 		}
 
 		@media screen and (min-width: 1024px) {
-			font-size: 1em;
+			//font-size: 1em;
+			font-size: 15px;
 		}
 
 		&:hover {
@@ -304,20 +319,20 @@ $colorp: #46B6B8;
 	.ib-fbtn {
 		display: none;
 		background-color: $colorp;
-		color: #fff;
+		color: #333;
 		text-transform: uppercase;
-		height: 38px;
+		height: 45px;
 		padding: 0 25px;
 		font-size: .8em;
 		transition: all .2s linear;
-		font-weight: 600;
-		border: 2px solid $colorp;
+		font-weight: 400;
+		border: 1px solid $colorp;
+		transition: all .3s;
 
 		&:hover {
-			background-color: #fff;
-			color: $colorp;
+			background-color: #333;
+			color: #fff;
 			cursor:pointer;
-			border-color: #fff;
 		}
 
 		@media screen and (min-width: 480px) and (max-width: 639px) {
@@ -329,16 +344,17 @@ $colorp: #46B6B8;
 		&.ib-fbtn-back {
 			margin-right: 10px;
 			background-color: transparent;
-			border: 2px solid $colorp;
+			border: 1px solid $colorp;
+			color: #FFF;
 
 			&:hover {
 				background-color: $colorp;
-				color: #fff;
+				color: #333;
 			}
 		}
 
 		@media screen and (min-width: 1024px) {
-			height: 40px;
+			height: 45px;
 			padding: 0 35px;
 			font-size: .9em;
 		}
@@ -393,7 +409,7 @@ $colorp: #46B6B8;
 
 	.ib-fsifsubmit {
 		margin-top: 7px;
-		background-color: $colorp;
+		background-color: #333;
 		@include flexpa();
 		color: #fff;
 		transition: all .2s linear;
@@ -405,6 +421,7 @@ $colorp: #46B6B8;
 		&:hover {
 			background-color: darken($colorp, 15%);
 			cursor: pointer;
+			color: #333;
 		}
 
 		@media screen and (min-width: 480px) {

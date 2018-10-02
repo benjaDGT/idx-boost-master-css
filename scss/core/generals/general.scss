@@ -37,6 +37,34 @@ body {
 		margin: auto;
 		margin-top: 0;
 	}
+
+	&.ib-wrap-full-width{
+		.gwr {
+	    max-width: 96%;
+	  }
+	  #header{
+	  	.lg-ct-header{
+ 				max-width: 100%;
+	  	}
+	  }
+	  .gwr{
+	  	&.gwr-breadcrumb{
+	  		.flex-breadcrumb{
+					max-width: 96%;
+	  		}
+	  	}
+	  }
+
+	  #flex-filters-theme{
+	  	.content-filters{
+	  		#wrap-filters{
+	  			.gwr-filters{
+						max-width: 96% !important;
+	  			}
+	  		}
+	  	}
+	  }
+	}
 }
 
 /** Resize: max-width 960 **/
@@ -222,8 +250,17 @@ img{
 		margin: 0 auto;
 		transition: all .35s ease;
 	}
+	strong{
+		margin-right: 3px;
+    display: inline-block;
+	}
 }
 
+.gm-style .gm-style-cc span, 
+.gm-style .gm-style-cc a, 
+.gm-style .gm-style-mtc div {
+  font-size: 13px !important;
+}
 
 /*----------------------------------------------------------------------------------*/
 /* Preloading Search

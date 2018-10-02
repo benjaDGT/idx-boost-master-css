@@ -23,11 +23,13 @@ $prefijo : '';
 		width: 94%;
 	}	
 }
+
 @media screen and (min-width: 960px) {
 	.#{$prefijo}gwr {
 		width: 96%;
 	}
 }
+
 @media screen and (min-width: 1280px) { 
 	.#{$prefijo}gwr {
 		width: 97%;

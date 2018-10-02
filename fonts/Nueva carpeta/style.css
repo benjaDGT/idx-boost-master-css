@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'idx-icons';
-  src:  url('fonts/idx-icons.eot?8658y7');
-  src:  url('fonts/idx-icons.eot?8658y7#iefix') format('embedded-opentype'),
-    url('fonts/idx-icons.ttf?8658y7') format('truetype'),
-    url('fonts/idx-icons.woff?8658y7') format('woff'),
-    url('fonts/idx-icons.svg?8658y7#idx-icons') format('svg');
+  src:  url('fonts/idx-icons.eot?71h0fd');
+  src:  url('fonts/idx-icons.eot?71h0fd#iefix') format('embedded-opentype'),
+    url('fonts/idx-icons.ttf?71h0fd') format('truetype'),
+    url('fonts/idx-icons.woff?71h0fd') format('woff'),
+    url('fonts/idx-icons.svg?71h0fd#idx-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -228,12 +228,10 @@
 .idx-icon-info:before {
   content: "\ea0c";
 }
-.idx-icon-whatsapp:before {
-  content: "\ea93";
-}
 .idx-icon-comment-o:before {
   content: "\e93d";
 }
+
 
 @font-face {
   font-family: "idx-boost-icons";
