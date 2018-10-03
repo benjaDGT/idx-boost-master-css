@@ -58,6 +58,20 @@
 						border-color: $colorweb;
 					}
 				}
+
+				@media (max-width: 640px){
+					.#{$prefijo}wrap-slider{
+						.#{$prefijo}prev{
+							left: 0 !important;
+							opacity: 1 !important;
+						}
+						.#{$prefijo}next{
+							right: 0 !important;
+							opacity: 1 !important;
+						}
+					}
+				}
+
 				h2{
 					width: 100%;
 					padding: 0 1rem;

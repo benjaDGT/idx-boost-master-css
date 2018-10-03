@@ -37,8 +37,9 @@
 					text-align: left;
 					text-transform: uppercase;
 					margin-bottom: 20/16*1rem;
-					font-weight: 700;
+					font-weight: 600;
 					margin-top: 0;
+					font-family: $oswald;
 
 					@media screen and (min-width: 640px){
 						margin-top: 20/16*1rem;
@@ -123,16 +124,23 @@
 		text-align: center;
 		margin-bottom: 15px;
 		margin-top: 60px;
+		justify-content:space-between;
 
 		@media screen and (min-width: 1024px){
 			max-width: 550px;
 			justify-content: space-between;
 		}
 
-		.#{$prefijo}btn-link{
+		.#{$prefijo}clidxboost-btn-link{
 			width: 100%;
+			/*margin-left: auto;
+			margin-right: auto;*/
 			margin-bottom: 10px;
 			height: 45px;
+
+			@media screen and (min-width: 640px){
+				width: 49% !important;
+			}
 
 			span{
 				border: 1px solid $colorweb;
@@ -142,12 +150,11 @@
 				align-items: center;
 				width: 100%;
 				height: 100%;
-				padding: 0 15px;
+				padding: 0 5px;
 				text-transform: uppercase;
-				font-size: 14/16*1rem;
+				font-size: 12/16*1rem;
 				transition: all .3s;
 				font-weight: 600;
-				//font-family: $oswald;
 				color: #FFF;
 				&:hover{
 					background-color: #dc3d41;
@@ -167,8 +174,12 @@
 				padding-bottom: 125px;
 				position: relative;
 
+				&.ib-pb-m{
+					padding-bottom: 0;
+				}
+
 				@media screen and (min-width: 640px){
-					padding-bottom: 65px;
+					padding-bottom: 0;
 				}
 
 				.#{$prefijo}box-btn{
@@ -177,17 +188,14 @@
 					bottom: 0;
 					left: 0;
 					width: 100%;
-					.#{$prefijo}btn-link{
+
+					.#{$prefijo}clidxboost-btn-link{
 						width: 100%;
 					}
 
 					@media screen and (min-width: 640px){
 						display: flex;
 						justify-content: space-between;
-						.#{$prefijo}btn-link{
-							width: 48%;
-							margin: 0;
-						}
 					}
 
 					@media screen and (min-width: 1024px){

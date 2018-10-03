@@ -52,7 +52,6 @@ $colorp: #333333;
 	// HEADER
 		.ib-filter-container {
 			position: relative;
-			margin-top: -1px;
 
 			&.ib-filter-container-fixed {
 				position: fixed;
@@ -105,7 +104,7 @@ $colorp: #333333;
 					.ib-filter-container.ib-filter-container-inscroll {
 						position: fixed;
 						width: 100%;
-						top: 101px;
+						top: 111px;
 						left:0;
 						z-index: 31;
 						animation: toTop .5s linear;
@@ -124,7 +123,7 @@ $colorp: #333333;
 
 						to {
 							opacity: 1;
-							top: 101px;
+							top: 111px;
 						}
 					}
 				}
@@ -2073,8 +2072,7 @@ $colorp: #333333;
 					.lg-theme {
 						.ib-cpagination {
 							@media screen and (max-width: 767px) {
-								//margin-bottom: 115px;
-								padding-bottom: 115px;
+								margin-bottom: 115px;
 							}
 						}
 					}

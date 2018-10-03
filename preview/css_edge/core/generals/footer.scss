@@ -38,16 +38,16 @@
 		}
 
 		.#{$prefijo}idx_txt_title_footer{
-			//font-family: $oswald;
+			font-family: $oswald;
 			color: #FFF;
 			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 			margin: 1rem 0;
-			font-size: 24/16*1rem;
+			font-size: 1.875rem;
 			text-align: center;
 			text-transform: uppercase;
-			font-weight: 700;
+			font-weight: 600;
 			@media screen and (min-width: 768px){
-				font-size: 30/16*1rem;
+				font-size: 2.25rem;
 			}
 		}
 
@@ -80,16 +80,16 @@
 		max-width: 1100px;
 
 		>h2{
-			font-size: 20/16*1rem;
-			font-weight: 700;
+			font-size: 1.875rem;
+			font-weight: 600;
 			margin: 1rem 0;
-			//font-family: $oswald;
+			font-family: $oswald;
 			text-transform: uppercase;
 			text-align: center;
 			padding: 0 1rem;
 			letter-spacing: 0.33px;
-			@media screen and (min-width: 640px){
-				font-size: 28/16*1rem;
+			@media screen and (min-width: 768px){
+				font-size: 2.25rem;
 			}
 		}
 
@@ -128,13 +128,23 @@
 		margin: 0;
 		padding: 0;
 
+		.gform_body{
+			.gform_fields{
+				.gfield{
+					.medium {
+						border-color: #a8a8a8;
+					}
+				}
+			}
+		}
+
 		.#{$prefijo}gform_footer{
 			margin-bottom: 0;
 
 			.#{$prefijo}button{
 				height: 45px;
-				background-color: #101010;
-				border: 1px solid #FFF;
+				background-color: #cd262a;
+				border: 1px solid #cd262a;
 				color: #FFF;
 				width: 100%;
 				text-align: center;
@@ -144,7 +154,7 @@
 				font-size: 14/16*1rem;
 
 				&:hover{
-					background-color: $colorweb;
+					background-color: #dc3d41;
 					color: #FFF;
 				}
 			}
@@ -163,7 +173,7 @@
 						width: 49%;
 
 						.#{$prefijo}medium{
-							height: 45px;
+							height: 46px;
 						}
 
 						&.#{$prefijo}requiredFields{
@@ -174,8 +184,8 @@
 			}
 
 			.#{$prefijo}gform_footer{
-				width: 110px;
-				margin-left: 1rem;
+				width: 120px;
+				margin-left: 10/16*1rem;
 				flex-shrink: 0;
 			}
 		}
