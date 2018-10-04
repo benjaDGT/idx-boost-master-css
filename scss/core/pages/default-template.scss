@@ -223,21 +223,21 @@
           ##{$prefijo}all-filters{
             &:not(.#{$prefijo}individual){
               ##{$prefijo}mini-filters{
-                height: 530px;
+                height: 525px;
                 >li{
                   &.#{$prefijo}price{ order: 0 }
-                  &.#{$prefijo}baths{ order: 1 }
+                  &.#{$prefijo}baths{ order: 5 }
                   &.#{$prefijo}living{ order: 2 }
                   &.#{$prefijo}parking{ order: 3 }
                   &.#{$prefijo}year{ order: 4 }
-                  &.#{$prefijo}beds{ order: 5 }
+                  &.#{$prefijo}beds{ order: 1 }
                   &.#{$prefijo}land{ order: 6 }
                   &.#{$prefijo}waterfront{ order: 7 }
                   &.#{$prefijo}features{ order: 9 }
                   &.#{$prefijo}type{ 
                     order: 8;
                     .#{$prefijo}wrap-item{
-                      margin: 19px 0px;
+                      margin: 21.5px 0px;
                     }
                   }
                 }

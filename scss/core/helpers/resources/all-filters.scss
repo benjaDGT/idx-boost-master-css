@@ -48,6 +48,7 @@
 						.#{$prefijo}gwr{
 							position: relative;
 							width: 100% !important;
+							max-width: 100% !important;
 							>h4{
 								width: 100%;
 								padding: 10/16*1rem;
@@ -90,7 +91,7 @@
 									display: flex;
 									align-items: center;
 									justify-content: space-between;
-									margin-bottom: 1rem;
+									margin-bottom: 13/16*1rem;
 									input{
 										width: 40%;
 										font-size: 14/16*1rem;
@@ -536,7 +537,11 @@
 								display: block;
 							}
 							&.#{$prefijo}filter-box{
-								.#{$prefijo}list-type-sr{
+								.#{$prefijo}wrap-item{
+									margin: 15px 0;
+								}
+
+								.#{$prefijo}list-type-sold-rent{
 									display: flex;
 									justify-content: space-between;
 									width: 100%;

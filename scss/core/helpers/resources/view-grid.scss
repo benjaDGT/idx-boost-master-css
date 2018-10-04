@@ -182,7 +182,7 @@
 						overflow: hidden;
 						position: relative;
 						&:before{
-							background: linear-gradient(to bottom,rgba(68,68,68,0) 40%,#000);
+							background: linear-gradient(to bottom,rgba(68,68,68,0) 40%, rgba(0,0,0,.65));
 							bottom: 0;
 							display: block;
 							height: 100%;

@@ -120,6 +120,7 @@
 			li{
 				margin-right: -1px;
 				a{
+					cursor: pointer;
 					flex-shrink: 1;
 					border: 1px solid $gris-lineas;
 					display: flex;
@@ -166,6 +167,7 @@
 			##{$prefijo}prevn{
 				height: 40px;
 				width: 40px;
+				cursor: pointer;
 			}
 
 			##{$prefijo}lastp,

@@ -63,6 +63,9 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
+					border-radius: 100%;
+					background-color: $colorweb;
+					transition: all .3s;
 
 					a{
 						overflow: hidden;
@@ -84,80 +87,46 @@
 						&:before{ 
 							font-family: $web-icons;
 							display: inline-block;
-							font-size: 22/16*1rem;
+							font-size: 12/16*1rem;
 							transition: color .3s;
+							color: #FFF;
+							font-weight: 100;
 						}
 					}
 
 					&.clidxboost-icon-facebook{
 						&:before{
-							content: "\e92f";
-						}
-
-						&:hover{
-							&:before{
-								color: $color-facebook;
-							}
+							content: "\e927";
 						}
 					}
 
 					&.clidxboost-icon-twitter{
 						&:before{
-							content: "\e92d";
-						}
-
-						&:hover{
-							&:before{
-								color: $color-twittter;
-							}
+							content: "\e929";
 						}
 					}
 
 					&.clidxboost-icon-google-plus{
 						&:before{
-							content: "\e90b";
-						}
-
-						&:hover{
-							&:before{
-								color: $color-youtube;
-							}
+							content: "\e926";
 						}
 					}
 
 					&.clidxboost-icon-youtube{
 						&:before{
-							content: "\e92e";
-						}
-
-						&:hover{
-							&:before{
-								color: $color-youtube;
-							}
+							content: "\e93a";
 						}
 					}
 
 					&.clidxboost-icon-instagram{
 						&:before{
-							content: "\e930";
-						}
-
-						&:hover{
-							&:before{
-								color: $color-instagram;
-							}
+							content: "\e928";
 						}
 					}
 
 					&.clidxboost-icon-linkedin{
 						&:before{
-							content: "\e92c";
-						}
-
-						&:hover{
-							&:before{
-								color: $color-linkedin;
-							}
+							content: "\e92b";
 						}
 					}
 
@@ -165,11 +134,13 @@
 						&:before{
 							content: "\e908";
 						}
+					}
 
-						&:hover{
-							&:before{
-								color: $color-pinterest;
-							}
+					&:hover{
+						background-color: #FFF;
+						box-shadow: 1px 1px 4px rgba(0,0,0,0.33);
+						&:before{
+							color: $colorweb;
 						}
 					}
 				}
@@ -633,12 +604,12 @@
 
 							li{
 								a{
-									height: 37px;
+									min-height: 37px;
 									display: flex;
 									align-items: center;
-									line-height: 1.1;
+									line-height: 1.2;
 									color: #FFF;
-									padding: 0 1rem;
+									padding: 10px 1rem;
 									font-family: $opensans;
 									font-size: 12/16*1rem;
 									font-weight: 600;

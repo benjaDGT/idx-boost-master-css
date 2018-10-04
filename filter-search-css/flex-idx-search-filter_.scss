@@ -52,6 +52,7 @@ $colorp: #333333;
 	// HEADER
 		.ib-filter-container {
 			position: relative;
+			margin-top: -1px;
 
 			&.ib-filter-container-fixed {
 				position: fixed;
@@ -104,7 +105,7 @@ $colorp: #333333;
 					.ib-filter-container.ib-filter-container-inscroll {
 						position: fixed;
 						width: 100%;
-						top: 111px;
+						top: 101px;
 						left:0;
 						z-index: 31;
 						animation: toTop .5s linear;
@@ -123,7 +124,7 @@ $colorp: #333333;
 
 						to {
 							opacity: 1;
-							top: 111px;
+							top: 101px;
 						}
 					}
 				}
@@ -2072,7 +2073,8 @@ $colorp: #333333;
 					.lg-theme {
 						.ib-cpagination {
 							@media screen and (max-width: 767px) {
-								margin-bottom: 115px;
+								//margin-bottom: 115px;
+								padding-bottom: 115px;
 							}
 						}
 					}
@@ -3200,7 +3202,7 @@ $colorp: #333333;
 			.ib-piltxt {
 				text-transform: uppercase;
 				color: #a7a6ae;
-				font-size: 11px;
+				font-size: 12px;
 			}
 
 			.ib-pfavorite {
@@ -4501,4 +4503,29 @@ $colorp: #333333;
   &:hover {
   	 cursor:pointer;
   }
+}
+
+//Hack all filter
+.ib-fdesktop{
+	&.ib-hack-all-filters{
+		.ib-fforsr {
+			margin-bottom: 3px;
+		}
+		.ib-fdcol{
+			&:nth-child(3){
+				.ib-fitem{
+					&:nth-child(2){
+						.ib-ficontent{
+							padding: 13px 15px;
+						}
+					}
+					&:nth-child(3){
+						.ib-ficontent{
+							padding: 21px 15px;
+						}
+					}
+				}
+			}
+		}
+	}
 }

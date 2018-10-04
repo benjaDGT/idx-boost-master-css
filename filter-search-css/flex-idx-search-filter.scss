@@ -1900,7 +1900,7 @@ $colorp: #333333;
 							bottom: -1px;
 							width: 100%;
 							height: 38.4868%;
-							background: linear-gradient(to top, #000, rgba(#000, 0));
+							background: linear-gradient(to top, rgba(#000, .65), rgba(#000, 0));
 							display: block;
 							z-index: 1;
 						}
@@ -4503,4 +4503,29 @@ $colorp: #333333;
   &:hover {
   	 cursor:pointer;
   }
+}
+
+//Hack all filter
+.ib-fdesktop{
+	&.ib-hack-all-filters{
+		.ib-fforsr {
+			margin-bottom: 3px;
+		}
+		.ib-fdcol{
+			&:nth-child(3){
+				.ib-fitem{
+					&:nth-child(2){
+						.ib-ficontent{
+							padding: 13px 15px;
+						}
+					}
+					&:nth-child(3){
+						.ib-ficontent{
+							padding: 21px 15px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
