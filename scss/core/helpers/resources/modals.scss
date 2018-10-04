@@ -36,7 +36,7 @@
 	}
 
 	&.#{$prefijo}registration_forced{
-		background-color: rgba(0,0,0,0.925);
+		background-color: rgba(0,0,0,0.96);
 	}
 }
 
@@ -1458,6 +1458,12 @@ body.modal-property-active{
 		z-index: 999;
 		background-color: rgba(0, 0, 0, 0.6);
 		position: fixed;
+	}
+}
+
+@media screen and (min-width: 640px){
+	.ib-frm-active{
+		overflow: hidden;
 	}
 }
 

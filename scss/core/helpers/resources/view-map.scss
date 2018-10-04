@@ -357,16 +357,14 @@ body{
 									}
 
 									&.#{$prefijo}address{
-										width: 100%;
+										width: 90%;
 										font-size: 14/16*1rem;
 										order: 3;
 										margin-top: 10/16*1rem;
-										>span{
-											display: block;
-											text-overflow: ellipsis;
-											overflow: hidden;
-											white-space: nowrap;
-										}
+										display: block;
+										text-overflow: ellipsis;
+										overflow: hidden;
+										white-space: nowrap;
 									}
 
 									&.#{$prefijo}price{

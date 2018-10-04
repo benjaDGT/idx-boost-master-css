@@ -628,6 +628,7 @@ img{
 .mapview-container .mapviwe-body .mapviwe-item h2,
 .mapview-container .mapviwe-header h2{
 	font-family: $opensans !important;
+	z-index: 2;
 }
 
 #luxury-condo-page{
@@ -695,6 +696,27 @@ img{
   content: "";
   display: block;
   clear: both;
+}
+
+.gs-item-loading:after, 
+.gs-resize:after {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #555;
+}
+
+.autocomplete-item-type {
+  font-weight: 600;
+  color: #c1c1c1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 40px;
+  padding: 0 15px;
+  line-height: 40px;
+  text-transform: capitalize;
+  width: auto;
+  right: 0 !important;
+  left: auto !important;
 }
 
 /*----------------------------------------------------------------------------------*/

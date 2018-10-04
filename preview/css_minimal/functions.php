@@ -873,6 +873,22 @@ function idx_footer_customizaer()
 	color: '.$color_primary.';
 }
 
+.ib-pvsinumber, .ib-pvsititle,
+.ib-pvslider .gs-next-arrow, 
+.ib-pvslider .gs-prev-arrow{
+	background-color: '.$color_primary.'99 !important;
+}
+
+.ib-pvslider .gs-next-arrow:hover, 
+.ib-pvslider .gs-prev-arrow:hover{
+	background-color: '.$color_primary.' !important;
+}
+
+.gs-fs{
+	background-color: '.$color_primary.' !important;
+}
+
+
 /*----------------------------------------------------------------------------------*/
 /* FOOTER (NEWSLETTER)
 /*----------------------------------------------------------------------------------*/
@@ -939,6 +955,81 @@ function idx_footer_customizaer()
 	background-color: #FFF;
 	color: '.$color_primary.';
 }
+
+.modal_cm .form_content .gform_footer .gform_button {
+	background-color: '.$color_primary.';
+	border-color: '.$color_primary.';
+}
+
+.modal_cm .form_content .gform_footer .gform_button:hover,
+.ib-pscitem:hover .ib-psbtn .ib-pstxt {
+	color: '.$color_primary.' !important;
+}
+
+.clidxboost-sc-filters .content-filters #wrap-filters .gwr #filters li.save button{
+	background: '.$color_primary.' !important;
+}
+
+.ib-phbtn.ib-requestinfo, .ib-phbtn:hover {
+	background-color: '.$color_primary.' !important;
+	border-color: '.$color_primary.' !important;
+}
+
+.ib-pvitem{
+	background-color: '.$color_primary.' !important;
+}
+
+.ib-pscitem:hover .ib-psbtn:before,
+.ib-paititle:before{
+	background-color: #FFF !important;
+	color: '.$color_primary.' !important;
+}
+
+.ib-pvitem.ib-pvi-active{
+	background-color: #FFF !important;
+	color: '.$color_primary.' !important;
+}
+
+.ib-cfsubmit {
+	background-color: '.$color_primary.' !important;
+	border-color: '.$color_primary.' !important;
+}
+
+.ib-cfsubmit:hover {
+	background-color: #FFF !important;
+  color: '.$color_primary.' !important;
+}
+
+.ib-btnfs,
+.gs-wrapper-arrows.gs-style-arrow .gs-next-arrow, 
+.gs-wrapper-arrows.gs-style-arrow .gs-prev-arrow{
+	background-color: '.$color_primary.' !important;
+}
+
+.ib-mgsubmit{
+	background-color: '.$color_primary.' !important;
+	border-color: '.$color_primary.' !important;
+}
+
+.ib-mgsubmit:hover{
+	background-color: #FFF !important;
+	color: '.$color_primary.' !important;
+}
+
+.modal_cm .form_content .btn_form,
+.modal_cm #push-registration .pr-steps-container .pr-step .pr-next-step, 
+.modal_cm #push-registration .pr-steps-container .pr-step .pr-redbtn{
+	background-color: '.$color_primary.' !important;
+	border-color: '.$color_primary.' !important;
+}
+
+.modal_cm .form_content .btn_form:hover,
+.modal_cm #push-registration .pr-steps-container .pr-step .pr-next-step:hover, 
+.modal_cm #push-registration .pr-steps-container .pr-step .pr-redbtn:hover{
+	color: '.$color_primary.' !important;
+	background-color: #FFF !important;
+}
+
 
 /*----------------------------------------------------------------------------------*/
 /* GRILLA
@@ -1153,77 +1244,303 @@ body:not(.clidxboost-nmap) .wrap-result.view-map #wrap-map #map-actions button{
 }
 
 .ib-fimini:before{
-	border-bottom-color: '.$color_primary.';
+	border-bottom-color: '.$color_primary.' !important;
 }
 
 .ib-fimini{
-	border-top-color: '.$color_primary.';
+	border-top-color: '.$color_primary.' !important;
 }
 
 .ib-range .ui-slider-range{
-	background-color: '.$color_primary.';
+	background-color: '.$color_primary.' !important;
 }
 
 .ib-icheck:checked+label:before{
-	border-color: '.$color_primary.';	
+	border-color: '.$color_primary.' !important;	
 }
 
 .ib-fdesktop::-webkit-scrollbar-thumb,
 .ib-clabel:after,
 .ib-fdmatching{
-	background-color: '.$color_primary.';		
+	background-color: '.$color_primary.' !important;		
 }
 
 .ib-fifor.ib-fifor-active, 
 .ib-fifor:hover{
-	background-color: '.$color_primary.';
-	border-color: '.$color_primary.';
-}
-
-.ib-dbitem,
-.ib-dbitem:before{
-	color: '.$color_primary.'; 
+	background-color: '.$color_primary.' !important;
+	border-color: '.$color_primary.' !important;
 }
 
 .ib-dbitem:hover{
-	background-color: '.$color_primary.';
-	color: #FFF;
-}
-
-.ib-dbitem:hover:before{
+	background-color: '.$color_primary.' !important;
 	color: #FFF;
 }
 
 .ib-pstatus,
 .ib-pislider .gs-next-arrow, 
 .ib-pislider .gs-prev-arrow{
-	background-color: '.$color_primary.'99;	
+	background-color: '.$color_primary.'99 !important;	
 }
 
 .ib-pitem:hover{
-	border-color: '.$color_primary.';	 
+	border-color: '.$color_primary.' !important;	 
 }
 
 .ib-plitem.ib-plitem-active, .ib-plitem:hover,
 .ib-pagfirst:hover, .ib-paglast:hover,
 .ib-pagnext:hover, .ib-pagprev:hover {
+  background-color: '.$color_primary.' !important;	
+  border-top-color: '.$color_primary.' !important;	
+  border-bottom-color: '.$color_primary.' !important;	
+}
+
+.ib-fdesktop{
+	border-top-color: '.$color_primary.' !important;
+}
+
+.ib-oitem.ib-oadbanced .ib-oiwrapper:after{
+  border-bottom-color: '.$color_primary.' !important;	
+}
+
+.ib-wgrid::-webkit-scrollbar-thumb {
+  background-color: '.$color_primary.' !important;	
+}
+
+.gs-item-loading:after, 
+.gs-resize:after {
+  border-top-color: '.$color_primary.' !important;	
+}
+
+/*----------------------------------------------------------------------------------*/
+/* FILTROS REGULARES
+/*----------------------------------------------------------------------------------*/
+
+.content-filters #wrap-filters .gwr #all-filters #mini-filters>li.filter-box .list-type-sold-rent>li button.active,
+.content-filters #wrap-filters .gwr #all-filters #mini-filters>li.filter-box .list-type-sold-rent>li button:hover,
+.content-filters .wrap-filters .gwr #all-filters #mini-filters>li.filter-box .list-type-sold-rent>li button.active,
+.content-filters .wrap-filters .gwr #all-filters #mini-filters>li.filter-box .list-type-sold-rent>li button:hover {
+	background-color: '.$color_primary.';
+	border-color: '.$color_primary.';
+}
+
+.content-filters #wrap-filters .gwr #all-filters #mini-filters>li .gwr .wrap-item .wrap-range .range-slide .ui-slider-range,
+.content-filters .wrap-filters .gwr #all-filters #mini-filters>li .gwr .wrap-item .wrap-range .range-slide .ui-slider-range,
+.content-filters #wrap-filters .gwr #all-filters #mini-filters>li.action-filter #apply-filters-min, 
+.content-filters .wrap-filters .gwr #all-filters #mini-filters>li.action-filter #apply-filters-min{
+	background-color: '.$color_primary.';
+}
+
+.content-filters #wrap-filters .gwr #all-filters #mini-filters>li .gwr .wrap-item .wrap-checks>ul li input:checked+label:before,
+.content-filters .wrap-filters .gwr #all-filters #mini-filters>li .gwr .wrap-item .wrap-checks>ul li input:checked+label:before{
+	border-color: '.$color_primary.';
+}
+
+.content-filters #wrap-filters .gwr #all-filters #mini-filters>li .gwr .wrap-item .wrap-checks>ul li label:after,
+.content-filters .wrap-filters .gwr #all-filters #mini-filters>li .gwr .wrap-item .wrap-checks>ul li label:after{
+	background-color: '.$color_primary.';
+}
+
+.content-filters #wrap-filters .gwr #filters li.mini-search .clidxboost-icon-search{
+	background-color: '.$color_primary.';
+}
+
+.content-filters #wrap-filters .gwr #filters li.content_select:after, 
+.content-filters #wrap-filters .gwr .filters li.content_select:after, 
+.content-filters .wrap-filters .gwr #filters li.content_select:after, 
+.content-filters .wrap-filters .gwr .filters li.content_select:after{
+	color: '.$color_primary.';
+}
+
+/*----------------------------------------------------------------------------------*/
+/* DETALLE DE PROPIEDAD
+/*----------------------------------------------------------------------------------*/
+
+#full-main .moptions .slider-option .option-switch{
   background-color: '.$color_primary.';	
-  border-top-color: '.$color_primary.';	
-  border-bottom-color: '.$color_primary.';	
+}
+
+#full-main .moptions .full-screen{
+	background-color: '.$color_primary.'99 !important;
+}
+
+#full-main .moptions .full-screen:hover{
+	background-color: '.$color_primary.' !important;
+}
+
+#full-slider .clidxboost-full-slider .gs-next-arrow, 
+#full-slider .clidxboost-full-slider .gs-prev-arrow{
+	background-color: '.$color_primary.'99 !important;
+	transition: all .3s;
+}
+
+#full-slider .clidxboost-full-slider .gs-next-arrow:hover, 
+#full-slider .clidxboost-full-slider .gs-prev-arrow:hover{
+	background-color: '.$color_primary.' !important;
+}
+
+#full-main .form-content .gform_footer .gform_button {
+  background-color: '.$color_primary.';	
+  border-color: '.$color_primary.';	
+}
+
+#full-main .form-content .gform_footer .gform_button:hover{
+	color: '.$color_primary.';
+	background-color: #FFF;
+}
+
+.clidxboost-niche-tab-filters .clidxboost-niche-tab button span:before{
+  background-color: '.$color_primary.';	
+}
+
+#full-main .panel-options .options-list .action-list li a:hover{
+  color: '.$color_primary.';	
+}
+
+#full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .btn-request {
+  background-color: '.$color_primary.';	
+  border-color: '.$color_primary.';	
+}
+
+#full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .btn-request:hover{
+	color: '.$color_primary.';
 }
 
 
+#full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .link-back:hover, 
+#full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .link-search:hover,
+.fixed-active #full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .link-back:hover{
+	color: '.$color_primary.' !important;
+}
+
+.aside .property-information li.rent.active-fbc, 
+.aside .property-information li.sale.active-fbc, 
+.aside .property-information li.sold.active-fbc,
+.aside .property-information li.sale:hover,
+.aside .property-information li.rent:hover,
+.aside .property-information li.sold:hover{
+	background-color: '.$color_primary.';
+}
+
+.group-flex li.active a, 
+.group-flex li.active button,
+.group-flex li:hover a, 
+.group-flex li:hover button{
+	border-color: '.$color_primary.';
+  background-color: '.$color_primary.';	
+}
+
+#full-main .panel-options .options-list .shared-content:hover #show-shared{
+  color: '.$color_primary.';	
+}
 
 
+/*----------------------------------------------------------------------------------*/
+/* LUXURY CONDOS
+/*----------------------------------------------------------------------------------*/
 
+#luxury-condo-page .view-grid #result-search .propertie .features .name, 
+#luxury-condo-page .view-grid .result-search .propertie .features .name{
+  background-color: '.$color_primary.';
+}
 
+#luxury-condo-page .ib-group-btn .ib-btn-mp.ib-active, 
+#luxury-condo-page .ib-group-btn .ib-btn-mp:hover {
+  color: '.$color_primary.';
+}
 
-    ';
+#luxury-condo-page .content-filters #wrap-filters .gwr #filters li.all button, 
+#luxury-condo-page .content-filters #wrap-filters .gwr .filters li.all button, 
+#luxury-condo-page .content-filters .wrap-filters .gwr #filters li.all button, 
+#luxury-condo-page .content-filters .wrap-filters .gwr .filters li.all button {
+	border-color: '.$color_primary.';
+  background-color: '.$color_primary.';	
+}
 
-    if (strlen($idx_style_second_color) > 0) {
-        $idx_style_second_color_point = '
-        defs radialGradient:nth-child(1) stop{ stop-color: ' . $idx_style_second_color . ' !important; } .dgt-richmarker-group:after, .dgt-richmarker-single:after{ border-top: 5px solid ' . $idx_style_second_color . ' !important; } .mapview-container .mapviwe-header, .dgt-richmarker-group, .dgt-richmarker-single, .mapview-container .mapviwe-header .closeInfo, #wrap-result #nav-results #principal-nav li:hover,  #wrap-result #nav-results .ad:hover,.mapview-container .mapviwe-header .build, .mapview-container .mapviwe-body::-webkit-scrollbar-thumb, .mapview-container .mapviwe-body::-webkit-scrollbar, .dgt-richmarker-group:before, .cir-sta.sale {background-color: ' . $idx_style_second_color . ' !important; } #paginator-cnt #nav-results #firstp:hover, #paginator-cnt #nav-results #lastp:hover, #paginator-cnt #nav-results #nextn:hover, #paginator-cnt #nav-results #prevn:hover, #paginator-cnt #nav-results #principal-nav li a:hover, #paginator-cnt #nav-results #principal-nav li.active a , #full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .btn-request:hover, #header-filters .text-wrapper .allf-ss:hover, .modal_cm .form_content .btn_form:hover, #modal_login .modal_cm #push-registration .pr-steps-container .pr-step .pr-next-step:hover, #modal_login .modal_cm #push-registration .pr-steps-container .pr-step .pr-redbtn:hover, .page-deployed .clidxboost-btn-link:hover span {background-color: '.$idx_style_second_color.'; border-color: '.$idx_style_second_color.'}';
-    }
+#wrap-subfilters .gwr #sub-filters>li#filter-views.grid:before, 
+#wrap-subfilters .gwr #sub-filters>li#filter-views.list:before, 
+#wrap-subfilters .gwr #sub-filters>li#filter-views.map:before{
+	color: '.$color_primary.';
+}
+
+#luxury-condo-page .view-list #result-search .propertie .features .name, 
+#luxury-condo-page .view-list .result-search .propertie .features .name{
+  background-color: '.$color_primary.';	
+}
+
+.full-page-luxury.view-map #luxury-condo-page .mbt-active:before{
+	color: '.$color_primary.';
+}
+
+body:not(.clidxboost-nmap) #wrap-result.view-map #wrap-list-result::-webkit-scrollbar-thumb, 
+body:not(.clidxboost-nmap) .wrap-result.view-map #wrap-list-result::-webkit-scrollbar-thumb{
+  background-color: '.$color_primary.' !important;
+}
+
+.wrap-neighborhood-list .wrap-neighborhood-item .wrap-neighborhood-description:hover{
+	border-color: '.$color_primary.';
+}
+
+.wrap-neighborhood-list .wrap-neighborhood-item .wrap-neighborhood-image:before{
+	border-top-color: '.$color_primary.';	
+}
+
+.nav-aside .form-search:before{
+  background-color: '.$color_primary.';
+}
+
+.basic-theme .clidxboost-btn-link span, 
+.basic-theme .clidxboost-btn span{
+	border-color: '.$color_primary.';
+  background-color: '.$color_primary.';
+}
+
+.basic-theme .clidxboost-btn-link:hover span, 
+.basic-theme .clidxboost-btn:hover span{
+	color: '.$color_primary.';
+  background-color: #FFF;
+}
+
+';
+
+if (strlen($idx_style_second_color) > 0) {
+$idx_style_second_color_point = '
+defs radialGradient:nth-child(1) stop{ 
+	stop-color: ' . $idx_style_second_color . ' !important; 
+} 
+
+.dgt-richmarker-group:after, 
+.dgt-richmarker-single:after{ 
+	border-top: 5px solid ' . $idx_style_second_color . ' !important; 
+} 
+
+.ib-ibcount,
+.mapview-container .mapviwe-header, 
+.dgt-richmarker-group, 
+.dgt-richmarker-single, 
+.mapview-container .mapviwe-header .closeInfo, 
+#wrap-result #nav-results #principal-nav li:hover,  
+#wrap-result #nav-results .ad:hover,
+.mapview-container .mapviwe-header .build, 
+.mapview-container .mapviwe-body::-webkit-scrollbar-thumb, 
+.mapview-container .mapviwe-body::-webkit-scrollbar, 
+.dgt-richmarker-group:before, .cir-sta.sale, .ib-ibwtitle{
+	background-color: ' . $idx_style_second_color . ' !important; 
+}';
+/*
+#paginator-cnt #nav-results #firstp:hover, 
+#paginator-cnt #nav-results #lastp:hover, 
+#paginator-cnt #nav-results #nextn:hover, 
+#paginator-cnt #nav-results #prevn:hover, 
+#paginator-cnt #nav-results #principal-nav li a:hover, 
+#paginator-cnt #nav-results #principal-nav li.active a , 
+#full-main .title-conteiner .content-fixed .content-fixed-title .breadcrumb-options .btn-request:hover, 
+#header-filters .text-wrapper .allf-ss:hover, .modal_cm .form_content .btn_form:hover, 
+#modal_login .modal_cm #push-registration .pr-steps-container .pr-step .pr-next-step:hover, 
+#modal_login .modal_cm #push-registration .pr-steps-container .pr-step .pr-redbtn:hover, 
+.page-deployed .clidxboost-btn-link:hover span {
+	background-color: '.$idx_style_second_color.'; border-color: '.$idx_style_second_color.'}';*/
+
+}
 
     if (strlen(($idx_style_boton_point)) > 0) {
         $style_boton_point = '
