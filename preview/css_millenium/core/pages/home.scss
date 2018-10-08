@@ -64,11 +64,28 @@ main{
 			}
 		}
 
+		.flex-bubble-header{
+			.flex-bubble-sub-title{
+				font-style: normal;
+			}
+		}
+
 		.#{$prefijo}idx_text_search_bar{
 			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+			letter-spacing: 1px;
+			font-size: 27/16*1rem;
+
+			@media screen and (min-width: 640px){
+				font-size: 54/16*1rem;
+			}
 
 			@media screen and (min-width: 768px){
-				font-size: 2rem;
+				font-size: 68/16*1rem;
+				margin-bottom: 20px;
+			}
+
+			@media screen and (min-width: 1024px){
+				font-size: 80/16*1rem;
 			}
 		}
 	}
@@ -109,16 +126,16 @@ main{
 		}
 
 		.#{$prefijo}title-block{
-	    font-weight: 700;
+	    font-weight: 300;
 	    font-family: $opensans;
 	    text-align: center;
 	    margin-bottom: 1rem;
-	    font-size: 22/16*1rem;
+	    font-size: 30/16*1rem;
 	    flex-grow: 1;
 	    text-transform: uppercase;
-
+	    letter-spacing: 1px;
 	    @media screen and (min-width: 768px){
-	      font-size: 2rem;
+	      font-size: 40/16*1rem;
 	      margin-bottom: 20/16*1rem;
 	    }
 
@@ -192,16 +209,17 @@ main{
 			}
 
 			h2{
-				font-weight: 700;
+				font-weight: 300;
 				line-height: 1.2;
+				letter-spacing: 1px;
 				text-transform: uppercase;
-				font-size: 24/16*1rem;
+				font-size: 30/16*1rem;
 				margin-bottom: 1rem;
 				text-align: center;
 				width: 100%;
 
 				@media screen and (min-width: 768px){
-					font-size: 30/16*1rem;
+					font-size: 40/16*1rem;
 					margin-bottom: 30/16*1rem;
 					text-align: left;
 				}
@@ -365,12 +383,40 @@ main{
 	}
 }
 
-@media (max-width: 640px){
-	#flex-home-theme{
+#flex-home-theme{
+	@media (max-width: 640px){
 		.active-search-modal{
 			#flex-bubble-search{
 				.flex-link {
 					text-shadow: none;
+				}
+			}
+		}
+	}
+	#flex-bubble-search{
+		max-width: 900px;
+		.content-flex-bubble-search{
+			max-width: 630px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
+
+#blog-collection{
+	#articles-blog{
+		li{
+			.content-article{
+				>h3{
+					font-size: 24px;
+					text-overflow: unset;
+					overflow: -webkit-paged-y;
+					white-space: unset;
+					line-height: 1.1;
+					font-weight: 300; 
+					@media screen and (min-width: 768px){
+						font-size: 30px;
+					}
 				}
 			}
 		}

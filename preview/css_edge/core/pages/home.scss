@@ -105,7 +105,7 @@ main{
 			background-color: $colorweb;
 
 			@media screen and (min-width: 680px){
-				padding: 1rem;
+				padding: 1rem 30px;
 				text-align: left;
 				display: flex;
 				align-items: center;
@@ -147,6 +147,10 @@ main{
 				height: 64px;
 			}
 
+			@media screen and (min-width: 768px){
+				height: 79px;
+			}
+
 			@media screen and (min-width: 1200px){
 				top: auto;
 				bottom: 0;
@@ -160,6 +164,19 @@ main{
 
 		/** Slider (Nav) **/
 		.clidxboost-properties-slider{
+
+			@media screen and (min-width: 640px){
+				.gs-wrapper-items{
+					border-top: 1px solid #FFF;
+					border-bottom: 1px solid #FFF;
+					.gs-item-slider{
+						border-right: 1px solid #FFF;
+						&:last-child{
+							border-right: 0;
+						}
+					}
+				}
+			}
 
 			.gs-container-navs{
 				@media screen and (min-width: 1200px){

@@ -2493,16 +2493,10 @@ $colorp: #333333;
 		}
 
 		.ib-pvsititle {
-			//top: 10px;
+			top: 10px;
 		  left: 10px;
 		  font-size: 14px;
-		  //height: 30px;
-			top: 14px;
-			left: 10px;
-			font-size: 14px;
-			height: auto;
-			padding: 7px 12px;
-			max-width: 80%;
+		  height: 30px;
 		}
 
 		.ib-pvsinumber {
@@ -3021,9 +3015,9 @@ $colorp: #333333;
 						top: 15px;
 						right: 15px;
 
-						/*@media screen and (max-width: 1023px) {
+						@media screen and (max-width: 1023px) {
 							display: none;
-						}*/
+						}
 
 						&.gs-infs {
 							&:before, &:after {
@@ -3208,10 +3202,7 @@ $colorp: #333333;
 			.ib-piltxt {
 				text-transform: uppercase;
 				color: #a7a6ae;
-				font-size: 10px;
-				@media screen and (min-width: 640px) {
-					font-size: 12px;
-				}
+				font-size: 12px;
 			}
 
 			.ib-pfavorite {
@@ -3480,7 +3471,7 @@ $colorp: #333333;
 					.ib-plsocials {
 						max-height: 200px;
 						opacity: 1;
-						z-index: 4;
+						z-index: 3;
 					}
 				}
 
@@ -4543,13 +4534,5 @@ $colorp: #333333;
 	flex-wrap: wrap;
 	.ib-fmsearch{
 		height: 100%;
-	}
-}
-
-#flex-filters-theme{
-	#ib-autocomplete-add{
-		.ui-autocomplete {
-    	max-height: 200px;
-    }
 	}
 }
