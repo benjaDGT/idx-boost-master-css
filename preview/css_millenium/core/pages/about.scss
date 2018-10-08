@@ -83,7 +83,7 @@
 			##{$prefijo}testimonials{
 				order: 3;
 				width: 100%;
-				background-color: #333;
+				background-color: #f4f4f4;
 				padding: 1.625rem 0;
 				
 				>h2{
@@ -109,7 +109,15 @@
 							width: 90%;
 							margin: 0 auto;
 							position: relative;
-							color: #FFF;
+							color: #333;
+						}
+					}
+				}
+
+				.clidxboost-gs-wrapper-bullets{
+					.gs-bullet{
+						&:before{
+    					background-color: #c6c6c6;
 						}
 					}
 				}
