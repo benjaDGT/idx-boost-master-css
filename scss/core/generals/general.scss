@@ -719,6 +719,33 @@ img{
   left: auto !important;
 }
 
+#header{
+	.wrap-options{
+		.gwr{
+			#user-options{
+				.menu_login_active{
+					opacity: 1 !important;
+					display: none;
+					>ul{
+						li{
+							a{
+								min-height: 30px !important;
+								height: auto !important;
+								padding: 5 10px !important;
+							}
+						}
+					}
+
+					&.active_login{
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+
 /*----------------------------------------------------------------------------------*/
 /* Estructuras generales
 /*----------------------------------------------------------------------------------*/

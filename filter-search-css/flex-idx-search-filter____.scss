@@ -960,11 +960,11 @@ $colorp: #333333;
 				font-size: .85em;
 				height: 45px;
 				width: 100%;
-				
+				/*
 				position: absolute;
 				bottom:0;
-				right:0;
-				
+				left:0;
+				*/
 			}
 
 			.ib-fcities {
@@ -1181,7 +1181,7 @@ $colorp: #333333;
 				background-color: #AADAFF;
 
 				@media screen and (max-width: 989px) {
-					height: calc(100vh - 180px) !important;
+					height: calc(100vh - 192px) !important;
 				}
 
 				@media screen and (min-width: 1024px) {
@@ -1581,8 +1581,7 @@ $colorp: #333333;
 							width: 100%;
 							height: 100%;
 							background-color: transparent;
-							//font-size: .75em;
-							font-size: 13px;
+							font-size: .75em;
 
 							@media screen and (min-width: 768px) {
 								padding-right: 15px;
@@ -1624,11 +1623,10 @@ $colorp: #333333;
 							padding-right: 10px;
 							width: 100%;
 							height: 100%;
+							font-size: .75em;
 							z-index: 4;
 							position: relative;
 							background-color: transparent;
-							//font-size: .75em;
-							font-size: 13px;
 
 							option:checked {
 								display: none;
@@ -2072,22 +2070,14 @@ $colorp: #333333;
 				}
 
 				// para tema LG
-					//.lg-theme {
-					.ib-cpagination {
-						@media screen and (max-width: 767px) {
-							//margin-bottom: 115px;
-							padding-bottom: 60px;
-						}
-					}
-
 					.lg-theme {
 						.ib-cpagination {
 							@media screen and (max-width: 767px) {
-								padding-bottom: 100px;
+								//margin-bottom: 115px;
+								padding-bottom: 115px;
 							}
 						}
 					}
-					//}
 				//
 
 				.ib-wpagination {
@@ -4262,13 +4252,13 @@ $colorp: #333333;
 // BOTONERA PARA EL SEARCH (estilos de benja)
 	.content-rsp-btn{
 	  position: fixed;
-	  bottom: 15px;
+	  bottom: 5px;
 	  top: auto;
 	  display: flex;
 	  justify-content: center;
 	  width: 100%;
 	  left: 0;
-	  z-index: 5;
+	  z-index: 10;
 	  &:after{
 	    content: "";
 	    display: block;
@@ -4543,12 +4533,6 @@ $colorp: #333333;
 							padding: 21px 15px;
 						}
 					}
-				}
-			}
-
-			.ib-fitem{
-				&:last-child{
-					padding-bottom: 30px;
 				}
 			}
 		}

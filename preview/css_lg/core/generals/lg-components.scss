@@ -25,7 +25,7 @@
 			
 			.lg-btncta-text{
 				top: -41px;
-				right: 0;
+				left: 0;
 				
 				@media screen and (min-width: 640px){
 					top: 0;
@@ -105,7 +105,7 @@
 	justify-content: center;
 	position: absolute;
 	top: 5px;
-	right: 14px;
+	left: 0;
 	height: 30px;
 	flex-shrink: 0;
 	/*@media screen and (min-width: 640px){
@@ -121,9 +121,9 @@
 	}
 
 	.lg-btn-cta{
-		margin-left: 1rem;
+		//margin-left: 1rem;
 		@media screen and (min-width: 640px){
-			margin-left: 0;
+			//margin-left: 0;
 			font-size: 13/16*1rem;
 			span{
 				padding: 0 30/16*1rem;
@@ -153,7 +153,7 @@
 				height: 100%;
 			}
 
-			.wrap-options{
+			/*.wrap-options{
 				.gwr{
 					#user-options{
 						@media (max-width: 639px){
@@ -166,15 +166,15 @@
 						}
 					}
 				}
-			}
+			}*/
 
 			.wrap-options{
 				.gwr{
 					#user-options {
-						margin-right: 48px;
-						@media screen and (min-width: 640px){
-							margin-right: 0;
-						}
+						//margin-right: 48px;
+						//@media screen and (min-width: 640px){
+						margin-right: 0;
+						//}
 					}
 				}
 			}
@@ -192,7 +192,6 @@
 
 			@media screen and (min-width: 991px){
 				//padding: 0 15px;
-
 				.wrap-menu{
 					.gwr{
 						.logo-content {
@@ -565,6 +564,9 @@
 					.gwr{
 						.hamburger-content {
 							height: 35px !important;
+							position: absolute;
+							top: 0;
+							right: 0;
 						}
 					}
 				}

@@ -213,6 +213,7 @@
 /*----------------------------------------------------------------------------------*/
 /* ALL FILTERS EN GENERAL (PARA FILTROS Y PAGINAS POR DEFAULT)
 /*----------------------------------------------------------------------------------*/
+##{$prefijo}wp-neighborhoods,
 ##{$prefijo}flex-default-theme,
 ##{$prefijo}flex-filters-theme{
   @media screen and (min-width: 991px){
