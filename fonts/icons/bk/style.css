@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'idx-icons';
-  src:  url('fonts/idx-icons.eot?rsythf');
-  src:  url('fonts/idx-icons.eot?rsythf#iefix') format('embedded-opentype'),
-    url('fonts/idx-icons.ttf?rsythf') format('truetype'),
-    url('fonts/idx-icons.woff?rsythf') format('woff'),
-    url('fonts/idx-icons.svg?rsythf#idx-icons') format('svg');
+  src:  url('fonts/idx-icons.eot?8658y7');
+  src:  url('fonts/idx-icons.eot?8658y7#iefix') format('embedded-opentype'),
+    url('fonts/idx-icons.ttf?8658y7') format('truetype'),
+    url('fonts/idx-icons.woff?8658y7') format('woff'),
+    url('fonts/idx-icons.svg?8658y7#idx-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,12 +26,6 @@
 
 .idx-icon-download:before {
   content: "\e93e";
-}
-.idx-icon-pinterest-p:before {
-  content: "\e93f";
-}
-.idx-icon-comment-o:before {
-  content: "\e93d";
 }
 .idx-icon-equalizer:before {
   content: "\e93b";
@@ -237,7 +231,9 @@
 .idx-icon-whatsapp:before {
   content: "\ea93";
 }
-
+.idx-icon-comment-o:before {
+  content: "\e93d";
+}
 
 @font-face {
   font-family: "idx-boost-icons";
