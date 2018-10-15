@@ -747,8 +747,12 @@ img{
 
 .clidxboost-icon-pinterest{
 	a:before{
-		content: "\e908";
+		content: "\e93f";
 	}
+}
+
+.skiptranslate {
+  display: none;
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -785,3 +789,4 @@ img{
 /*----------------------------------------------------------------------------------*/
 @import '../helpers/resources/shortcode-inventory-counter.scss';
 @import '../helpers/resources/shortcode-tab-slider.scss';
+@import '../helpers/resources/shortcode-box-search.scss';

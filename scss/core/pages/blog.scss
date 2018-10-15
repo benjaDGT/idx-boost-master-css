@@ -239,3 +239,24 @@
     }
   }
 }
+
+.widget{
+  &.search{
+    .searchArea-container{
+      #list-news-cates {
+        max-height: 320px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: $colorweb;
+        }
+        &::-webkit-scrollbar-track {
+          border: 0px solid black;
+          background-color: rgba(255, 255, 255, 0.35);
+        }
+      }
+    }
+  }
+}
