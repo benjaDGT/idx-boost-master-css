@@ -346,3 +346,9 @@
 .ib-icon-checkb:before {
   content: "\77";
 }
+.ib-icon-emailup:before {
+  content: "\78";
+}
+.ib-icon-filters:before {
+  content: "\79";
+}

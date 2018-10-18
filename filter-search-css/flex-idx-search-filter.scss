@@ -164,7 +164,7 @@ $colorp: #333333;
 				//border-left: none;
 				border-right: none;
 				display: flex;
-				height: 40px;
+				height: 42px;
 				display: flex;
 				justify-content: center;
 				flex-wrap: nowrap;
@@ -291,7 +291,7 @@ $colorp: #333333;
 
 				&:before {
 					color: $colorp;
-					font-size: .8em;
+					font-size: 1.75em;
 					transition: all .3s linear;
 					margin-left: 5px;
 					order: 1;
@@ -1448,34 +1448,13 @@ $colorp: #333333;
 						@media screen and (min-width: 640px) {
 							font-size: 1.1em;
 						}
-
-						@media screen and (min-width: 1024px) {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							flex-direction: row-reverse;
-							height: 50px;
-						}
 					}
 
 					.ib-ghtypes {
-						font-size: .72em;
-						padding-right: 10px;
+						font-size: .68em;
 						text-align: left;
 						max-width: 335px;
-					}
-				//
-
-				// VIEWS CHANGE BUTTONS
-					@media screen and (max-width: 767px) {
-						.ib-ghtypes, .ib-gwvbtns {
-							display: none;
-						}
-					}
-					@media screen and (min-width: 1024px) {
-						.ib-ghtypes, .ib-gwvbtns {
-							display: none;
-						}
+						color: #A9A9A9;
 					}
 				//
 			//
@@ -1483,16 +1462,18 @@ $colorp: #333333;
 			// HEADER 
 				// Part A
 					.ib-ghpa {
-						@media screen and (min-width: 768px) {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							height: 58px;
-							padding: 0 10px;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						height: 31px;
+						padding: 0 10px;
+
+						@media screen and (max-width: 1023px) {
+							border-bottom: 1px solid #E5E5E5;
+							box-shadow: 1px 3px 1px #F8F8F8;
 						}
 
 						@media screen and (min-width: 1024px) {
-							height: auto;
 							padding:0;
 						}
 					}
@@ -1502,13 +1483,6 @@ $colorp: #333333;
 					.ib-gmfilters {
 						@include flexpa();
 						height: 36px;
-
-						@media screen and (max-width: 767px) {
-							border: 1px solid #E5E5E5;
-							border-left: 0;
-							border-right: 0;
-							box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.16);
-						}
 
 						@media screen and (min-width: 640px) {
 							height: 44px;
@@ -1525,13 +1499,6 @@ $colorp: #333333;
 						}
 					}
 
-					@media screen and (max-width: 767px) {
-						.ib-gwviews, .ib-gwsort {
-							width: 50%;
-							height: 100%;
-						}
-					}
-
 					@media screen and (min-width: 1024px) {
 						.ib-gwviews {
 							display: none;
@@ -1539,14 +1506,9 @@ $colorp: #333333;
 					}
 
 
-
 					// SORT
 						.ib-gwsort {
 							position: relative;
-
-							@media screen and (max-width: 767px) {
-								border-right: 1px solid #E5E5E5;
-							}
 
 							&:after {
 								content: "\61";
@@ -1554,7 +1516,7 @@ $colorp: #333333;
 								position: absolute;
 								top: 50%;
 								transform: translateY(-50%);
-								right: 15px;
+								right: 0;
 								z-index: 3;
 								font-size: .7em;
 
@@ -1574,14 +1536,12 @@ $colorp: #333333;
 
 						}
 						.ib-gsort {
-							padding-left: 10px;
-							padding-right: 10px;
+							padding-right: 18px;
 							position: relative;
 							z-index: 4;
 							width: 100%;
 							height: 100%;
 							background-color: transparent;
-							//font-size: .75em;
 							font-size: 13px;
 
 							@media screen and (min-width: 768px) {
@@ -2825,13 +2785,7 @@ $colorp: #333333;
 				order: -1;
 
 				&:before {
-					content: "\70";
-				}
-
-				@media screen and (min-width: 1024px) {
-					br {
-						display: none;
-					}
+					content: "\78";
 				}
 			}
 		//
@@ -3324,7 +3278,7 @@ $colorp: #333333;
 
 				@media screen and (max-width: 1023px) {
 					border-right: 1px solid #E5E5E5;
-					width: 25%;
+					width: 33.33%;
 				}
 
 				&:last-child {
@@ -3352,6 +3306,12 @@ $colorp: #333333;
 						margin-right: 0;
 					}
 				}
+
+				&.ib-psprint {
+					@media screen and (max-width: 1023px) {
+						display: none;
+					}
+				}
 			}
 
 			.ib-psbtn {
@@ -3371,18 +3331,11 @@ $colorp: #333333;
 			}
 
 			.ib-pstxt {
-				@media screen and (max-width: 767px) {
-					position: absolute;
-				}
-
-				top: -200px;
-				left: 0;
 				margin-left: 5px;
-				text-transform: uppercase;
+				text-transform: capitalize;
 				color: #BBBAC0;
 				font-size: 11px;
 				font-weight: 600;
-
 			}
 
 			.ib-plsocials {
