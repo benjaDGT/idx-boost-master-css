@@ -152,14 +152,14 @@
 
   .#{$prefijo}title-conteiner{
     //padding: 1rem 10/16*1rem 0 10/16*1rem;
-    padding: 1rem 0;
+    padding: 1rem 0 0;
     border-bottom: 1px solid $gris-lineas;
     box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.16);
     font-family: $opensans;
     width: 100% !important;
     max-width: 100% !important;
     .#{$prefijo}content-fixed{
-      width: 94%;
+      width: 96%;
       max-width: 1430px;
       //max-width: 1200px;
       margin: 0 auto;
@@ -253,6 +253,19 @@
         }
       }
     } 
+
+    .content-fixed-btn{
+      .btn-request{
+        background-color: $colorweb !important;
+        color: #FFF;
+        border: 1px solid $colorweb;
+        transition: all .3s;
+        /*&:hover{
+          background-color: #FFF;
+          color: #333;
+        }*/
+      }
+    }
   }
 
   .#{$prefijo}temporal-content{
@@ -435,13 +448,18 @@
       display: flex;
 
       .#{$prefijo}shared-content{
-        width: 25%;
+        //width: 25%;
         position: relative;
+        width: 33.33%;
+
+        @media (max-width: 991px){
+          width: 25%;
+        }
 
         ##{$prefijo}show-shared{
           display: block;
           height: 40px;
-          text-indent: -999999px;
+          //text-indent: -999999px;
           width: 100%;
           position: relative;
           background-color: transparent;
@@ -449,26 +467,32 @@
           border-right: 1px solid $gris-lineas;
           transition: all .3s;
           font-family: $opensans;
-          font-size: 12px;
-          text-transform: uppercase;
+          font-size: 11px;
+          //text-transform: uppercase;
           font-weight: 600;
           cursor: default;
+          text-transform: capitalize;
+          text-align: center;
           &:before{
             content: "\e90f";
             font-family: $web-icons;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-weight: 100;
             width: 18px;
             height: 18px;
             font-size: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            margin-top: -3px;
+            /*display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 0 auto;
             position: absolute;
             text-indent: 0;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-weight: 100;
+            transform: translate(-50%, -50%);*/
           }
           &:hover{
             color: #333;
@@ -558,21 +582,27 @@
         li{
           width: 33.33%;
           border-right: 1px solid $gris-lineas;
+          flex-grow: 1;
           &:last-child{
             border-right: 0;
           }
+
           a{
-            display: block;
             height: 100%;
-            text-indent: -999999px;
+            //text-indent: -999999px;
             height: 40px;
             position: relative;
             color: $gris-intermedio;
             transition: all .3s;
 						font-family: $opensans;
 						font-size: 11px;
-						text-transform: uppercase;
+						//text-transform: uppercase;
+            text-transform: capitalize;
 						font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             &:before{
               font-family: $web-icons;
               display: flex;
@@ -580,15 +610,21 @@
               justify-content: center;
               width: 18px;
               height: 18px;
-              font-size: 18px;
-              margin: 0 auto;
-              position: absolute;
+              font-size: 16px;
+              font-weight: 100;
+              margin-right: 5px;
               text-indent: 0;
+              /*position: absolute;
+              margin: 0 auto;
               top: 50%;
               left: 50%;
-              transform: translate(-50%, -50%);
-              font-weight: 100;
+              transform: translate(-50%, -50%);*/
+            
+              display: inline-block;
+              vertical-align: middle;
+              margin-right: 5px;
             }
+
             &:hover{
               color: #333;
             }
@@ -615,6 +651,16 @@
               &:before{
                 content: "\e93e";
               }
+            }
+          }
+
+          &:nth-child(3){
+            display: none;
+          }
+
+          @media (max-width: 991px){
+            &:nth-child(3){
+              display: block;
             }
           }
         }
@@ -1363,7 +1409,6 @@
 		}
 	}
 }
-
 
 // Título y numeración en FS
 

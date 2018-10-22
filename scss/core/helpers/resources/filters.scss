@@ -121,14 +121,12 @@
 						overflow: visible;
 
 						button{
-
 							padding: 0 0.625rem;
 							font-size: 0.875rem;
 							font-family: $opensans;
 							font-weight: 600;
 							width: 100%;
 							height: 100%;
-
 							background-color: transparent;
 							>span{
 								position: relative;
@@ -150,7 +148,6 @@
 									align-items: center;
 									font-weight: 600;
 									transition: all .6s;
-
 									width: 12px;
 									left: auto;
 									right: 0;
@@ -161,7 +158,7 @@
 							}
 						}
 					}
-					
+				
 					&.#{$prefijo}all{
 						.idx-text-pc{
 							display: none;

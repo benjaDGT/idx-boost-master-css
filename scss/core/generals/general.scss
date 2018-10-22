@@ -39,20 +39,51 @@ body {
 	}
 
 	&.ib-wrap-full-width{
-		.gwr {
+		/*.gwr {
 	    max-width: 96%;
-	  }
+	  }*/
+
 	  #header{
-	  	.lg-ct-header{
- 				max-width: 100%;
-	  	}
+			.lg-ct-header{
+				max-width: 100%;
+			}
+
+			.gwr{
+				max-width: 96%;
+			}
 	  }
+
+	  #footer{
+			.gwr{
+				max-width: 96%;
+			}
+	  }
+
+	  #flex-home-theme{
+			.gwr{
+				max-width: 96%;
+			}
+	  }
+
+		#flex-blog-theme{
+			.gwr{
+				max-width: 96%;
+			}
+		}
+		
+		#flex-filters-theme,
+		#flex-default-theme{
+			.gwr.c-flex{
+				max-width: 96%;
+			}
+		}
+
 	  .gwr{
-	  	&.gwr-breadcrumb{
-	  		.flex-breadcrumb{
+			&.gwr-breadcrumb{
+				.flex-breadcrumb{
 					max-width: 96%;
-	  		}
-	  	}
+				}
+			}
 	  }
 
 	  #flex-filters-theme{
@@ -63,6 +94,20 @@ body {
 	  			}
 	  		}
 	  	}
+	  }
+
+	  #wrap-subfilters,
+	  .wrap-subfilters{
+			.gwr{
+				max-width: 96%;
+			}
+	  }
+
+	  #wrap-result,
+	  .wrap-result{
+			.gwr{
+				max-width: 96%;
+			}
 	  }
 	}
 }

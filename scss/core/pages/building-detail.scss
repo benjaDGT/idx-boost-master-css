@@ -29,6 +29,9 @@
 
 	##{$prefijo}wrap-subfilters{
 		border-top: 1px solid $gris-lineas;
+		.gwr{
+			max-width: 100% !important;
+		}
 	}
 
 	##{$prefijo}full-main{
@@ -57,14 +60,32 @@
 				}
 				.#{$prefijo}options-list{
 					.#{$prefijo}action-list {
-						width: 66.67%;
+						//width: 66.67%;
+						width: 50%;
 						li{
-							width: 50%;
+							width: 100%;
+							&:nth-child(2){
+								display: none;
+							}
+						}
+
+						@media screen and (min-width: 768px){
+							width: 66.67%;
+							li{
+								width: 50%;
+								&:nth-child(2){
+									display: block;
+								}
+							}
 						}
 					}
 
 					.#{$prefijo}shared-content{
-						width: 33.33%;
+						//width: 33.33%;
+						width: 50%;
+						@media screen and (min-width: 768px){
+							width: 33.33%;
+						}
 					}
 				}
 			}
@@ -417,3 +438,36 @@
 		}
 	}
 }
+
+.buildingPage{
+	#full-main{
+		.title-conteiner{
+			.content-fixed{
+				.content-fixed-btn{
+					li{
+						text-align: right;
+						button{
+							padding: 0 20px;
+							width: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.fixed-active{
+		#full-main{
+			.title-conteiner{
+				.content-fixed{
+					.content-fixed-title{
+						.title-page{
+							padding-left: 0 !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
