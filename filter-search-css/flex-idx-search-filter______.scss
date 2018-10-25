@@ -1779,7 +1779,7 @@ $colorp: #333333;
 									@include flexpa();
 									height: 28px;
 									width: 35px;
-									background-image: url('../images/favorite.png');
+									background-image: url('../img/favorite.png');
 								}
 
 								&.ib-pfheart {
@@ -3189,7 +3189,7 @@ $colorp: #333333;
 					@include flexpa();
 					height: 28px;
 					width: 35px;
-					background-image: url('../images/favorite.png');
+					background-image: url('../img/favorite.png');
 				}
 
 				&.ib-pfheart {
@@ -4014,7 +4014,7 @@ $colorp: #333333;
 			border-radius: 4px;
 			-webkit-box-shadow: #888 0px 0px 10px;
 			box-shadow: #888 0px 0px 10px;
-			background: url("../images/printer.gif") center 60px no-repeat #fff;
+			background: url("../img/printer.gif") center 60px no-repeat #fff;
 			padding-bottom: 30px;
 		}
 	//
