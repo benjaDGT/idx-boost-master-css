@@ -271,3 +271,20 @@ body{
     position: relative;
   }
 }
+
+
+#wrap-neighborhood{
+  #neighborhood{
+    .block-description{
+      .gwr{
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    .gwr{
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
