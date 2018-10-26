@@ -2228,9 +2228,43 @@ $colorp: #333333;
 
 			.ib-pcontent {
 				padding-top: 101px;
+				padding-bottom: 60px;
+				
+				.ib-btn-request{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: 0 5px;
+					height: 50px;
+					color: #FFF;
+					font-size: 14px;
+					font-weight: 600;
+					position: fixed;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					background-color: #333;
+					transition: all .3s;
+					text-transform: uppercase;
+					border: 1px solid #333;
+					z-index: 2;
+					&:hover{
+						color: #333;
+						background-color: #FFF;
+					}
+
+					&:before{
+						display: none;
+					}
+
+					@media screen and (min-width: 640px) {
+						display: none;
+					}
+				}
 
 				@media screen and (min-width: 768px) {
 					padding-top: 57px;
+					padding-bottom: 0;
 				}
 			}
 
@@ -3646,6 +3680,19 @@ $colorp: #333333;
 					color: #3dc5ec;
 					font-style: italic;
 					text-decoration: underline;
+				}
+
+				&.ib-bdisclaimer-desktop{
+					display: none;
+					@media screen and (min-width: 1024px) {
+						display: block;
+					}
+				}
+				&.ib-bdisclaimer-mobile{
+					display: block;
+					@media screen and (min-width: 1024px) {
+						display: none;
+					}
 				}
 			}
 		//
