@@ -5,15 +5,36 @@
 	max-width: 1431px;
 	position: relative;
 	margin: 0 auto;
-	width: 94%;
+	//width: 94%;
+  width: 100% !important;
+
+  .btnb-blue{
+    display: none;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    height: 45px;
+    text-transform: uppercase;
+    border: 1px solid $colorweb;
+    background-color: $colorweb;
+    color: #FFF;
+    padding: 0 30px;
+    @media screen and (min-width: 991px){
+      display: flex;
+    }
+  }
+
+  
   .gwr{
     width: 100% !important;
   }
   
   #header-title{
-    width: 100%;
+    width: 94%;
 		padding-bottom: 1rem;
-		margin: 1rem 0;
+		margin: 1rem auto;
 		border-bottom: 3px solid #333;
 
     .title-header{
@@ -146,6 +167,13 @@
 
 	.wrap-result,
   #wrap-result{
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 991px){
+      width: 100%;
+    }
+
     &.view-list{
       #head-list{
         li{
@@ -187,6 +215,7 @@
   }
 
   #wrap-subfilters{
+    margin-top: 0 !important;
     .gwr{
       justify-content: flex-end;
       #title-subfilters {
@@ -227,6 +256,10 @@
       padding: 0 10px;
     }
 	}
+
+  #nav-results{
+    margin-top: 0;
+  }
 
   @media screen and (min-width: 1024px){
     #wrap-result{
@@ -426,7 +459,6 @@
 .wrap-map-img{
   position: relative;
   width: 100%;
-  margin-bottom: 1rem;
   &:after{
     content: "";
     display: block;
@@ -508,6 +540,9 @@
         .clidxboost-btn-link{
           width: 100%;
           min-width: 100%;
+          span{
+            border-color: $colorweb !important;
+          }
         }
       }
     }
@@ -619,13 +654,30 @@
 
     .nav-aside{
       display: block;
-      width: 26%;
+      width: 30%;
       order: 2;
+
+      @media screen and (min-width: 1300px){
+        width: 28%;
+      }
     }
 
     #neighborhood{
       order: 3;
-      width: 70%;
+      width: 68%;
+
+      @media screen and (min-width: 1300px){
+        width: 70%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 991px){
+  #wrap-neighborhood{
+    width: 96% !important;
+    #header-title {
+      width: 100% !important;
     }
   }
 }

@@ -105,12 +105,12 @@
 	justify-content: center;
 	position: absolute;
 	top: 5px;
-	left: 0;
+	left: 10px;
 	height: 30px;
 	flex-shrink: 0;
-	/*@media screen and (min-width: 640px){
-		right: 3%;
-	}*/
+	@media screen and (min-width: 640px){
+		left: 0;
+	}
 
 	@media screen and (min-width: 640px){
 		position: relative;
@@ -564,7 +564,7 @@
 					.gwr{
 						.hamburger-content {
 							height: 35px !important;
-							position: absolute;
+							//position: absolute;
 							top: 0;
 							right: 0;
 						}

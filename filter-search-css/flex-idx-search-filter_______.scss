@@ -4344,13 +4344,8 @@ $colorp: #333333;
 	  }
 
 	  @media screen and (min-width: 1024px) {
-	  	/*display: none;*/
+	  	display: none;
 	  	z-index: 5;
-	  	width: 60%;
-	  }
-
-	  @media screen and (min-width: 1366px){
-	  	width: 50%;
 	  }
 	}
 
@@ -4569,10 +4564,3 @@ $colorp: #333333;
     }
 	}
 }
-
-// Fallback para Safari IOS cuando el modal de propertie está abierto
-	.ib-mpropertie-open {
-		height: 100vh !important;
-		overflow: hidden !important;
-	}
-//
