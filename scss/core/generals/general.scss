@@ -38,6 +38,7 @@ body {
 		margin-top: 0;
 	}
 
+
 	&.ib-wrap-full-width{
 		/*.gwr {
 	    max-width: 96%;
@@ -99,12 +100,12 @@ body {
 	  	}
 	  }
 
-	  #wrap-subfilters,
+	  /*#wrap-subfilters,
 	  .wrap-subfilters{
 			.gwr{
 				max-width: 96%;
 			}
-	  }
+	  }*/
 
 	  #wrap-result,
 	  .wrap-result{
@@ -757,14 +758,26 @@ img{
   color: #c1c1c1;
   position: absolute;
   right: 0;
-  top: 0;
-  height: 40px;
-  padding: 0 15px;
-  line-height: 40px;
+  top: 3px !important;
+  display: inline-block;
+  padding: 0 10px !important;
+  line-height: normal !important;
   text-transform: capitalize;
   width: auto;
   right: 0 !important;
   left: auto !important;
+  bottom: auto !important;
+  z-index: 0;
+  font-size: 10px;
+  height: auto !important;
+  @media screen and (min-width: 768px){
+  	top: 0 !important;
+		padding: 0 15px !important;
+		height: 100% !important;
+		font-size: 13px;
+		display: flex;
+		align-items: center;
+  }
 }
 
 #header{
@@ -803,6 +816,465 @@ img{
   display: none;
 }
 
+#wrap-neighborhood{
+	#neighborhood .gwr.block-description{
+  	width: 94% !important;
+  	margin-left: auto;
+  	margin-right: auto;
+  }
+	
+	@media (max-width: 767px){
+	  .clidxboost-sc-filters{
+	  	margin: 0 -4%;
+	  }
+	}
+}
+
+
+/*----------------------------------------------------------------------------------*/
+/* HACK MOBILE IPHONE
+/*----------------------------------------------------------------------------------*/
+.content-rsp-btn .idx-btn-content{
+	border: 0 !important;
+}
+
+.ib-header-modal-filters-mobile img{
+	margin-right: auto !important;
+}
+
+.buildingPage{
+	#full-main{
+		.container{
+			.property-details.theme-2{
+				.property-information{
+					border-bottom: 1px solid #E5E5E5;
+					&.ms-border{
+						border: 0;
+						.sale{
+							border-left: 0;
+						}
+						li{
+							button{
+								span{
+									font-size: 12px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#full-main{
+	.panel-options{
+		.options-list{
+			.action-list{
+				li{
+					&:last-child{
+						border-right: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**RESETEANDO DATATABLE **/
+.dataTable{
+	thead,
+	tbody{
+		tr{
+			display: flex;
+			align-items: center;
+			th, td{
+				width: 14.28% !important;
+				flex-grow: 1;
+			}
+			td{
+				>div{
+					height: 45px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					&.unit.propertie{
+						justify-content: flex-start;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**HACK MOBILE IPHONE**/
+@media (max-width: 767px){
+	body.only-mobile{
+		.ib-filter-container,
+		#flex_idx_search_filter,
+		#header,
+		.cta-container,
+		#footer,
+		footer,
+		.gwr.gwr-breadcrumb,
+		.clidxboost-sc-filters,
+		.property-details.theme-3{
+			display: none !important;
+			height: 0 !important;
+			overflow: hidden !important;
+			display: none;
+		}
+
+		#flex_idx_modal_wrapper{
+			.ib-modal-master.ib-md-active {
+				position: relative !important;
+				width: 100% !important;
+				height: auto !important;
+				top: 0 !important;
+				left: 0 !important;
+				overflow: visible !important;
+				z-index: 34 !important;
+				overflow-x: hidden !important;
+				.ib-mmcontent{
+					width: 100% !important;
+					height: auto !important;
+					max-height: 100% !important;
+					top: 0 !important;
+					left: 0 !important;
+					position: relative !important;
+					z-index: 4 !important;
+				}
+
+				.ib-property-detail.ib-pdmodal{
+					position: relative;
+				}
+			}
+		}
+
+		.ib-modal-filters-mobile {
+			height: auto;
+			max-height: initial;
+			position: relative !important;
+			.ib-content-modal-filters-mobile{
+				width: 100% !important;
+				height: auto !important;
+				max-height: 100% !important;
+				top: 0 !important;
+				left: 0 !important;
+				position: relative !important;
+				z-index: 4 !important;
+				.ib-header-modal-filters-mobile{
+					img{
+						margin-right: auto;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* COMERCIAL
+/*----------------------------------------------------------------------------------*/
+.ib-fitem .ib-label {
+  padding: 0 17px;
+  position: relative;
+}
+
+.ib-modal-filters-mobile{
+	.ib-wrap-fm{
+		&.ib-cl-1{
+			.ib-item-wrap-fm {
+		    min-width: 100%;
+		    width: 100%;
+		    margin-bottom: 10px;
+		    &.ib-btn-chk-fm{
+		    	label{
+						text-align: left;
+						justify-content: flex-start;
+						padding-left: 15px;
+		    	}
+		    }
+		  }
+		}
+	}
+}
+
+.ib-fdesktop{
+	&.ib-hack-all-filters{
+		&.ib-comercial-search{
+			.ib-fdcol:nth-child(3){
+				.ib-fitem:nth-child(2){
+					.ib-ficontent{
+						padding: 15px;
+					}
+				}
+			}
+
+			.ib-fdcol:nth-child(1){
+				.ib-fitem:nth-child(2){
+					.ib-ficontent{
+						padding-bottom: 0;
+					}
+				}
+			}
+
+			.ib-ficontent{
+				.ib-list-wchecks{
+				  max-height: 407px;
+				  overflow-y: auto;
+				  
+				  &::-webkit-scrollbar {
+				    width: 10px;
+				  }
+
+				  &::-webkit-scrollbar-thumb {
+				    background-color: #333;
+				  }
+
+				  &::-webkit-scrollbar-track {
+				    border: 0px solid black;
+				    background-color: rgba(0, 0, 0, 0.15);
+				  }
+
+					@media screen and (min-width: 640px){
+				  	.ib-clabel{
+							word-break: break-word;
+							display: block;
+							&:before{
+								top: 0;
+								transform: none;
+							}
+
+							&:after{
+								transform: none;
+								top: 4px;
+							}
+				  	}
+				  }
+				}
+			}
+
+			.unit-beds-range-desc,
+			.cap-rate-range-desc{
+				p{
+					font-size: 13px;
+				}
+			}
+
+			.ib-wrap-content-select{
+				width: 37%;
+				select{
+					width: 100%;
+					height: 100%;
+					border: 1px solid #D6D6D6;
+					border-radius: 5px;
+					padding: 0 5px;
+					font-size: 13px;
+					text-align: center;
+					font-weight: 600;
+					display: block;
+					text-align: center;
+					height: 38px;
+					background-image: url(../images/select.png);
+					background-position: 80px -2px;
+					background-repeat: no-repeat; 
+				}
+			}
+
+			.lotsize-measure-options{
+				display: flex;
+				.ib-clabel{
+					&:before {
+						border-radius: 50%;
+					}
+					&:after {
+						border-radius: 50%;
+					}
+				}
+
+				.ib-item-lb{
+					margin-right: 15px;
+				}
+			}
+
+			.cap-rate-range-desc{
+				margin-bottom: 15px;
+			}
+		}
+	}
+}
+
+.ib-ficontent{
+	.ib-wchecks[data-type="outer"]{
+	  max-height: 350px;
+	  overflow-y: auto;
+	  display: block;
+	  height: auto;
+	  
+	  &::-webkit-scrollbar {
+	    width: 10px;
+	  }
+
+	  &::-webkit-scrollbar-thumb {
+	    background-color: #333;
+	  }
+
+	  &::-webkit-scrollbar-track {
+	    border: 0px solid black;
+	    background-color: rgba(0, 0, 0, 0.15);
+	  }
+
+		@media screen and (min-width: 640px){
+	  	.ib-clabel{
+				word-break: break-word;
+				display: block;
+				&:before{
+					top: 0;
+					transform: none;
+				}
+
+				&:after{
+					transform: none;
+					top: 4px;
+				}
+	  	}
+	  }
+	}
+}
+
+.sweet-overlay,
+.sweet-alert{
+	z-index: 110 !important;
+}
+
+.ib-msscheckbox{
+	z-index: -1;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+#content-modals{
+	z-index: 100;
+}
+
+.ib-m-text{
+	display: inline-block;
+	@media screen and (min-width: 640px){
+		display: none;
+	}
+}
+
+.ib-d-text{
+	display: none;
+	@media screen and (min-width: 640px){
+		display: inline-block;
+	}
+}
+
+.ppc-contact {
+	display: none;
+	&.active_modal{
+		display: flex;
+	}
+}
+
+.ib-wrap-hackbox-building{
+	position: relative;
+	width: 100%;
+}
+
+.aside{
+	.property-information{
+		padding-bottom: 0 !important;
+		.ib-wrap-hackbox-building{
+			order: 6;
+		}
+	}
+}
+
+.main{
+	.container{
+		.ib-wrap-hackbox-building{
+			display: block;
+			@media screen and (min-width: 1024px){
+				display: none;
+			}
+		}
+
+		.main-content{
+			.property-details.theme-3{
+				.main-content{
+					padding-left: 0 !important;
+					padding-right: 0 !important;
+				}
+			}
+		}
+	}
+}
+
+.property-details.theme-3{
+	#full-main{
+		.property-contact {
+			padding: 1rem;
+			@media screen and (min-width: 768px){
+				padding: 1rem 0;
+			}
+		}
+	}
+}
+
+.buildingPage #wrap-subfilters{
+	width: 100%;
+}
+
+#full-main .main .gwr.ms-full-wrap,
+.ms-full-wrap{
+	width: 100% !important;
+}
+
+@media (max-width: 767px){
+	.property-details{
+		&.theme-3{
+			#full-main{
+				.title-conteiner {
+					padding: 8px 0;
+					.content-fixed{
+						display: flex;
+						align-items: center;
+						.content-fixed-title{
+							.title-page {
+								font-size: 16px;
+								padding-right: 15px;
+							}
+						}
+
+						.content-fixed-btn{
+							margin-top: 0;
+							border: 0;
+							flex-shrink: 0;
+							li{
+								button {
+									padding: 0 15px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#wrap-subfilters{
+		.gwr #sub-filters{
+			#link-favorites{
+				display: none;
+			}
+		}
+	}
+}
+
+
 /*----------------------------------------------------------------------------------*/
 /* Estructuras generales
 /*----------------------------------------------------------------------------------*/
@@ -831,6 +1303,7 @@ img{
 @import '../helpers/resources/neighborhood-home-list.scss';
 @import '../helpers/resources/ppc.scss';
 @import '../helpers/resources/neighborhood-grid-map.scss';
+@import '../helpers/resources/floor-plans.scss';
 
 /*----------------------------------------------------------------------------------*/
 /* Shortcode
@@ -838,3 +1311,4 @@ img{
 @import '../helpers/resources/shortcode-inventory-counter.scss';
 @import '../helpers/resources/shortcode-tab-slider.scss';
 @import '../helpers/resources/shortcode-box-search.scss';
+//@import '../helpers/resources/new-quick-search.scss';

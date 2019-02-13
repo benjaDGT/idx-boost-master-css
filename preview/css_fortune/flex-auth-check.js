@@ -3,6 +3,9 @@ var socket;
 var channel;
 var fullSlider;
 
+// @todo last opened property
+var lastOpenedProperty;
+
 socket = new Pusher(__flex_g_settings.pusher.app_key, {
   cluster: __flex_g_settings.pusher.app_cluster,
   encrypted: true,
@@ -314,6 +317,21 @@ function validate_price(evt) {
             //$(".close").click();
 
             __flex_g_settings.anonymous = "no";
+
+            // track listing view
+            $.ajax({
+              type: "POST",
+              url: __flex_g_settings.ajaxUrl,
+              data: {
+                action: "track_property_view",
+                board_id: __flex_g_settings.boardId,
+                mls_number: (typeof lastOpenedProperty === "undefined") ? "" : lastOpenedProperty
+              },
+              success: function(response) {
+                console.log("track done for property #" + lastOpenedProperty);
+              }
+            });
+
             $("#user-options").html(response.output);
             $(".lg-wrap-login:eq(0)").html(response.output);
             $(".lg-wrap-login:eq(0)").addClass("active");
@@ -419,8 +437,6 @@ function validate_price(evt) {
     $("#formRegister").on("submit", function (event) {
       event.preventDefault();
 
-      console.log(typeof IB_IS_SEARCH_FILTER_PAGE);
-
       var _self = $(this);
       var formData = _self.serialize();
       var objectCredential = [];
@@ -498,6 +514,20 @@ function validate_price(evt) {
 
             // overwrite lead status globally
             __flex_g_settings.anonymous = "no";
+
+            // track listing view
+            $.ajax({
+              type: "POST",
+              url: __flex_g_settings.ajaxUrl,
+              data: {
+                action: "track_property_view",
+                board_id: __flex_g_settings.boardId,
+                mls_number: (typeof lastOpenedProperty === "undefined") ? "" : lastOpenedProperty
+              },
+              success: function(response) {
+                console.log("track done for property #" + lastOpenedProperty);
+              }
+            });
 
             // notify user with success message
 
@@ -995,11 +1025,11 @@ function scrollFixedElement(elemento) {
   var originalPos = boxHeight;
   jQuery(document).on("scroll", function (e) {
     if (jQuery("body").hasClass("fixed-active")) {
-      if (jQuery(document).scrollTop() < originalPos)
+      if (jQuery(document).scrollTop() <= originalPos)
         jQuery("body").removeClass("fixed-active");
       return;
     }
-    if ((originalPos = jQuery(document).scrollTop()) > (boxTop + boxHeight)) {
+    if ((originalPos = jQuery(document).scrollTop()) >= (boxTop + boxHeight)) {
       jQuery("body").addClass("fixed-active");
     }
   });
@@ -1458,10 +1488,13 @@ function scrollFixedElement(elemento) {
 const $flexIdxSearchFilter = $('#flex_idx_search_filter');
 if ($flexIdxSearchFilter.length) {
   if($(window).width() >= 1024) {
-    let heightMenos = $('.ib-filter-container').height() + $('#header').height();
+    let heightMenos = $('.ib-filter-container').height() + $('#header').outerheight();
     if($('.gwr-breadcrumb').length) heightMenos += $('.gwr-breadcrumb').height();
     $flexIdxSearchFilter.css('height', 'calc(100vh - ' + (heightMenos + 2) + 'px)');
   }
+
+  console.log("ib-filter="+$('.ib-filter-container').height()+"/height="+$('#header').outerheight()+"/breadcrumb="+$('.gwr-breadcrumb').height());
+
 }
 
 // abre la lista de sugerencias del auto complete en mobile

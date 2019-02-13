@@ -11,8 +11,13 @@
 	left: 0;
 	overflow: hidden;
 	transition: opacity .6s;
-	z-index: 999999;
+	z-index: 35;
 	background-color: #f9f9f9;
+
+	.ib-mtitle{
+		font-size: 16px;
+		font-weight: 600;
+	}
 	
 	.ib-content-modal-filters-mobile{
 		width: 100%;
@@ -31,7 +36,7 @@
 		.ib-header-modal-filters-mobile{
 			padding: 0 1rem;
 			display: flex;
-			justify-content: flex-end;
+			justify-content: space-between;
 			width: 100%;
 			background-color: #FFF;
 			align-items: center;
@@ -546,5 +551,33 @@
 		.ib-footer-modal-filters-mobile{
 			bottom: -72px;
 		}
+	}
+}
+
+
+.ib-body-modal-filters-mobile{
+	.unit-beds-range-desc,
+	.cap-rate-range-desc{
+		p, h4, h5{
+			display: block;
+			margin-top: 10px;
+			font-size: 13px;
+			padding: 0 0.1875rem;
+			color: #a6a6ae;
+		}
+	}
+
+	.lotsize-measure-options{
+		padding: 0 0.1875rem;
+		.ib-item-lb{
+			margin-top: 15px;
+			input{
+				position: absolute;
+			}
+		}
+	}
+
+	.ib-mtop{
+		margin-top: 10px;
 	}
 }

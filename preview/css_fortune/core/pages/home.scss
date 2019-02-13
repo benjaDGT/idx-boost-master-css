@@ -6,10 +6,7 @@
 		width: 100% !important;
 	}
 	
-	/*----------------------------------------------------------------------------------*/
-	/* Sección: Featured Properties
-	/*----------------------------------------------------------------------------------*/
-	##{$prefijo}featured-section{
+	/*##{$prefijo}featured-section{
 		position: relative;
 		text-align: center;
 		
@@ -27,18 +24,180 @@
 			}
 		}
 
+		##{$prefijo}featured-section{
+			position: relative;
+			text-align: center;
+			
+			##{$prefijo}wrap-result,
+			.#{$prefijo}wrap-result{
+				&.#{$prefijo}view-grid,
+				&.#{$prefijo}full-map{
+					.#{$prefijo}result-search{
+						>li{
+							.#{$prefijo}view-detail{
+								border: 0;
+							}
+						}
+					}
+				}
+			}
+			
+			.#{$prefijo}title-block{
+				color: #FFF;
+				margin: 0;
+				padding: 10/16*1rem 0;
+				font-family: $oswald;
+				letter-spacing: 0.33px;
+				background-color: #333;
+				background-color: $colorweb;
+
+				@media screen and (min-width: 680px){
+					padding: 1rem 30px;
+					text-align: left;
+					display: flex;
+					align-items: center;
+					background-color: #333;
+				}
+				
+				@media screen and (min-width: 1200px){
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					z-index: 4;
+					height: 75px;
+					background-color: transparent;
+				}
+			}
+
+			.clidxboost-btn-link{
+				margin-top: 1rem;
+				span{
+					background-color: $colorweb;
+					border-color: $colorweb;
+					color: #FFF;
+				}
+
+				&:hover{
+					span{
+						background-color: #dc3d41;
+					}
+				}
+
+				@media screen and (min-width: 680px){
+					position: absolute;
+					top: 0;
+					right: 0;
+					margin-top: 0;
+					height: 64px;
+				}
+
+				@media screen and (min-width: 768px){
+					height: 79px;
+				}
+
+				@media screen and (min-width: 1200px){
+					top: auto;
+					bottom: 0;
+					z-index: 4;
+					height: 75px;
+					span{
+						padding: 0 50px;
+					}
+				}
+			}
+
+			.clidxboost-properties-slider{
+
+				@media screen and (min-width: 640px){
+					.gs-wrapper-items{
+						border-top: 1px solid #FFF;
+						border-bottom: 1px solid #FFF;
+						.gs-item-slider{
+							border-right: 1px solid #FFF;
+							&:last-child{
+								border-right: 0;
+							}
+						}
+					}
+				}
+
+				.gs-container-navs{
+					@media screen and (min-width: 1200px){
+						height: 75px;
+					}
+					.clidxboost-gs-wrapper-bullets{
+						margin: 0;
+						align-items: center;
+						.gs-bullet{
+							&:before{
+								background-color: #FFF;
+							}
+
+							&.gs-bullet-active{
+								&:before{
+									background-color: $colorweb;
+								}
+							}
+						}
+					}
+
+					@media screen and (min-width: 680px){
+						background-color: #333;
+						.clidxboost-gs-wrapper-bullets{
+							height: 75px;
+						}
+					}
+
+					@media screen and (min-width: 1200px){
+						.clidxboost-gs-wrapper-bullets{
+							z-index: 1;
+						}			
+					}
+				}
+			}
+		}
+
+		.#{$prefijo}clidxboost-properties-slider{
+			.gs-item-slider{
+				margin: 0 !important;
+			}
+		}
+	}*/
+
+	##{$prefijo}featured-section{
+		position: relative;
+		text-align: center;
+		
+		##{$prefijo}wrap-result,
+		.#{$prefijo}wrap-result{
+			&.#{$prefijo}view-grid,
+			&.#{$prefijo}full-map{
+				.#{$prefijo}result-search{
+					>li{
+						.#{$prefijo}view-detail{
+							border: 0;
+						}
+					}
+				}
+			}
+		}
+		
 		.#{$prefijo}title-block{
 			color: #FFF;
 			margin: 0;
 			padding: 10/16*1rem 0;
+			background-color: #333;
 			background-color: $colorweb;
-			font-size: 1.375rem !important;
+			
+			font-weight: 700;
+			letter-spacing: -2px;
+
 			@media screen and (min-width: 680px){
+				padding: 1rem 30px;
 				text-align: left;
 				display: flex;
-				padding: 0 1rem;
 				align-items: center;
-				height: 60px;
+				background-color: #333;
 			}
 			
 			@media screen and (min-width: 1200px){
@@ -46,20 +205,22 @@
 				bottom: 0;
 				left: 0;
 				z-index: 4;
+				height: 75px;
+				background-color: transparent;
 			}
 		}
 
 		.clidxboost-btn-link{
 			margin-top: 1rem;
 			span{
-				background-color: #FFF;
+				background-color: $colorweb;
 				border-color: $colorweb;
-				color: $colorweb;
+				color: #FFF;
 			}
+
 			&:hover{
 				span{
-					background-color: $colorweb;
-					color: #FFF;
+					background-color: #dc3d41;
 				}
 			}
 
@@ -67,68 +228,78 @@
 				position: absolute;
 				top: 0;
 				right: 0;
-				height: 60px;
 				margin-top: 0;
-				span{
-					border-color: #FFF;
-				}
-				&:hover{
-					span{
-						background-color: #333;
-						border-color: #333;
-					}
-				}
+				height: 64px;
+			}
+
+			@media screen and (min-width: 768px){
+				height: 79px;
 			}
 
 			@media screen and (min-width: 1200px){
 				top: auto;
 				bottom: 0;
-				/*height: 60px;*/
 				z-index: 4;
+				height: 75px;
 				span{
-					border-color: $colorweb;
+					padding: 0 50px;
 				}
 			}
 		}
 
-
-		.clidxboost-slider{
-			.clidxboost-wrap-slider{
-				>ul{
-					>li{
-						padding: 0 !important;
+		.clidxboost-properties-slider{
+			@media screen and (min-width: 640px){
+				.gs-wrapper-items{
+					border-top: 1px solid #FFF;
+					border-bottom: 1px solid #FFF;
+					.gs-item-slider{
+						border-right: 1px solid #FFF;
+						&:last-child{
+							border-right: 0;
+						}
 					}
 				}
 			}
 
-			@media screen and (min-width: 680px){
-				.clidxboost-nav{
-					background-color: #efefef;
+			.gs-container-navs{
+				@media screen and (min-width: 1200px){
+					height: 75px;
 				}
-			}
+				.clidxboost-gs-wrapper-bullets{
+					margin: 0;
+					align-items: center;
+					.gs-bullet{
+						&:before{
+							background-color: #FFF;
+						}
 
-			@media screen and (min-width: 1200px){
-				.clidxboost-nav{
-					background-color: $colorweb;
-					.clidxboost-bullets{
-						z-index: 1;
-						button{
-							span{
-								&:before{
-									background-color: #d4d4d4;
-								}
-							}
-							&.#{$prefijo}active{
-								span{
-									&:before{
-										background-color: #FFF;
-									}	
-								}
+						&.gs-bullet-active{
+							&:before{
+								background-color: $colorweb;
 							}
 						}
 					}
-				}				
+				}
+
+				@media screen and (min-width: 680px){
+					background-color: #333;
+					.clidxboost-gs-wrapper-bullets{
+						height: 75px;
+					}
+				}
+
+				@media screen and (min-width: 1200px){
+					.clidxboost-gs-wrapper-bullets{
+						z-index: 1;
+					}			
+				}
 			}
+		}
+	}
+
+	.#{$prefijo}clidxboost-properties-slider{
+		.gs-item-slider{
+			margin: 0 !important;
 		}
 	}
 
@@ -229,7 +400,7 @@
 					color: $colorweb;
 					margin: 1rem auto;
 					&:hover{
-						background-color: $colorweb;
+						background-color: $colorweb !important;
 						color: #FFF;
 					}
 				}
@@ -279,12 +450,37 @@
 		@media screen and (min-width: 991px){
 			height: calc(100vh - 151px) !important;
 		}
-		.clidxboost-slider{
-			height: 100% !important;
+
+		.gs-container-slider{
+			height: 100%;
+		}
+
+		.gs-wrapper-items{
+			&:before {
+				top: 0;
+				left: 0;
+				z-index: 2;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5));
+				display: block;
+				position: absolute;
+				content: "";
+			}
+		}
+
+		.gs-wrapper-arrows{
+			&.gs-style-arrow{
+				.gs-next-arrow, 
+				.gs-prev-arrow{
+					opacity: 1;
+					background-color: $colorweb;
+				}
+			}
 		}
 	}
 
-	.clidxboost-slider{
+	/*.clidxboost-slider{
 		.clidxboost-nav{
 			.clidxboost-bullets{
 				button{
@@ -299,7 +495,7 @@
 				}
 			}
 		}
-	}
+	}*/
 }
 
 ##{$prefijo}next-step{
@@ -312,7 +508,7 @@
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 	position: absolute;
 	z-index: 4;
-	bottom: 3rem;
+	bottom: 20px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;

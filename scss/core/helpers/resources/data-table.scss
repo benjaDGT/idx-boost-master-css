@@ -284,3 +284,80 @@
 		}
 	}
 }
+
+@media (max-width: 767px){
+
+	.item_view_db.idxboost_collection_rent_list.active{
+		.tbl_properties_wrapper{
+			table{
+				thead{
+					tr{
+						th:nth-child(n+4){
+							display: none;
+						}
+
+						th:nth-child(3){
+							display: table-cell !important;
+						}
+					}
+				}
+				tbody tr td:nth-child(n+4) {
+					display: none !important;
+				}
+				tbody tr td:nth-child(3) {
+					display: table-cell !important;
+				}
+			}
+		}
+	}
+
+	.item_view_db.idxboost_collection_sale_list.active{
+		.tbl_properties_wrapper{
+			table{
+				thead{
+					tr{
+						th:nth-child(n+3){
+							display: none;
+						}
+
+						th:nth-child(5){
+							display: table-cell !important;
+						}
+					}
+				}
+				tbody tr td:nth-child(n+3) {
+					display: none !important;
+				}
+				tbody tr td:nth-child(5) {
+					display: table-cell !important;
+				}
+			}
+		}
+	}
+
+	.item_view_db.idxboost_collection_sold_list.active{
+		.tbl_properties_wrapper{
+			table{
+				thead{
+					tr{
+						th:nth-child(n+3){
+							display: none;
+						}
+
+						th:nth-child(7){
+							display: table-cell !important;
+						}
+					}
+				}
+			}
+
+			tbody tr td:nth-child(n+3) {
+				display: none !important;
+			}
+
+			tbody tr td:nth-child(7) {
+				display: table-cell !important;
+			}
+		}
+	}
+}

@@ -9,10 +9,10 @@
 	height: 100%;
 	top: 0;
 	left: 0;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.75) !important;
 	overflow: hidden;
 	visibility: hidden;
-	z-index: 1000;
+	z-index: 35;
 	opacity: 0;
 	
 	/** DEMO PARA MOBILE **/
@@ -35,9 +35,9 @@
 		}
 	}
 
-	&.#{$prefijo}registration_forced{
+	/*&.#{$prefijo}registration_forced{
 		background-color: rgba(0,0,0,0.96);
-	}
+	}*/
 }
 
 /*Layer para cerrar el modal*/
@@ -840,16 +840,16 @@
 /*----------------------------------------------------------------------------------*/
 /* Modal - Force Registration
 /*----------------------------------------------------------------------------------*/
-.#{$prefijo}registration_forced{
-	/*.#{$prefijo}overlay_modal_closer{
+/*.#{$prefijo}registration_forced{
+	.#{$prefijo}overlay_modal_closer{
 		display: none;
-	}*/
+	}
 
 	.close-modal {
 		display: block !important;
 		visibility: visible !important;
 	}
-}
+}*/
 
 /** Resize: 480 **/
 @media screen and (min-width: 640px){

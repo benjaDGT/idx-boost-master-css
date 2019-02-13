@@ -260,3 +260,139 @@
     }
   }
 }
+
+.nr-section{
+  display: block;
+  position: relative;
+  margin: 30px auto;
+  width: 100%;
+
+  .nr-title{
+    color: #333;
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 24px;
+    }
+  }
+
+  .nr-related-article-list{
+    margin: 0 -15px;
+    padding: 15px 0;
+
+    &:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .nr-related-article{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 15px;  
+      width: 100% !important;
+      margin-bottom: 15px;
+      @media screen and (min-width: 768px){ 
+        width: 33% !important;
+        float: left;
+      }
+
+      a{
+        color: #333;
+      }
+
+      .nr-article-title{
+        margin: 10px 0;
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+        order: 2;
+        cursor: pointer;
+      }
+
+      .nr-wrap-img{
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: pointer;
+        &:after{
+          content: "";
+          display: block;
+          padding-bottom: 60%;
+        }
+
+        &:before{
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: rgba(0,0,0,0.25);
+        }
+        
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+          order: 1;
+          transition: transform 1s, -webkit-transform 1s;
+          z-index: 0;
+        }
+      }
+
+      &:hover{
+        .nr-wrap-img{
+          img{
+            transform: scale3d(1.1, 1.1, 1);
+          }
+        }
+      }
+    }
+  }
+
+  .nr-wrap-btn{
+    margin: 30px auto;
+    text-align: center;
+  }
+
+  .nr-btn{
+    height: 45px;
+    width: auto;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #333;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 190px;
+    span{
+      padding: 0 15px;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+
+      @media screen and (min-width: 768px){
+        padding: 0 30px;
+      }
+    }
+
+    &:hover{
+      background-color: #333;
+      color: #FFF;
+    }
+  }
+}

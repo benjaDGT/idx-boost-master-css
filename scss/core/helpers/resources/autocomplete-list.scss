@@ -93,19 +93,24 @@
 
 	.ui-menu-item{
 		width: 100% !important;
-		height: 40px !important;
+		min-height: 40px !important;
 		.ui-menu-item-wrapper{
 			font-size: 13/16*1rem;
 			font-family: $opensans;
 			width: 100% !important;
 			border-bottom: 1px solid $gris-lineas !important;
 			padding: 0 1rem;
-			height: 40px;
+			min-height: 45px;
 			transition: all .3s;
 			cursor: pointer;
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
+			text-align: left;
+			@media screen and (min-width: 768px){
+				font-size: 14/16*1rem;
+				min-height: 40px;
+			}
 			&.ui-state-active,
 			&:hover{
 				border: 0;

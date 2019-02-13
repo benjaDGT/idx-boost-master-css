@@ -4576,3 +4576,67 @@ $colorp: #333333;
 		//overflow: hidden !important;
 	}
 //
+
+
+/**HACK MOBILE IPHONE**/
+@media (max-width: 767px){
+	body.only-mobile{
+		.ib-filter-container,
+		#flex_idx_search_filter,
+		#header,
+		.cta-container,
+		#footer,
+		footer{
+			display: none !important;
+			height: 0 !important;
+			overflow: hidden !important;
+			display: none;
+		}
+
+		#flex_idx_modal_wrapper{
+			.ib-modal-master.ib-md-active {
+				position: relative !important;
+				width: 100% !important;
+				height: auto !important;
+				top: 0 !important;
+				left: 0 !important;
+				overflow: visible !important;
+				z-index: 999999 !important;
+				overflow-x: hidden !important;
+				.ib-mmcontent{
+					width: 100%!important;
+					height: auto!important;
+					max-height: 100% !important;
+					top: 0!important;
+					left: 0!important;
+					position: relative!important;
+					z-index: 4!important;
+				}
+
+				.ib-property-detail.ib-pdmodal{
+					position: relative;
+				}
+			}
+		}
+
+		.ib-modal-filters-mobile {
+			height: auto;
+			max-height: initial;
+			position: relative !important;
+			.ib-content-modal-filters-mobile{
+				width: 100%!important;
+				height: auto!important;
+				max-height: 100% !important;
+				top: 0!important;
+				left: 0!important;
+				position: relative!important;
+				z-index: 4!important;
+				.ib-header-modal-filters-mobile{
+					img{
+						margin-right: auto;
+					}
+				}
+			}
+		}
+	}
+}
