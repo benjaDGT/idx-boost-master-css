@@ -921,7 +921,7 @@ img{
 		.property-details.theme-3{
 			display: none !important;
 			height: 0 !important;
-			overflow: hidden !important;
+			//overflow: hidden !important;
 			display: none;
 		}
 
@@ -1234,6 +1234,30 @@ img{
 	width: 100% !important;
 }
 
+.ib-pbtnphone{
+	color: #FFF !important;
+	background-color: #333 !important;
+	display: none !important;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-size: .8em;
+
+	&:before{
+		content: "\e91b" !important;
+    font-family: "idx-icons" !important;
+    margin-right: 6px !important;
+    display: inline-block !important;
+    margin-top: 2px !important;
+    color: #FFF !important;
+    font-weight: 100 !important;
+    font-size: 18px;
+	}
+}
+
 @media (max-width: 767px){
 	.property-details{
 		&.theme-3{
@@ -1265,6 +1289,7 @@ img{
 			}
 		}
 	}
+
 	#wrap-subfilters{
 		.gwr #sub-filters{
 			#link-favorites{
@@ -1272,8 +1297,177 @@ img{
 			}
 		}
 	}
+
+	.ib-requestinfo.ib-phbtn{
+		display: none;
+	}
+
+	.ib-pbtnphone{
+		display: flex !important;
+	}
 }
 
+/*----------------------------------------------------------------------------------*/
+/* 	MODAL
+/*----------------------------------------------------------------------------------*/
+@media (max-width: 639px){
+	.ib-pdmodal{
+		.ib-pablock.ib-bcform{
+			display: none;
+		}
+	}
+}
+
+.ib-request-float-modal{
+	.ib-paside{
+		position: relative;
+		top: 0;
+		width: 100%;
+		left: 0;
+		height: 100vh;
+		z-index: 6;
+		padding: 20px;
+		border: 0;
+		padding-top: 50px;
+		background-color: #FFF;
+		overflow-y: auto;
+		.ib-pablock{
+			padding: 0;
+			border: 0;
+		}
+	}
+
+	.ib-property-detail.ib-pdmodal .ib-pcontent .ib-btn-request,
+	.ib-bdisclaimer.ib-bdisclaimer-desktop,
+	.ib-bdisclaimer.ib-bdisclaimer-mobile,
+	.ib-property-detail.ib-pdmodal .ib-pcheader,
+	.ib-pviews.ib-pva-photos,
+	.ib-pbia .ib-pwinfo,
+	.ib-bdisclaimer{
+		display: none;
+	}
+
+	.ib-property-detail.ib-pdmodal .ib-pcontent{
+		padding: 0;
+	}
+
+	.ib-float-form{
+		display: block;
+	}
+
+	.ib-cfsubmit{
+		padding: 15px 0;
+	}
+
+	.ib-pdmodal{
+		.ib-pablock.ib-bcform{
+			display: block;
+		}
+	}
+}
+
+.ib-float-form{
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 35px;
+  height: 35px;
+  font-weight: 300;
+  font-size: 13px;
+  right: 0;
+  color: #FFF;
+  background-color: #333;
+  display: none;
+  span{
+  	display: flex;
+  	width: 100%;
+  	height: 100%;
+  	align-items: center;
+  	justify-content: center;
+  	&:before{
+  		content: "\e909";
+  		display: inline-block;
+  		font-family: $web-icons;
+  	}
+  }
+}
+
+@media (max-width: 1023px){
+	.ib-fhpb-openers .ib-oitem{
+		min-width: 20% !important;
+	}
+}
+
+.ib-modal-master .ib-pwinfo {
+	padding-bottom: 0;
+	@media screen and (min-width: 1024px){
+		padding-bottom: 60px;
+	}
+}
+ 
+.buildingPage #full-main .container .property-details.theme-2 .property-information li button.active{
+	background-color: #333 !important;
+	color: #FFF !important;
+	span{
+		color: #FFF !important;
+	}
+}
+
+#content-modals{
+	#modal_login{
+		.modal_cm{
+			#push-registration{
+				.pr-steps-container{
+					.pr-step{
+						.pr-next-step{
+							background: #e54c3c !important;
+							border-color: #e54c3c !important;
+							color: #FFF !important;
+							&:hover{
+								background: #f53f2c !important;
+								border-color: #f53f2c !important;
+								color: #FFF !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 680px){
+	#full-main .title-conteiner .content-fixed .content-fixed-title{
+		width: 70% !important;
+	}
+	#full-main .title-conteiner .content-fixed {
+    width: 94%;
+  }
+  .property-details.theme-3 #full-main .title-conteiner .content-fixed{
+  	justify-content: space-between;
+  }
+}
+
+.ib-pilitem{
+	flex-grow: 1;
+	.ib-pilnumber {
+		width: 100%;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-align: center;
+	}
+}
+
+.ms-order-m{
+	order: -1;
+}
+
+.ib-infobox.ib-ibmulti .ib-ibproperties{
+	display: flex;
+	flex-wrap: wrap;
+}
 
 /*----------------------------------------------------------------------------------*/
 /* Estructuras generales

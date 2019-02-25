@@ -1239,10 +1239,12 @@ $colorp: #333333;
 						height: 100%;
 						@include flexpa();
 						padding: 6px;
-						background-color: #434343;
+						padding-right: 0;
+						//background-color: #434343;
 						color: #fff;
 						font-size: .85em;
 						line-height: 1;
+						//font-size: .7em;
 
 						&:before {
 							content: "\6b";
@@ -1251,6 +1253,14 @@ $colorp: #333333;
 							color: #fff;
 							font-size: 1em;
 							margin-right: 3px;
+						}
+
+						span{
+							text-transform: uppercase;
+							margin-left: 5px;
+							display: inline-block;
+							font-size: 14.4px;
+							margin-right: -5px;
 						}
 					}
 
@@ -1357,7 +1367,7 @@ $colorp: #333333;
 					}
 
 					.ib-ibpb {
-						width: 100px;
+						width: 90px;
 						height: 75px;
 						border: 1px solid #CCCCCC;
 						margin-right: 10px;
@@ -2231,9 +2241,11 @@ $colorp: #333333;
 					font-size: 14px;
 					font-weight: 600;
 					position: fixed;
-					bottom: 0;
+					bottom: 15px;
 					left: 0;
-					width: 100%;
+					right: 0;
+					margin: 0 auto;
+					width: 93%;
 					background-color: #333;
 					transition: all .3s;
 					text-transform: uppercase;
@@ -3193,6 +3205,7 @@ $colorp: #333333;
 				text-transform: uppercase;
 				color: #a7a6ae;
 				font-size: 10px;
+				text-align: center;
 				@media screen and (min-width: 640px) {
 					font-size: 12px;
 				}
@@ -3340,6 +3353,7 @@ $colorp: #333333;
 				position: relative;
 				overflow: hidden;
 				@include flexpa();
+				padding: 0 10px;
 
 				&:before {
 					@include flexpa();
@@ -3359,6 +3373,7 @@ $colorp: #333333;
 			}
 
 			.ib-plsocials {
+				z-index: -1;
 
 				@media screen and (max-width: 1023px) {
 					position: absolute;
@@ -3591,6 +3606,7 @@ $colorp: #333333;
 				@media screen and (min-width: 768px) {
 					@include flexpa();
 					flex-wrap: wrap;
+					justify-content: flex-start;
 				}
 			}
 
