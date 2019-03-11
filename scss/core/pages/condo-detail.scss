@@ -26,7 +26,6 @@
     }
   }
 
-  
   .gwr{
     width: 100% !important;
   }
@@ -161,16 +160,16 @@
     }
   }
 
-  .nav-aside{
-    display: none;
-  }
-
 	.wrap-result,
   #wrap-result{
-    width: 94%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
-    @media screen and (min-width: 991px){
+    @media screen and (min-width: 640px){
+      width: 94%;
+    }
+
+    @media screen and (min-width: 768px){
       width: 100%;
     }
 
@@ -254,6 +253,7 @@
       position: absolute;
       background-color: transparent;
       padding: 0 10px;
+      padding-right: 40px;
     }
 	}
 
@@ -290,6 +290,19 @@
           }
         }
       }
+    }
+  }
+
+  #wrap-subfilters .gwr #info-subfilters{
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+    @media screen and (min-width: 640px){
+      width: 94%;
+    }
+    @media screen and (min-width: 768px){
+      width: 100%;
     }
   }
 }

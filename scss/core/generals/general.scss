@@ -142,13 +142,16 @@ body {
 @media (max-width: 640px){
   html{
     &.modal_mobile {
-      overflow: hidden;
+      //overflow: hidden;
+      //height: 100%;
+      //overflow: hidden;
       body{
         top: 0;
         left: 0;
         position: fixed !important;
         min-height: 100vh !important;
         width: 100%;
+        //height: 100vh;
         overflow: hidden;
       }
     }
@@ -910,6 +913,8 @@ img{
 /**HACK MOBILE IPHONE**/
 @media (max-width: 767px){
 	body.only-mobile{
+		padding: 0 !important;
+		margin: 0 !important;
 		.ib-filter-container,
 		#flex_idx_search_filter,
 		#header,
@@ -921,8 +926,6 @@ img{
 		.property-details.theme-3{
 			display: none !important;
 			height: 0 !important;
-			//overflow: hidden !important;
-			display: none;
 		}
 
 		#flex_idx_modal_wrapper{
@@ -1305,6 +1308,24 @@ img{
 	.ib-pbtnphone{
 		display: flex !important;
 	}
+
+	#wrap-neighborhood{
+		.wrap-result,
+		#wrap-result{
+			&.view-list{
+				.result-search,
+				#result-search{
+					>li{
+						.features{
+							li.address{
+								display: none !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -1343,7 +1364,8 @@ img{
 	.ib-property-detail.ib-pdmodal .ib-pcheader,
 	.ib-pviews.ib-pva-photos,
 	.ib-pbia .ib-pwinfo,
-	.ib-bdisclaimer{
+	.ib-bdisclaimer,
+	.ib-pviews{
 		display: none;
 	}
 
@@ -1413,29 +1435,6 @@ img{
 	}
 }
 
-#content-modals{
-	#modal_login{
-		.modal_cm{
-			#push-registration{
-				.pr-steps-container{
-					.pr-step{
-						.pr-next-step{
-							background: #e54c3c !important;
-							border-color: #e54c3c !important;
-							color: #FFF !important;
-							&:hover{
-								background: #f53f2c !important;
-								border-color: #f53f2c !important;
-								color: #FFF !important;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
 @media (max-width: 680px){
 	#full-main .title-conteiner .content-fixed .content-fixed-title{
 		width: 70% !important;
@@ -1469,6 +1468,80 @@ img{
 	flex-wrap: wrap;
 }
 
+@media (max-width: 640px){
+	.ib-mmcontent{
+		height: 100vh
+	}
+	.ib-mgeneric {
+	  height: 100%;
+	}
+}
+
+#full-main .property-contact .form-content.large-form .avatar-content{
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
+
+.page-template-flex-page-neighborhood-detail-silo{
+  .clidxboost-sc-filters{
+    .content-filters{
+      #wrap-filters,
+      .wrap-filters{
+        .gwr{
+          #filters,
+          .filters{
+            li.all{
+              margin-bottom: 0;
+            } 
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 990px){
+    #header-title{
+      .clidxboost-btn-link{
+        display: none;
+      }
+    }
+  }
+}
+
+.aside{
+	.property-information{
+		li.rent, 
+		li.sale{
+			border-right: 1px solid #e5e5e5;
+		} 
+	}
+}
+
+@media (max-width: 640px){
+	body.ib-wrap-full-width #flex-filters-theme .content-filters #wrap-filters .gwr-filters,
+	body #flex-filters-theme .content-filters #wrap-filters .gwr-filters{
+		max-width: 100% !important;
+	}
+}
+
+.ms-hidden-text{
+	overflow: hidden;
+	height: 0;
+	width: 0;
+	position: absolute;
+	z-index: 0
+}
+
+@media (max-width: 989px){
+	body.fixed-active.lg-theme .ib-filter-container.ib-filter-container-inscroll,
+	body.fixed-active .ib-filter-container.ib-filter-container-inscroll,
+	body.fixed-active .ib-filter-container{
+		animation: fadeInDown !important;
+	}
+}
+
 /*----------------------------------------------------------------------------------*/
 /* Estructuras generales
 /*----------------------------------------------------------------------------------*/
@@ -1477,9 +1550,12 @@ img{
 @import '../helpers/resources/breadcrumbs.scss';
 @import '../helpers/resources/paginator.scss';
 @import '../helpers/resources/message.scss';
+
 @import '../helpers/resources/modals.scss';
 @import '../helpers/resources/modals-master.scss';
-@import '../helpers/resources/modal-register.scss';
+//@import '../helpers/resources/modal-register.scss';
+@import '../helpers/resources/modal-new-login.scss';
+
 @import '../helpers/resources/modal-full-slider.scss';
 @import '../helpers/resources/full-slider.scss';
 @import '../helpers/resources/sliders.scss';

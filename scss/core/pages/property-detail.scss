@@ -443,6 +443,7 @@
   .#{$prefijo}panel-options{
     position: relative;
     border-bottom: 1px solid $gris-lineas;
+    background-color: #FFF;
 
     .#{$prefijo}options-list{
       display: flex;
@@ -510,7 +511,7 @@
           /*overflow: hidden;*/
           transition: all .3s;
           opacity: 0;
-          z-index: -1;
+          z-index: 0;
           li{
             cursor: pointer;
             a{
@@ -1388,7 +1389,7 @@
 						top: auto;
 						left: auto;
 						margin: 0;
-            z-index: -1;
+            z-index: 0;
 						li{
 							margin-left: 10/16*1rem;
 							&:first-child{
@@ -1506,6 +1507,18 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+#full-main{
+  .container{
+    .property-details{
+      .property-information{
+        li.btn-save{
+          background-color: #FFF;
         }
       }
     }

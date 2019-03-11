@@ -32,6 +32,7 @@
 		padding-bottom: 100px;
 		padding-top: 46px;
 		transition: all .3s;
+		background-color: #f9f9f9;
 
 		.ib-header-modal-filters-mobile{
 			padding: 0 1rem;
@@ -579,5 +580,97 @@
 
 	.ib-mtop{
 		margin-top: 10px;
+	}
+}
+
+.ib-modal-filters-mobile{
+	.ib-ms-small{
+		font-size: 13px;
+    font-weight: normal;
+    color: #a7a6ae;
+	}
+	.ib-wrap-fm{
+		&#ib-flex-m-types.ib-cl-2{
+			padding: 15px;
+			border: 1px solid #e5e5e5;
+			background-color: #FFF;
+			&::-webkit-scrollbar {
+				width: 10px;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: #333;
+			}
+			&::-webkit-scrollbar-track {
+				border: 0px solid black;
+				background-color: rgba(0, 0, 0, 0.15);
+			}
+
+			.ib-item-wrap-fm{
+				padding: 0;
+				margin-bottom: 0;
+				&.ib-btn-chk-fm{
+					width: 100%;
+					label {
+						padding: 0;
+						width: 100%;
+						height: auto;
+						border-radius: 0;
+						background: transparent;
+						border: 0;
+						transition: all .3s;
+						justify-content: flex-start;
+						text-align: left;
+						padding-left: 35px;
+						min-height: 35px;
+						&:before{
+							content: "";
+							display: inline-block;
+							width: 23px;
+							height: 23px;
+							margin-right: 10px;
+							border: 1px solid #eaeaea;
+							background-color: #FFF;
+							position: absolute;
+							top: 5px;
+							left: 0;
+						}
+
+						&:after{
+							content: "";
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							width: 24px;
+							height: 24px;
+							margin-right: 10px;
+							position: absolute;
+							top: 5px;
+							left: 0;
+							background-color: transparent;
+							content: "\e939";
+							font-family: "idx-icons"!important;
+							font-size: 15px;
+							opacity: 0;
+						}
+
+						span{
+							overflow: hidden;
+							-o-text-overflow: ellipsis;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							display: block;
+							width: 100%;
+						}
+					}
+
+					input:checked+label{
+						color: #000;
+						&:after{
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
 	}
 }

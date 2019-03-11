@@ -2732,7 +2732,7 @@ $colorp: #333333;
 						content: "";
 						height: 100%;
 						background-color: #CCCCCC;
-						width: 1px;
+						//width: 1px;
 					}
 				}
 
@@ -3373,7 +3373,7 @@ $colorp: #333333;
 			}
 
 			.ib-plsocials {
-				z-index: -1;
+				z-index: 0;
 
 				@media screen and (max-width: 1023px) {
 					position: absolute;
@@ -3474,7 +3474,8 @@ $colorp: #333333;
 					}
 				}
 
-				&.ib-ps-active {
+				&.ib-ps-active,
+				&:hover {
 					.ib-plsocials {
 						max-height: 200px;
 						opacity: 1;

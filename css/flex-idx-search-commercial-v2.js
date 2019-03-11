@@ -1,8 +1,3 @@
-if (typeof originalPositionY === "undefined") {
-    var originalPositionY;
-}
-
-// fix for gmap dragEnd, zoomEnd
 var idleListener;
 
 var countClickAnonymous = 0;
@@ -28,6 +23,38 @@ var IB_HIDDEN_BOUNDS;
 var IB_LOOKUP_DRAG = false;
 var IB_RECTANGLE;
 var IB_LAST_OPENED_MARKER;
+
+/* [start] commercial vars (desktop) */
+var ib_comm_price_sale_outer_min;
+var ib_comm_price_sale_outer_max;
+
+var ib_comm_price_sale_inner_min;
+var ib_comm_price_sale_inner_max;
+
+var ib_comm_price_rent_outer_min;
+var ib_comm_price_rent_outer_max;
+
+var ib_comm_price_rent_inner_min;
+var ib_comm_price_rent_inner_max;
+
+var ib_comm_sqft_inner_min;
+var ib_comm_sqft_inner_max;
+
+var ib_comm_bsize_inner_min;
+var ib_comm_bsize_inner_max;
+
+var ib_comm_lotsize_inner_min;
+var ib_comm_lotsize_inner_max;
+
+var ib_comm_beds_inner_min;
+var ib_comm_beds_inner_max;
+
+var ib_comm_year_inner_min;
+var ib_comm_year_inner_max;
+
+var ib_comm_rate_inner_min;
+var ib_comm_rate_inner_max;
+/* [end] */
 
 var ib_min_price;
 var ib_max_price;
@@ -165,6 +192,38 @@ Handlebars.registerHelper('formatSqft', function(sqft) {
     return _.formatPrice(sqft);
 });
 
+_.mixin({
+    formatAcres: function(lot_size) {
+        var acre = 43560;
+
+        if (lot_size > 0) {
+            if (lot_size < 43560) {
+                return 0;
+            } else {
+                return Math.round((lot_size / acre) * 100) / 100;
+            }
+        } else {
+            return 0;
+        }
+    }
+});
+
+Handlebars.registerHelper('formatAcres', function(lot_size) {
+    var acre = 43560;
+
+    return 0;
+
+    if (lot_size > 0) {
+        if (lot_size < 43560) {
+            return 0;
+        } else {
+            return Math.round((lot_size / acre) * 100) / 100;
+        }
+    } else {
+        return 0;
+    }
+});
+
 Handlebars.registerHelper("idxFavoriteClass", function(property) {
     var options = ["ib-pfheart","ib-pfstar","ib-pfcube"];
     var currentClass = options[__flex_idx_search_filter_v2.search.view_icon_type];
@@ -297,29 +356,6 @@ Handlebars.registerHelper('idxSliderLoop', function(property) {
     }
 
     return images.join("");
-
-    // if ( parseInt(property.img_cnt, 10) > 0 ) {
-    //     var sliderItems = [];
-    //     var count = parseInt(property.img_cnt, 10);
-
-    //     for (var index = 1; index < count; index++) {
-    //         sliderItems.push('<img class="ib-pvsitem" src="'+ _.getMLSListImage(property.mls_num, property.image, index) +'">');
-    //     }
-
-    //     if (count == 1) {
-    //         sliderItems.push('<img class="ib-pvsitem" src="'+ _.getMLSListImage(property.mls_num, property.image, 1) +'">');
-    //         sliderItems.push('<img class="ib-pvsitem" src="https://www.idxboost.com/i/default_thumbnail.jpg">');
-    //         sliderItems.push('<img class="ib-pvsitem" src="https://www.idxboost.com/i/default_thumbnail.jpg">');
-    //     } else if (count == 2) {
-    //         sliderItems.push('<img class="ib-pvsitem" src="'+ _.getMLSListImage(property.mls_num, property.image, 1) +'">');
-    //         sliderItems.push('<img class="ib-pvsitem" src="'+ _.getMLSListImage(property.mls_num, property.image, 2) +'">');
-    //         sliderItems.push('<img class="ib-pvsitem" src="https://www.idxboost.com/i/default_thumbnail.jpg">');
-    //     }
-
-    //     return sliderItems.join("");
-    // } else {
-    //     return [];
-    // }
 });
 
 Handlebars.registerHelper('propertyPermalink', function(slug) {
@@ -464,15 +500,13 @@ function setAutocompleteTerm(term, type) {
 
 function handleSelectAutocomplete(event, ui) {
     setAutocompleteTerm(ui.item.value, ui.item.type.toLowerCase());
-    // @todo blur autocomplete
-    
+
     setTimeout(function () {
         document.activeElement.blur();
     }, 100);
 }
 
 function handleFocusAutocompleteEvent() {
-    console.log('[focus]');
     if ("" === this.value) {
         ib_autocomplete.autocomplete("option", "source", ib_autocomplete_cities);
         ib_autocomplete.autocomplete( "search", "" );
@@ -480,12 +514,9 @@ function handleFocusAutocompleteEvent() {
 }
 
 function handleKeyPressAutocompleteEvent(event) {
-    console.log('[keypress]');
-
     if ("" !== this.value && 13 === event.keyCode) {
         ib_autocomplete.autocomplete("close");
-        // @todo blur autocomplete
-        
+
         setTimeout(function () {
             document.activeElement.blur();
         }, 100);
@@ -495,14 +526,11 @@ function handleKeyPressAutocompleteEvent(event) {
 }
 
 function handleKeyUpAutocompleteEvent(event) {
-    console.log('[keyup]');
-
     var inputValue = this.value;
 
     if ( ("" !== inputValue) && (13 === event.keyCode) ) {
         ib_autocomplete.autocomplete("close");
-        // @todo blur autocomplete
-        
+
         setTimeout(function () {
             document.activeElement.blur();
         }, 100);
@@ -533,22 +561,15 @@ function handleKeyUpAutocompleteEvent(event) {
     if ("" === inputValue) {
         ib_autocomplete.autocomplete("option", "source", ib_autocomplete_cities);
         ib_autocomplete.autocomplete( "search", "" );
-    } else {
-        ib_autocomplete.autocomplete("option", "source", handleLookupAutocomplete);
-        ib_autocomplete.autocomplete( "search", ib_autocomplete.val() );
     }
 }
 
 function handleClearAutocompleteEvent() {
-    console.log('[search]');
-
     ib_autocomplete.autocomplete("option", "source", ib_autocomplete_cities);
     ib_autocomplete.autocomplete( "search", "" );
 }
 
 function handlePasteAutocompleteEvent() {
-    console.log('[paste]');
-
     ib_autocomplete.autocomplete("option", "source", handleLookupAutocomplete);
 }
 
@@ -699,14 +720,12 @@ function handleOverlayComplete(event) {
 
         // encode path
         var encodedPath = google.maps.geometry.encoding.encodePath(path);
-        // console.log(encodedPath);
 
         // encode base64
         encodedPath = btoa(encodedPath);
 
         // make URL friendly
         encodedPath = encodedPath.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
-        // console.log(encodedPath);
 
         IB_SEARCH_FILTER_FORM.find('[name="crid"]').val(encodedPath);
 
@@ -846,11 +865,6 @@ function handleDragSearchEvent() {
 
     IB_SEARCH_FILTER_FORM.find('[name="rect"]').val(mapBounds.toUrlValue());
     IB_SEARCH_FILTER_FORM.find('[name="zm"]').val(mapZoom);
-
-    // console.log("Bounds: " + mapBounds.toUrlValue());
-    // console.log("Center: " + mapCenter.toUrlValue());
-    // console.log("Zoom: " + mapZoom);
-
     IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
     IB_SEARCH_FILTER_FORM.trigger("submit");
 }
@@ -873,7 +887,7 @@ function handleMarkerClick(marker, property, map) {
             // multiple
             infobox_content.push('<div class="ib-infobox ib-ibmulti">');
             infobox_content.push('<div class="ib-ibwtitle">');
-            infobox_content.push('<div class="ib-ibcount">'+property.group.length+' <span>units at</span></div>');
+            infobox_content.push('<div class="ib-ibcount">'+property.group.length+'</div>');
 
             if ( (null != property.item.complex) && ("" !== property.item.complex) ) {
                 infobox_content.push('<h3 class="ib-ibtitle"><span class="ib-ibtxt">'+property.item.complex+'</span></h3>');
@@ -901,33 +915,26 @@ function handleMarkerClick(marker, property, map) {
                     infobox_content.push('<li class="ib-ibditem ib-ibprice">$'+_.formatPrice(property_group.price)+'</li>');
                 }
 
-                infobox_content.push('<li class="ib-ibditem ib-ibbeds"><span class="ib-ibdbold">'+property_group.bed+'</span>'+word_translate.beds+'</li>');
+                infobox_content.push('<li class="ib-ibditem ib-ibbeds"><span class="ib-ibdbold">'+property_group.property_class_name+'</span></li>');
+                infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+_.formatAcres(property_group.lot_size)+'</span> Lot Size</li>');
 
-                if (property_group.baths_half > 0) {
-                    infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property_group.bath+(property_group.baths_half > 0 ? ".5" : "")+'</span>'+word_translate.baths+'</li>');
-                } else {
-                    infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property_group.bath+'</span>'+word_translate.baths+'</li>');
-                }
+
+                // if (property_group.baths_half > 0) {
+                //     infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property_group.bath+(property_group.baths_half > 0 ? ".5" : "")+'</span>'+word_translate.baths+'</li>');
+                // } else {
+                //     infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property_group.bath+'</span>'+word_translate.baths+'</li>');
+                // }
                 
-                infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">'+_.formatPrice(property_group.sqft)+'</span>'+word_translate.sqft+'</li>');
+                // infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">'+_.formatPrice(property_group.sqft)+'</span>'+word_translate.sqft+'</li>');
 
-                if (property_group.sqft > 0) {
-                    infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">$'+_.formatPrice(property_group.price / property_group.sqft)+'</span>/ '+word_translate.sqft+'</li>');
-                }
+                // if (property_group.sqft > 0) {
+                //     infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">$'+_.formatPrice(property_group.price / property_group.sqft)+'</span>/ '+word_translate.sqft+'</li>');
+                // }
 
                 infobox_content.push('</ul>');
                 infobox_content.push('</div>');
 
                 infobox_content.push('<div class="ib-ibpb"><img onerror="this.src=\'https://www.idxboost.com/i/default_thumbnail.jpg\';" class="ib-ibimg" src="'+property_group.thumbnail+'"></div>');
-
-                // if ((null != property_group.image) && (property_group.image.length > 0) ) {
-                //     // infobox_content.push('<div class="ib-ibpb"><img class="ib-ibimg" src="'+_.getMLSImage(property_group.mls_num, property_group.image)+'"></div>');
-                //     infobox_content.push('<div class="ib-ibpb"><img class="ib-ibimg" src="'+property_group.thumbnail+'"></div>');
-                // } else {
-                //     infobox_content.push('<div class="ib-ibpb"><img class="ib-ibimg" src="https://www.idxboost.com/i/default_thumbnail.jpg"></div>');
-                // }
-
-                // infobox_content.push('</li>');
                 infobox_content.push('<a href="'+__flex_idx_search_filter_v2.propertyDetailPermalink + "/" + property_group.slug +'"></a></li>');
             }
 
@@ -961,29 +968,26 @@ function handleMarkerClick(marker, property, map) {
                 infobox_content.push('<li class="ib-ibditem ib-ibprice">$'+_.formatPrice(property.item.price)+'</li>');
             }
 
-            infobox_content.push('<li class="ib-ibditem ib-ibbeds"><span class="ib-ibdbold">'+property.item.bed+'</span>'+word_translate.beds+'</li>');
-            if (property.item.baths_half > 0) {
-                infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property.item.bath+(property.item.baths_half > 0 ? ".5" : "")+'</span>'+word_translate.baths+'</li>');
-            } else {
-                infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property.item.bath+'</span>'+word_translate.baths+'</li>');
-            }
-            infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">'+_.formatPrice(property.item.sqft)+'</span>'+word_translate.sqft+'</li>');
+            infobox_content.push('<li class="ib-ibditem ib-ibbeds"><span class="ib-ibdbold">'+property.item.property_class_name+'</span></li>');
+            infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+_.formatAcres(property.item.lot_size)+'</span> Lot Size</li>');
 
-            if (property.item.sqft > 0 ) {
-                infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">$'+_.formatPrice(property.item.price / property.item.sqft)+'</span>/ '+word_translate.sqft+'</li>');
-            }
+
+            // if (property.item.baths_half > 0) {
+            //     infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property.item.bath+(property.item.baths_half > 0 ? ".5" : "")+'</span>'+word_translate.baths+'</li>');
+            // } else {
+            //     infobox_content.push('<li class="ib-ibditem ib-ibbaths"><span class="ib-ibdbold">'+property.item.bath+'</span>'+word_translate.baths+'</li>');
+            // }
+
+            // infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">'+_.formatPrice(property.item.sqft)+'</span>'+word_translate.sqft+'</li>');
+
+            // if (property.item.sqft > 0 ) {
+            //     infobox_content.push('<li class="ib-ibditem ib-ibsqft"><span class="ib-ibdbold">$'+_.formatPrice(property.item.price / property.item.sqft)+'</span>/ '+word_translate.sqft+'</li>');
+            // }
 
             infobox_content.push('</ul>');
             infobox_content.push('</div>');
 
             infobox_content.push('<div class="ib-ibpb"><img onerror="this.src=\'https://www.idxboost.com/i/default_thumbnail.jpg\';" class="ib-ibimg" src="'+property.item.thumbnail+'"></div>');
-
-            // if ((null != property.item.image) && (property.item.image.length > 0) ) {
-            //     // infobox_content.push('<div class="ib-ibpb"><img class="ib-ibimg" src="'+_.getMLSImage(property.item.mls_num, property.item.image)+'"></div>');
-            //     infobox_content.push('<div class="ib-ibpb"><img class="ib-ibimg" src="'+property.item.thumbnail+'"></div>');
-            // } else {
-            //     infobox_content.push('<div class="ib-ibpb"><img class="ib-ibimg" src="https://www.idxboost.com/i/default_thumbnail.jpg"></div>');
-            // }
 
             infobox_content.push('<a href="'+__flex_idx_search_filter_v2.propertyDetailPermalink + "/" + property.item.slug +'"></a></li>');
             infobox_content.push('</ul>');
@@ -1147,7 +1151,7 @@ function loadPropertyInModal(mlsNumber) {
                 var rfn = (typeof Cookies.get("_ib_user_firstname") !== "undefined") ? Cookies.get("_ib_user_firstname") : "";
                 var rln = (typeof Cookies.get("_ib_user_lastname") !== "undefined") ? Cookies.get("_ib_user_lastname") : "";
                 var remail = (typeof Cookies.get("_ib_user_email") !== "undefined") ? Cookies.get("_ib_user_email") : "";
-                var rphone = (typeof Cookies.get("_ib_user_phone") !== "undefined" && Cookies.get("_ib_user_phone")!="null" ) ? Cookies.get("_ib_user_phone") : "";
+                var rphone = (typeof Cookies.get("_ib_user_phone") !== "undefined") ? Cookies.get("_ib_user_phone") : "";
 
                 $("#_ib_fn_inq").val(rfn);
                 $("#_ib_ln_inq").val(rln);
@@ -1276,9 +1280,6 @@ function loadPropertyInModal(mlsNumber) {
                 
                 if ("yes" === __flex_g_settings.anonymous) {
                     if ( (__flex_g_settings.hasOwnProperty("force_registration")) && (1 == __flex_g_settings.force_registration) ) {
-                        // console.log("is foced registration");
-                        // if ($(".register").length) {
-                            // $(".register").click();
                             $("#modal_login").addClass("active_modal")
                             .find('[data-tab]').removeClass('active');
                         
@@ -1306,14 +1307,10 @@ function loadPropertyInModal(mlsNumber) {
             }
         }
     });
-
-    // console.log('Open Property #' + mlsNumber + " in modal.");
 }
 
 function markPropertyAsFavorite(mlsNumber, element, from) {
     var markPropertyAsFavoriteEndpoint = __flex_idx_search_filter_v2.trackListingsDetail.replace(/{{mlsNumber}}/g, mlsNumber);
-
-    // console.dir([mlsNumber, element, from]);
 
     $.ajax({
         type: "POST",
@@ -1354,8 +1351,6 @@ function markPropertyAsFavorite(mlsNumber, element, from) {
             }
         }
     });
-
-    // console.log('Track #' + mlsNumber + " as favorite.");
 }
 
 function buildMobileForm() {
@@ -1399,10 +1394,7 @@ function buildMobileForm() {
 
         for(var i = 0, l = ib_search_filter_dropdown.length; i < l; i++) {
             var option = ib_search_filter_dropdown[i];
-            if (("--" == option.value) || (0 == option.value)) {
-                option.label = word_translate.any;
-                option.value = "";
-            }
+            if (("--" == option.value) || (0 == option.value)) { option.label = word_translate.any; }
             ib_search_filter_frag.push('<option value="'+option.value+'">'+option.label+'</option>');
         }
 
@@ -1417,14 +1409,9 @@ function buildMobileForm() {
         ib_search_filter_dropdown = ib_search_filter_params.price_sale_range;
         ib_search_filter_dropdown.splice(-1, 1);
 
-        // ib_search_filter_frag.push('<option value="--">'+word_translate.any+'</option>');
-
         for(var i = 0, l = ib_search_filter_dropdown.length; i < l; i++) {
             var option = ib_search_filter_dropdown[i];
-            if (("--" == option.value) || (0 == option.value)) {
-                 option.label = word_translate.any;
-                 option.value = "";
-            }
+            if (("--" == option.value) || (0 == option.value)) { option.label = word_translate.any; }
             ib_search_filter_frag.push('<option value="'+option.value+'">'+option.label+'</option>');
         }
 
@@ -1441,10 +1428,7 @@ function buildMobileForm() {
 
         for(var i = 0, l = ib_search_filter_dropdown.length; i < l; i++) {
             var option = ib_search_filter_dropdown[i];
-            if (("--" == option.value) || (0 == option.value)) {
-                option.label = word_translate.any;
-                option.value = "";
-            }
+            if (("--" == option.value) || (0 == option.value)) { option.label = word_translate.any; }
             ib_search_filter_frag.push('<option value="'+option.value+'">'+option.label+'</option>');
         }
 
@@ -1461,10 +1445,6 @@ function buildMobileForm() {
 
         for(var i = 0, l = ib_search_filter_dropdown.length; i < l; i++) {
             var option = ib_search_filter_dropdown[i];
-            if (("--" == option.value) || (0 == option.value)) {
-                option.label = word_translate.any;
-                option.value = "";
-            }
             ib_search_filter_frag.push('<option value="'+option.value+'">'+option.label+'</option>');
         }
 
@@ -1545,7 +1525,7 @@ function buildMobileForm() {
 
     // FOR TYPES [MOBILE]
     if (ib_m_types.length) {
-        ib_search_filter_dropdown = ib_search_filter_params.property_types;
+        ib_search_filter_dropdown = __flex_idx_search_filter_v2.commercial_types;
 
         for(var i = 0, l = ib_search_filter_dropdown.length; i < l; i++) {
             var option = ib_search_filter_dropdown[i];
@@ -1560,7 +1540,6 @@ function buildMobileForm() {
                 text_translate = word_translate.townhouses;
             }else{
                 text_translate = option.label;
-                // console.log(text_translate);
             }
 
 
@@ -1776,35 +1755,36 @@ function buildMobileForm() {
             }
 
             var text_caracteristics ='';
-
-            if(option.name=='Swimming Pool')
+            if (option.name=='Swimming Pool'){
                 text_caracteristics=word_translate.swimming_pool;
-            else if (option.name=='Golf Course')
+            }else if ( option.name=="Golf Course"){
                 text_caracteristics=word_translate.golf_course;
-            else if (option.name=='Tennis Courts')
+            }else if ( option.name=="Tennis Courts"){
                 text_caracteristics=word_translate.tennis_courts;
-            else if (option.name=='Gated Community')
+            }else if ( option.name=="Gated Community"){
                 text_caracteristics=word_translate.gated_community;
-            else if (option.name=='Lofts')
+            }else if ( option.name=="Lofts"){
                 text_caracteristics=word_translate.lofts;
-            else if (option.name=='Penthouse')
+            }else if ( option.name=="Penthouse"){
                 text_caracteristics=word_translate.penthouse;
-            else if (option.name=="Water Front")
+            }else if ( option.name=="Water Front"){
                 text_caracteristics=word_translate.water_front;
-            else if (option.name=="Pets")
+            }else if ( option.name=="Pets"){
                 text_caracteristics=word_translate.pets;
-            else if (option.name=="Furnished")
+            }else if ( option.name=="Furnished"){
                 text_caracteristics=word_translate.furnished;
-            else if (option.name=="Equestrian")
+            }else if ( option.name=="Equestrian"){
                 text_caracteristics=word_translate.equestrian;
-            else if (option.name=="Short Sales")
-                text_caracteristics=word_translate.short_sales;
-            else if (option.name=="Foreclosures")
-                text_caracteristics=word_translate.foreclosures;
-            else if (option.name=="Boat Dock")
+            }else if ( option.name=="Boat Dock"){
                 text_caracteristics=word_translate.boat_dock;
-            else
+            }else if ( option.name=="Short Sales"){
+                text_caracteristics=word_translate.short_sales;
+            }else if ( option.name=="Foreclosures"){
+                text_caracteristics=word_translate.foreclosures;
+            }else{
                 text_caracteristics=option.name;
+            }
+
 
             ib_search_filter_frag.push('<li class="ib-item-wrap-fm ib-btn-chk-fm"><input class="ib-m-features-checkboxes" type="checkbox" value="'+option.code+'" id="s_amenity_'+option.code+'"><label for="s_amenity_'+option.code+'">'+text_caracteristics+'</label></li>');
         }
@@ -2149,6 +2129,513 @@ function attachListenersMobileForm() {
 }
 
 function buildSearchFilterForm() {
+    // start commercial (desktop)
+
+    ib_comm_price_sale_outer_min = $(".ib-comm-price-sale-outer-min");
+    ib_comm_price_sale_outer_max = $(".ib-comm-price-sale-outer-max");
+    
+    ib_comm_price_sale_inner_min = $(".ib-comm-price-sale-inner-min");
+    ib_comm_price_sale_inner_max = $(".ib-comm-price-sale-inner-max");
+    
+    ib_comm_price_sale_outer_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_sale_inner_min.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_sale_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_sale_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_sale_outer_min.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_sale_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_sale_outer_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_sale_inner_max.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_sale_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_sale_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_sale_outer_max.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_sale_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_rent_outer_min = $(".ib-comm-price-rent-outer-min");
+    ib_comm_price_rent_outer_max = $(".ib-comm-price-rent-outer-max");
+    
+    ib_comm_price_rent_inner_min = $(".ib-comm-price-rent-inner-min");
+    ib_comm_price_rent_inner_max = $(".ib-comm-price-rent-inner-max");
+    
+    ib_comm_price_rent_outer_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_rent_inner_min.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_rent_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_rent_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_rent_outer_min.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_rent_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_rent_outer_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_rent_inner_max.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_rent_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_price_rent_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+    
+            ib_comm_price_rent_outer_max.val(this.value);
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_rent_price"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_sqft_inner_min = $(".ib-comm-sqft-inner-min");
+    ib_comm_sqft_inner_max = $(".ib-comm-sqft-inner-max");
+    
+    ib_comm_sqft_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_living_size"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_sqft_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_living_size"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    
+    ib_comm_bsize_inner_min = $(".ib-comm-bsize-inner-min");
+    ib_comm_bsize_inner_max = $(".ib-comm-bsize-inner-max");
+    
+    ib_comm_bsize_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_building_size"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_bsize_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_building_size"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_lotsize_inner_min = $(".ib-comm-lotsize-inner-min");
+    ib_comm_lotsize_inner_max = $(".ib-comm-lotsize-inner-max");
+    
+    ib_comm_lotsize_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_lot_size"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_lotsize_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_lot_size"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_beds_inner_min = $(".ib-comm-beds-inner-min");
+    ib_comm_beds_inner_max = $(".ib-comm-beds-inner-max");
+    
+    ib_comm_beds_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_beds"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_beds_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_beds"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9+]/gi, '');
+                this.value = (this.value != "" && this.value > 0) ? _.formatPrice(this.value) : "";
+            }
+        }
+    });
+    
+    ib_comm_year_inner_min = $(".ib-comm-year-inner-min");
+    ib_comm_year_inner_max = $(".ib-comm-year-inner-max");
+    
+    ib_comm_year_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_year"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+    });
+    
+    ib_comm_year_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_year"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        }
+    });
+    
+    ib_comm_rate_inner_min = $(".ib-comm-rate-inner-min");
+    ib_comm_rate_inner_max = $(".ib-comm-rate-inner-max");
+    
+    ib_comm_rate_inner_min.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9\.+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="min_cap_rate"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9\.+]/gi, '');
+                this.value = this.value;
+            }
+        }
+    });
+    
+    ib_comm_rate_inner_max.on({
+        change: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                currentValue = currentValue.replace(/[^0-9\.+]/gi, '');
+            }
+
+            IB_SEARCH_FILTER_FORM.find('[name="max_cap_rate"]').val(currentValue);
+            IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+            // submit form
+            IB_SEARCH_FILTER_FORM.trigger("submit");
+        },
+        keyup: function() {
+            var currentValue = this.value;
+    
+            if (currentValue.length) {
+                this.value = currentValue.replace(/[^0-9\.+]/gi, '');
+                this.value = this.value;
+            }
+        }
+    });
+
+    // end
+
     $('body').addClass('view-grid');
 
     infoWindow = new InfoBubble({
@@ -2167,47 +2654,35 @@ function buildSearchFilterForm() {
 
     infoWindow.addListener("domready", function() {
         setTimeout(function () {
-            // console.dir($(".ib-infobox").parent());
             $(".ib-infobox").parent().parent().css("background-color", "transparent");
             $(".ib-ibpitem").on("click", function () {
                 var mlsNumber = $(this).data("mls");
-
-                originalPositionY = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
-                console.log('opening...');
-
                 loadPropertyInModal(mlsNumber);
             });
         }, 0);
     });
 
-
     if (IB_LISTINGS_CT.length) {
-      
-        IB_LISTINGS_CT.on("hover", ".ib-pitem", function(event) {
+        IB_LISTINGS_CT.on("mouseover", ".ib-pitem", function(event) {
             if (window.innerWidth <= 990) {
-              return;
+                return;
             }
 
             var geocode = $(this).data("geocode"),
-              i,
-              marker;
+                i,
+                marker;
 
             for (i = 0; i < IB_MARKERS.length; i++) {
-              if (IB_MARKERS[i].geocode === geocode) {
-                marker = IB_MARKERS[i];
-                break;
-              }
+                if (IB_MARKERS[i].geocode === geocode) {
+                    marker = IB_MARKERS[i];
+                    break;
+                }
             }
 
             if (typeof marker !== 'undefined') {
-              google.maps.event.trigger(marker, "click");
-              google.maps.event.trigger(marker, "mouseover");
+                google.maps.event.trigger(marker, "click");
+                google.maps.event.trigger(marker, "mouseover");
             }
- 
-            var itemScroll = $(this).attr('data-mls');
-            setTimeout(function(){
-              $('.ib-infobox .ib-ibpitem[data-mls="'+itemScroll+'"]').addClass('ms-order-m');
-            }, 100);
         });
 
         IB_LISTINGS_CT.on("mouseleave", ".ib-pitem", function(event) {
@@ -2230,31 +2705,23 @@ function buildSearchFilterForm() {
         IB_LISTINGS_CT.on("click", ".ib-pitem", function(event) {
             if ($(event.target).hasClass("ib-pfavorite")) {
                 if ("yes" === __flex_g_settings.anonymous) {
-                    originalPositionY = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
-                    console.log('opening...');
-
-                    // if ($(".register").length) {
-                        // $(".register").click();
-                        $("#modal_login").addClass("active_modal")
-                        .find('[data-tab]').removeClass('active');
+                    $("#modal_login").addClass("active_modal")
+                    .find('[data-tab]').removeClass('active');
+                
+                    $("#modal_login").addClass("active_modal")
+                        .find('[data-tab]:eq(1)')
+                        .addClass('active');
                     
-                        $("#modal_login").addClass("active_modal")
-                            .find('[data-tab]:eq(1)')
-                            .addClass('active');
-                        
-                        $("#modal_login")
-                            .find(".item_tab")
-                            .removeClass("active");
-                        
-                        $("#tabRegister")
-                        .addClass("active");
-
-                        $("button.close-modal").addClass("ib-close-mproperty");
-                        $(".overlay_modal").css("background-color", "rgba(0,0,0,0.8);");
-                    // }
-
-                    $("#user-options .register").trigger("click");
+                    $("#modal_login")
+                        .find(".item_tab")
+                        .removeClass("active");
                     
+                    $("#tabRegister")
+                    .addClass("active");
+
+                    $("button.close-modal").addClass("ib-close-mproperty");
+                    $(".overlay_modal").css("background-color", "rgba(0,0,0,0.8);");
+
                     return;
                 }
 
@@ -2267,9 +2734,6 @@ function buildSearchFilterForm() {
                 markPropertyAsFavorite(mlsNumber, event.target, "listing");
             } else if ( $(event.target).hasClass("ib-pipermalink") ) {
                 event.preventDefault();
-
-                originalPositionY = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
-                console.log('opening...');
 
                 var mlsNumber = $(event.target).parent().data("mls");
                 loadPropertyInModal(mlsNumber);
@@ -2415,8 +2879,6 @@ function buildSearchFilterForm() {
                 text_label_trans=word_translate.foreclosures;
             else if (__flex_idx_search_filter_v2.search.amenities[i].name=="Boat Dock")
                 text_label_trans=word_translate.boat_dock;
-            else
-                text_label_trans=__flex_idx_search_filter_v2.search.amenities[i].name;            
             
                 label.innerHTML = text_label_trans;
                 li.appendChild(input);
@@ -2426,6 +2888,23 @@ function buildSearchFilterForm() {
             }
 
             IB_LB_AMENITIES_OPTIONS.eq(index).append(IB_DOCFRAG);
+        });
+
+        $(".ib-status-types").each(function () {
+            $(this).on("click", "input", function() {
+                var checked_status_types = $(this).parent().parent().find("input:checked");
+                var checked_status_arr = [];
+
+                checked_status_types.each(function () {
+                    checked_status_arr.push(this.value);
+                });
+
+                IB_SEARCH_FILTER_FORM.find('[name="amenities"]').val(checked_status_arr.join(","));
+                IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
+
+                // submit form
+                IB_SEARCH_FILTER_FORM.trigger("submit");
+            });
         });
 
         IB_LB_AMENITIES_OPTIONS.on("change", "input", function() {
@@ -2453,29 +2932,28 @@ function buildSearchFilterForm() {
 
     if (IB_LB_TYPES_OPTIONS.length) {
         IB_LB_TYPES_OPTIONS.each(function (index, node) {
-            for (var i = 0, l = __flex_idx_search_filter_v2.search.property_types.length; i < l; i++) {
+            for (var i = 0, l = __flex_idx_search_filter_v2.commercial_types.length; i < l; i++) {
                 var li = document.createElement("li");
                 li.classList.add("ib-citem");
                 var input = document.createElement("input");
                 input.setAttribute("type", "checkbox");
                 input.setAttribute("id", "ib-ppt-"+node.getAttribute('data-type')+"_" + i);
-                input.setAttribute("value", __flex_idx_search_filter_v2.search.property_types[i].value);
+                input.setAttribute("value", __flex_idx_search_filter_v2.commercial_types[i].value);
                 input.classList.add("ib-icheck");
                 var label = document.createElement("label");
                 label.classList.add("ib-clabel");
                 label.setAttribute("for", "ib-ppt-"+node.getAttribute('data-type')+"_" + i);
                 var text_label_trans='';
-                    if(__flex_idx_search_filter_v2.search.property_types[i].label=='Homes'){
+                    if(__flex_idx_search_filter_v2.commercial_types[i].label=='Homes'){
                         text_label_trans=word_translate.homes;
-                    }else if(__flex_idx_search_filter_v2.search.property_types[i].label=='Condominiums'){
+                    }else if(__flex_idx_search_filter_v2.commercial_types[i].label=='Condominiums'){
                         text_label_trans=word_translate.condominiums;
-                    }else if(__flex_idx_search_filter_v2.search.property_types[i].label=='Townhouses'){
+                    }else if(__flex_idx_search_filter_v2.commercial_types[i].label=='Townhouses'){
                         text_label_trans=word_translate.townhouses;
-                    }else if (__flex_idx_search_filter_v2.search.property_types[i].label=='Single Family Homes'){
+                    }else if (__flex_idx_search_filter_v2.commercial_types[i].label=='Single Family Homes'){
                         text_label_trans=word_translate.single_family_homes;
                     }else{
-                        text_label_trans=__flex_idx_search_filter_v2.search.property_types[i].label;
-                        // console.log(text_label_trans);
+                        text_label_trans=__flex_idx_search_filter_v2.commercial_types[i].label;
                     }
 
                 label.innerHTML = text_label_trans;
@@ -2505,27 +2983,27 @@ function buildSearchFilterForm() {
 
             var lbl_ptypes = [];
 
-            if (-1 !== $.inArray("2", chk_list)) {
-                lbl_ptypes.push("Homes");
-            }
+            // if (-1 !== $.inArray("2", chk_list)) {
+            //     lbl_ptypes.push("Homes");
+            // }
 
-            if (-1 !== $.inArray("1", chk_list)) {
-                lbl_ptypes.push("Condominiums");
-            }
+            // if (-1 !== $.inArray("1", chk_list)) {
+            //     lbl_ptypes.push("Condominiums");
+            // }
 
-            if (-1 !== $.inArray("tw", chk_list)) {
-                lbl_ptypes.push("Townhouses");
-            }
+            // if (-1 !== $.inArray("tw", chk_list)) {
+            //     lbl_ptypes.push("Townhouses");
+            // }
 
-            if (-1 !== $.inArray("mf", chk_list)) {
-                lbl_ptypes.push("Multi-Family");
-            }
+            // if (-1 !== $.inArray("mf", chk_list)) {
+            //     lbl_ptypes.push("Multi-Family");
+            // }
 
-            if (lbl_ptypes.length && lbl_ptypes.length < 4) {
+            // if (lbl_ptypes.length && lbl_ptypes.length < 4) {
+            if (lbl_ptypes.length) {
                 IB_LBL_TYPES_NTF.html(lbl_ptypes.join(", "));
                 lbl_ptypes.length = 0;
             } else {
-                // IB_LBL_TYPES_NTF.html("Homes, Condominiums, Townhouses");
                 IB_LBL_TYPES_NTF.html(word_translate.any_type);
             }
 
@@ -2569,7 +3047,6 @@ function buildSearchFilterForm() {
         });
 
         IB_RG_PRICE_SALE.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
             
             var min = IB_RG_PRICE_SALE_VALUES[values[0]];
@@ -2590,8 +3067,6 @@ function buildSearchFilterForm() {
                 max = "$" + _.formatPrice(max);
             }
 
-            // console.dir([min_lbl, max_lbl]);
-
             if (
                 ( ("--" == min_lbl) && ("--" == max_lbl) ) ||
                 ( (0 == min_lbl) && (0 == max_lbl) ) ||
@@ -2609,7 +3084,6 @@ function buildSearchFilterForm() {
             IB_RG_PRICE_SALE_LBL_LT.val(min);
             IB_RG_PRICE_SALE_LBL_RT.val(max);
         
-            // console.log("%s - %s", min, max);
         });
     }
 
@@ -2644,7 +3118,6 @@ function buildSearchFilterForm() {
         });
 
         IB_RG_PRICE_RENT.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
             
             var min = IB_RG_PRICE_RENT_VALUES[values[0]];
@@ -2665,8 +3138,6 @@ function buildSearchFilterForm() {
                 max = "$" + _.formatPrice(max);
             }
 
-            // console.dir([min_lbl, max_lbl]);
-
             if (
                 ( ("--" == min_lbl) && ("--" == max_lbl) ) ||
                 ( (0 == min_lbl) && (0 == max_lbl) ) ||
@@ -2683,8 +3154,6 @@ function buildSearchFilterForm() {
 
             IB_RG_PRICE_RENT_LBL_LT.val(min);
             IB_RG_PRICE_RENT_LBL_RT.val(max);
-        
-            // console.log("%s - %s", min, max);
         });
     }
 
@@ -2719,24 +3188,19 @@ function buildSearchFilterForm() {
         });
 
         IB_RG_BEDROOMS.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
 
             var min_lbl = IB_RG_BEDROOMS_VALUES[values[0]];
             var max_lbl = IB_RG_BEDROOMS_VALUES[values[1]];
-
-            // console.dir([min_lbl, max_lbl]);
 
             if (
                 ( (0 == min_lbl) && (6 == max_lbl) ) ||
                 ( (6 == min_lbl) && (6 == max_lbl) ) ||
                 ( (0 == min_lbl) && (0 == max_lbl) )
             ) {
-                //IB_LBL_BED_NTF.html("Any Bed(s)");
                 IB_LBL_BED_NTF.html(word_translate.any_bed);
             } else {
                 if (max_lbl > 5) {
-                    //IB_LBL_BED_NTF.html(min_lbl + " - "+"Any Bed(s)");
                     IB_LBL_BED_NTF.html(min_lbl + " - "+word_translate.any_bed);
                 } else {
                     IB_LBL_BED_NTF.html(min_lbl + " - " + max_lbl + " "+word_translate.beds);
@@ -2776,13 +3240,10 @@ function buildSearchFilterForm() {
         });
 
         IB_RG_BATHROOMS.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
 
             var min_lbl = IB_RG_BATHROOMS_VALUES[values[0]];
             var max_lbl = IB_RG_BATHROOMS_VALUES[values[1]];
-
-            // console.dir([min_lbl, max_lbl]);
 
             if (
                 ( (0 == min_lbl) && (6 == max_lbl) ) ||
@@ -2821,9 +3282,6 @@ function buildSearchFilterForm() {
                     max_val = '';
                 }
 
-                // console.dir("debounced [slide]");
-                // console.dir(ui);
-
                 IB_SEARCH_FILTER_FORM.find('[name="min_living_size"]').val(min_val);
                 IB_SEARCH_FILTER_FORM.find('[name="max_living_size"]').val(max_val);
                 IB_SEARCH_FILTER_FORM.find('[name="page"]').val(1);
@@ -2835,28 +3293,25 @@ function buildSearchFilterForm() {
 
         // live update label for living size [slider]
         IB_RG_LIVINGSIZE.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
             
             var min = IB_RG_LIVINGSIZE_VALUES[values[0]];
             var max = IB_RG_LIVINGSIZE_VALUES[values[1]];
 
             if ( (0 == min) || ("--" == min)) {
-                min = '0 '+word_translate.sqft;
+                min = '0 sq ft';
             } else {
-                min = _.formatPrice(min) + " "+word_translate.sqft;
+                min = _.formatPrice(min) + " sq ft";
             }
             
             if ( (0 == max) || ("--" == max)) {
                 max = word_translate.any_size;
             } else {
-                max = _.formatPrice(max) + " "+word_translate.sqft;
+                max = _.formatPrice(max) + " sq ft";
             }
 
             IB_RG_LIVING_LBL_LT.val(min);
             IB_RG_LIVING_LBL_RT.val(max);
-
-            // console.log("%s - %s", min, max);
         });
     }
 
@@ -2892,28 +3347,25 @@ function buildSearchFilterForm() {
 
         // live update label for land size [slider]
         IB_RG_LANDSIZE.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
             
             var min = IB_RG_LANDSIZE_VALUES[values[0]];
             var max = IB_RG_LANDSIZE_VALUES[values[1]];
 
             if ( (0 == min) || ("--" == min)) {
-                min = '0 '+word_translate.sqft;
+                min = '0 sq ft';
             } else {
-                min = _.formatPrice(min) + " "+word_translate.sqft;
+                min = _.formatPrice(min) + " sq ft";
             }
             
             if ( (0 == max) || ("--" == max)) {
                 max = word_translate.any_size;
             } else {
-                max = _.formatPrice(max) + " "+word_translate.sqft;
+                max = _.formatPrice(max) + " sq ft";
             }
 
             IB_RG_LAND_LBL_LT.val(min);
             IB_RG_LAND_LBL_RT.val(max);
-
-            // console.log("%s - %s", min, max);
         });
     }
 
@@ -2949,7 +3401,6 @@ function buildSearchFilterForm() {
 
         // live update label for year built [slider]
         IB_RG_YEARBUILT.on("slide", function(event, ui) {
-            // console.log("change [slide]");
             var values = ui.values;
             
             var min = IB_RG_YEARBUILT_VALUES[values[0]];
@@ -2957,14 +3408,11 @@ function buildSearchFilterForm() {
 
             IB_RG_YEAR_LBL_LT.val(min);
             IB_RG_YEAR_LBL_RT.val(max);
-
-            // console.log("%s - %s", min, max);
         });
     }
 }
 
 function saveFilterSearchForLead() {
-    // IB_SEARCH_FILTER
     var search_url = location.href;
     var search_count = IB_SEARCH_FILTER.attr("data-count");
     var search_condition = IB_SEARCH_FILTER.attr("data-condition");
@@ -3017,10 +3465,6 @@ function handleFilterSearchLookup(event) {
     }
 
     $(".ib-temp-modal-infobox").remove();
-
-    //IB_SEARCH_FILTER_AUTOCOMPLETE.autocomplete("close");
-
-    // $(".ib-fmsearchsuggestions:eq(0)").parent().removeClass("ib-fhpa-minisearch-active");
 
     $("#ib-apply-filters-btn").html(word_translate.searching+'...');
     IB_RG_MATCHING.html(word_translate.searching+'...');
@@ -3075,37 +3519,75 @@ function handleFilterSearchLookup(event) {
                 max_sale_price: params.max_sale_price,
                 min_beds: params.min_beds,
                 max_beds: params.max_beds,
-                min_baths: params.min_baths,
-                max_baths: params.max_baths,
+                // min_baths: params.min_baths,
+                // max_baths: params.max_baths,
                 min_living_size: params.min_living_size,
                 max_living_size: params.max_living_size
             }));
 
             if ("0" == params.sale_type) {
+                // console.dir(params.min_sale_price);
+                // console.dir(params.max_sale_price);
+
                 if ( (null == params.min_sale_price) && (null == params.max_sale_price) ) {
                     IB_LBL_PRICE_NTF.html(word_translate.any_price);
-                } else if ((null != params.min_sale_price) && (null == params.max_sale_price)) {
-                    if (0 == params.min_sale_price) {
-                        IB_LBL_PRICE_NTF.html(word_translate.any_price);
-                    } else {
-                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_sale_price) + " - "+word_translate.any_price);
-                    }
                 } else {
-                    IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_sale_price) + " - $" + _.formatShortPrice(params.max_sale_price));
+                    if ( (null != params.min_sale_price) && ("" != params.max_sale_price) ) {
+                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_sale_price) + " - $" + _.formatShortPrice(params.max_sale_price));
+                        console.log('[1]');
+                    } else if ( (null != params.min_sale_price) && ("" == params.max_sale_price) ) {
+                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_sale_price) + " - "+word_translate.any_price);
+                        console.log('[2]');
+                    } else if ( ("" == params.min_sale_price) && (null != params.max_sale_price) ) {
+                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice("0") + " - $" + _.formatShortPrice(params.max_sale_price));
+                        console.log('[3]');
+                    }
                 }
+
+                // if ( (null == params.min_sale_price) && (null == params.max_sale_price) ) {
+                //     IB_LBL_PRICE_NTF.html(word_translate.any_price);
+                // } else if ((null != params.min_sale_price) && (null == params.max_sale_price)) {
+                //     if (0 == params.min_sale_price) {
+                //         IB_LBL_PRICE_NTF.html(word_translate.any_price);
+                //     } else {
+                //         IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_sale_price) + " - "+word_translate.any_price);
+                //     }
+                // } else {
+                //     IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_sale_price) + " - $" + _.formatShortPrice(params.max_sale_price));
+                // }
             } else {
                 if ( (null == params.min_rent_price) && (null == params.max_rent_price) ) {
                     IB_LBL_PRICE_NTF.html(word_translate.any_price);
-                } else if ((null != params.min_rent_price) && (null == params.max_rent_price)) {
-                    if (0 == params.min_rent_price) {
-                        IB_LBL_PRICE_NTF.html(word_translate.any_price);
-                    } else {
-                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_rent_price) + " - "+word_translate.any_price);
-                    }
                 } else {
-                    IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_rent_price) + " - $" + _.formatShortPrice(params.max_rent_price));
+                    if ( (null != params.min_rent_price) && ("" != params.max_rent_price) ) {
+                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_rent_price) + " - $" + _.formatShortPrice(params.max_rent_price));
+                        console.log('[1]');
+                    } else if ( (null != params.min_rent_price) && ("" == params.max_rent_price) ) {
+                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_rent_price) + " - " + word_translate.any_price);
+                        console.log('[2]');
+                    } else if ( ("" == params.min_rent_price) && (null != params.max_rent_price) ) {
+                        IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice("0") + " - $" + _.formatShortPrice(params.max_rent_price));
+                        console.log('[3]');
+                    }
                 }
+                // if ( (null == params.min_rent_price) && (null == params.max_rent_price) ) {
+                //     IB_LBL_PRICE_NTF.html(word_translate.any_price);
+                // } else if ((null != params.min_rent_price) && (null == params.max_rent_price)) {
+                //     if (0 == params.min_rent_price) {
+                //         IB_LBL_PRICE_NTF.html(word_translate.any_price);
+                //     } else {
+                //         IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_rent_price) + " - "+word_translate.any_price);
+                //     }
+                // } else {
+                //     IB_LBL_PRICE_NTF.html("$" + _.formatShortPrice(params.min_rent_price) + " - $" + _.formatShortPrice(params.max_rent_price));
+                // }
             }
+            
+            // console.dir(params.min_beds);
+            // console.dir(params.max_beds);
+
+            // console.log(null === params.min_beds);
+            // console.log("" === params.min_beds);
 
             if ( (null == params.min_beds) && (null == params.max_beds) ) {
                 IB_LBL_BED_NTF.html(word_translate.any_beds);
@@ -3120,59 +3602,59 @@ function handleFilterSearchLookup(event) {
                 IB_LBL_BED_NTF.html(_.formatShortPrice(params.min_beds) + " - " + _.formatShortPrice(params.max_beds) + " "+word_translate.beds);
             }
 
-            if ( (null == params.min_baths) && (null == params.max_baths) ) {
-                IB_LBL_BATH_NTF.html(word_translate.any_baths);
-            } else if ((null != params.min_baths) && (null == params.max_baths)) {
-                if (0 == params.min_baths) {
-                    IB_LBL_BATH_NTF.html(word_translate.any_baths);
-                } else {
-                    IB_LBL_BATH_NTF.html(_.formatShortPrice(params.min_baths) + " - "+word_translate.any_bath);
-                }
-            } else {
-                IB_LBL_BATH_NTF.html(_.formatShortPrice(params.min_baths) + " - " + _.formatShortPrice(params.max_baths) + " "+word_translate.baths);
-            }
+            // if ( (null == params.min_baths) && (null == params.max_baths) ) {
+            //     IB_LBL_BATH_NTF.html(word_translate.any_baths);
+            // } else if ((null != params.min_baths) && (null == params.max_baths)) {
+            //     if (0 == params.min_baths) {
+            //         IB_LBL_BATH_NTF.html(word_translate.any_baths);
+            //     } else {
+            //         IB_LBL_BATH_NTF.html(_.formatShortPrice(params.min_baths) + " - "+word_translate.any_bath);
+            //     }
+            // } else {
+            //     IB_LBL_BATH_NTF.html(_.formatShortPrice(params.min_baths) + " - " + _.formatShortPrice(params.max_baths) + " "+word_translate.baths);
+            // }
 
-            var labelPropertyTypes = [];
+            // var labelPropertyTypes = [];
 
-            if (-1 != $.inArray(2, params.property_type)) {
-                labelPropertyTypes.push("Homes");
-            }
+            // if (-1 != $.inArray(2, params.property_type)) {
+            //     labelPropertyTypes.push("Homes");
+            // }
 
-            if (-1 != $.inArray(1, params.property_type)) {
-                labelPropertyTypes.push("Condominiums");
-            }
+            // if (-1 != $.inArray(1, params.property_type)) {
+            //     labelPropertyTypes.push("Condominiums");
+            // }
 
-            if (-1 != $.inArray("tw", params.property_type)) {
-                labelPropertyTypes.push("Townhouses");
-            }
+            // if (-1 != $.inArray("tw", params.property_type)) {
+            //     labelPropertyTypes.push("Townhouses");
+            // }
 
-            if (-1 != $.inArray("mf", params.property_type)) {
-                labelPropertyTypes.push("Multi-Family");
-            }
+            // if (-1 != $.inArray("mf", params.property_type)) {
+            //     labelPropertyTypes.push("Multi-Family");
+            // }
 
-            if (labelPropertyTypes.length) {
+            // if (labelPropertyTypes.length) {
 
-                labelPropertyTypes.forEach(function(item_translate,pos_trans){
-                    if(item_translate=='Homes'){
-                        labelPropertyTypes[pos_trans]=word_translate.homes;
-                    }else if(item_translate=='Condominiums'){
-                        labelPropertyTypes[pos_trans]=word_translate.condominiums;
-                    }else if(item_translate=='Townhouses'){
-                        labelPropertyTypes[pos_trans]=word_translate.townhouses;
-                    }else if (item_translate=='"Single Family Homes"'){
-                        text_label_trans=word_translate.single_family_homes;
-                    } else {
-                        text_label_trans = "Multi-Family";
-                    }
-                });
+            //     labelPropertyTypes.forEach(function(item_translate,pos_trans){
+            //         if(item_translate=='Homes'){
+            //             labelPropertyTypes[pos_trans]=word_translate.homes;
+            //         }else if(item_translate=='Condominiums'){
+            //             labelPropertyTypes[pos_trans]=word_translate.condominiums;
+            //         }else if(item_translate=='Townhouses'){
+            //             labelPropertyTypes[pos_trans]=word_translate.townhouses;
+            //         }else if (item_translate=='"Single Family Homes"'){
+            //             text_label_trans=word_translate.single_family_homes;
+            //         } else {
+            //             text_label_trans = "Multi-Family";
+            //         }
+            //     });
 
-                if (labelPropertyTypes.length === __flex_idx_search_filter_v2.search.property_types.length) {
-                    IB_LBL_TYPES_NTF.html(word_translate.any_type);
-                } else {
-                    IB_LBL_TYPES_NTF.html(labelPropertyTypes.join(", "));
-                }
-                labelPropertyTypes.length = 0;
-            }
+            //     if (labelPropertyTypes.length === __flex_idx_search_filter_v2.commercial_types.length) {
+            //         IB_LBL_TYPES_NTF.html(word_translate.any_type);
+            //     } else {
+            //         IB_LBL_TYPES_NTF.html(labelPropertyTypes.join(", "));
+            //     }
+            //     labelPropertyTypes.length = 0;
+            // }
 
 
             IB_RG_MATCHING.html(word_translate.view+" " + _.formatShortPrice(pagination.count) + " "+word_translate.listings);
@@ -3182,7 +3664,7 @@ function handleFilterSearchLookup(event) {
             IB_SEARCH_FILTER_FORM.find('[name="sale_type"]').val(params.sale_type);
             IB_SEARCH_FILTER_FORM.find('[name="filter_search_keyword_label"]').val(params.filter_search_keyword_label);
             IB_SEARCH_FILTER_FORM.find('[name="filter_search_keyword_type"]').val(params.filter_search_keyword_type);
-            IB_SEARCH_FILTER_FORM.find('[name="waterfront_options"]').val(params.waterfront_options);
+            // IB_SEARCH_FILTER_FORM.find('[name="waterfront_options"]').val(params.waterfront_options);
             IB_SEARCH_FILTER_FORM.find('[name="min_sale_price"]').val(params.min_sale_price);
             IB_SEARCH_FILTER_FORM.find('[name="max_sale_price"]').val(params.max_sale_price);
             IB_SEARCH_FILTER_FORM.find('[name="min_rent_price"]').val(params.min_rent_price);
@@ -3195,6 +3677,7 @@ function handleFilterSearchLookup(event) {
             IB_SEARCH_FILTER_FORM.find('[name="max_living_size"]').val(params.max_living_size);
             IB_SEARCH_FILTER_FORM.find('[name="min_lot_size"]').val(params.min_lot_size);
             IB_SEARCH_FILTER_FORM.find('[name="max_lot_size"]').val(params.max_lot_size);
+            IB_SEARCH_FILTER_FORM.find('[name="lot_size_measure_type"]').val(params.lot_size_measure_type);
             IB_SEARCH_FILTER_FORM.find('[name="min_year"]').val(params.min_year);
             IB_SEARCH_FILTER_FORM.find('[name="max_year"]').val(params.max_year);
             IB_SEARCH_FILTER_FORM.find('[name="sort_type"]').val(params.sort_type);
@@ -3204,16 +3687,16 @@ function handleFilterSearchLookup(event) {
                 IB_SEARCH_FILTER_FORM.find('[name="property_type"]').val(params.property_type.join(","));
             }
 
+            // @todo initial zoom, rect boundaries
+            
             // if (true === IB_GMAP_INIT) {
-            if (params.hasOwnProperty("zm")) {
-                IB_SEARCH_FILTER_FORM.find('[name="zm"]').val(params.zm);
-            }
-
-            if (params.hasOwnProperty("rect")) {
-                IB_SEARCH_FILTER_FORM.find('[name="rect"]').val(params.rect);
-            }
-            // } else {
-            //     if (params.hasOwnProperty("zm") && (")) {
+                if (params.hasOwnProperty("zm")) {
+                    IB_SEARCH_FILTER_FORM.find('[name="zm"]').val(params.zm);
+                }
+    
+                if (params.hasOwnProperty("rect")) {
+                    IB_SEARCH_FILTER_FORM.find('[name="rect"]').val(params.rect);
+                }
             // }
 
             if (params.hasOwnProperty("polygon_search")) {
@@ -3313,7 +3796,6 @@ function handleFilterSearchLookup(event) {
 
             if (IB_LB_TYPES_OPTIONS.length) {
                 IB_LB_TYPES_OPTIONS.find("input").each(function (index, node) {
-                    //var currentValue = (("tw" != node.value) || ("mf" != node.value) ) ? parseInt(node.value, 10) : node.value;
                     var currentValue = (-1 === $.inArray(node.value, params.property_type) ? parseInt(node.value, 10) : node.value);
 
                     if (-1 != $.inArray(currentValue, params.property_type)) {
@@ -3322,41 +3804,81 @@ function handleFilterSearchLookup(event) {
                 });
             }
 
-            if (IB_LB_WATERFRONT_OPTIONS.length) {
-                IB_LB_WATERFRONT_OPTIONS.val((null == params.waterfront_options) ? "--" : params.waterfront_options);
-            }
+            // if (IB_LB_WATERFRONT_OPTIONS.length) {
+            //     IB_LB_WATERFRONT_OPTIONS.val((null == params.waterfront_options) ? "--" : params.waterfront_options);
+            // }
 
-            if (IB_LB_PARKING_OPTIONS.length) {
-                IB_LB_PARKING_OPTIONS.val((null == params.parking_options) ? "--" : params.parking_options);
-            }
-
-            if (IB_LB_AMENITIES_OPTIONS.length) {
-                IB_LB_AMENITIES_OPTIONS.find('input').each(function() {
-                    if (-1 !== $.inArray(this.value, params.amenities)) {
-                        this.checked = true;
+            if (IB_LB_MEASURE_TYPE.length) {
+                IB_LB_MEASURE_TYPE.each(function () {
+                    if (params.lot_size_measure_type == $(this).val()) {
+                        //$(this).click();
                     }
                 });
             }
 
+            // if (IB_LB_PARKING_OPTIONS.length) {
+            //     IB_LB_PARKING_OPTIONS.val((null == params.parking_options) ? "--" : params.parking_options);
+            // }
+
+            $(".ib-status-types").each(function () {
+                $(this).find("input").each(function () {
+                    if (-1 !== $.inArray(this.value, params.amenities)) {
+                        this.checked = true;
+                    }
+                });
+            });
+
+            // if (IB_LB_AMENITIES_OPTIONS.length) {
+            //     IB_LB_AMENITIES_OPTIONS.find('input').each(function() {
+            //         if (-1 !== $.inArray(this.value, params.amenities)) {
+            //             this.checked = true;
+            //         }
+            //     });
+            // }
+
+            if (ib_comm_rate_inner_min.length) {
+                IB_SEARCH_FILTER_FORM.find('[name="min_cap_rate"]').val(params.min_cap_rate);
+            }
+
+            if (ib_comm_rate_inner_max.length) {
+                IB_SEARCH_FILTER_FORM.find('[name="max_cap_rate"]').val(params.max_cap_rate);
+            }
+
             // range notifiers
             if (IB_RG_PRICE_SALE_LBL_LT.length) {
-                var min_sale_price = "$" + _.formatPrice(params.min_sale_price)
-                IB_RG_PRICE_SALE_LBL_LT.val(min_sale_price);
+                if (params.min_sale_price != null && params.min_sale_price != "") {
+                    var min_sale_price = _.formatPrice(params.min_sale_price);
+                    IB_RG_PRICE_SALE_LBL_LT.val(min_sale_price);
+                }
+                // var min_sale_price = "$" + _.formatPrice(params.min_sale_price)
+                // IB_RG_PRICE_SALE_LBL_LT.val(min_sale_price);
             }
 
             if (IB_RG_PRICE_SALE_LBL_RT.length) {
-                var max_sale_price = (null == params.max_sale_price) ? word_translate.any_price : ("$" + _.formatPrice(params.max_sale_price));
-                IB_RG_PRICE_SALE_LBL_RT.val(max_sale_price);
+                if (params.max_sale_price != null && params.max_sale_price != "") {
+                    var max_sale_price = _.formatPrice(params.max_sale_price);
+                    IB_RG_PRICE_SALE_LBL_RT.val(max_sale_price);
+                }
+                // var max_sale_price = (null == params.max_sale_price) ? word_translate.any_price : ("$" + _.formatPrice(params.max_sale_price));
+                // IB_RG_PRICE_SALE_LBL_RT.val(max_sale_price);
             }
 
             if (IB_RG_PRICE_RENT_LBL_LT.length) {
-                var min_rent_price = "$" + _.formatPrice(params.min_rent_price);
-                IB_RG_PRICE_RENT_LBL_LT.val(min_rent_price);
+                if (params.min_rent_price != null && params.min_rent_price != "") {
+                    var min_rent_price = _.formatPrice(params.min_rent_price);
+                    IB_RG_PRICE_RENT_LBL_LT.val(min_rent_price);
+                }
+                // var min_rent_price = "$" + _.formatPrice(params.min_rent_price);
+                // IB_RG_PRICE_RENT_LBL_LT.val(min_rent_price);
             }
 
             if (IB_RG_PRICE_RENT_LBL_RT.length) {
-                var max_rent_price = (null == params.max_rent_price) ? word_translate.any_price : ("$" + _.formatPrice(params.max_rent_price));
-                IB_RG_PRICE_RENT_LBL_RT.val(max_rent_price);
+                if (params.max_rent_price != null && params.max_rent_price != "") {
+                    var max_rent_price = _.formatPrice(params.max_rent_price);
+                    IB_RG_PRICE_RENT_LBL_RT.val(max_rent_price);
+                }
+                // var max_rent_price = (null == params.max_rent_price) ? word_translate.any_price : ("$" + _.formatPrice(params.max_rent_price));
+                // IB_RG_PRICE_RENT_LBL_RT.val(max_rent_price);
             }
 
             if (IB_RG_YEAR_LBL_LT.length) {
@@ -3369,24 +3891,76 @@ function handleFilterSearchLookup(event) {
                 IB_RG_YEAR_LBL_RT.val(max_year);
             }
 
+            if (ib_comm_bsize_inner_min.length) {
+                if (params.min_building_size != null && params.min_building_size != "") {
+                    var min_bsize = params.min_building_size.replace(/[^0-9+]/gi, '');
+
+                    ib_comm_bsize_inner_min.val(_.formatPrice(min_bsize));
+                }
+            }
+            if (ib_comm_bsize_inner_max.length) {
+                if (params.max_building_size != null && params.max_building_size != "") {
+                    var max_bsize = params.max_building_size.replace(/[^0-9+]/gi, '');
+
+                    ib_comm_bsize_inner_max.val(_.formatPrice(max_bsize));
+                }
+            }
+
+            if (ib_comm_beds_inner_min.length) {
+                if (params.min_beds != null && params.min_beds != "") {
+                    ib_comm_beds_inner_min.val(params.min_beds);
+                }
+            }
+            if (ib_comm_beds_inner_max.length) {
+                if (params.max_beds != null && params.max_beds != "") {
+                    ib_comm_beds_inner_max.val(params.max_beds);
+                }
+            }
+
+            if (ib_comm_rate_inner_min.length) {
+                if (params.min_cap_rate != null && params.min_cap_rate != "") {
+                    ib_comm_rate_inner_min.val(params.min_cap_rate);
+                }
+            }
+            if (ib_comm_rate_inner_max.length) {
+                if (params.max_cap_rate != null && params.max_cap_rate != "") {
+                    ib_comm_rate_inner_max.val(params.max_cap_rate);
+                }
+            }
+
             if (IB_RG_LIVING_LBL_LT.length) {
-                var min_living_size = _.formatPrice(params.min_living_size) + ' '+word_translate.sqft;
-                IB_RG_LIVING_LBL_LT.val(min_living_size);
+                if (params.min_living_size != null && params.min_living_size != "") {
+                    var min_living_size = _.formatPrice(params.min_living_size);
+                    IB_RG_LIVING_LBL_LT.val(min_living_size);
+                }
+                // var min_living_size = _.formatPrice(params.min_living_size) + ' '+word_translate.sqft;
+                // IB_RG_LIVING_LBL_LT.val(min_living_size);
             }
 
             if (IB_RG_LIVING_LBL_RT.length) {
-                var max_living_size = (null == params.max_living_size) ? word_translate.any_size : (_.formatPrice(params.max_living_size) + " "+word_translate.sqft);
-                IB_RG_LIVING_LBL_RT.val(max_living_size);
+                if (params.max_living_size != null && params.max_living_size != "") {
+                    var max_living_size = _.formatPrice(params.max_living_size);
+                    IB_RG_LIVING_LBL_RT.val(max_living_size);
+                }
+                // var max_living_size = (null == params.max_living_size) ? word_translate.any_size : (_.formatPrice(params.max_living_size) + " "+word_translate.sqft);
+                // IB_RG_LIVING_LBL_RT.val(max_living_size);
             }
 
             if (IB_RG_LAND_LBL_LT.length) {
-                var min_lot_size = _.formatPrice(params.min_lot_size) + ' '+word_translate.sqft;
-                IB_RG_LAND_LBL_LT.val(min_lot_size);
+                if (params.min_lot_size != null && params.min_lot_size != "") {
+                    var min_lot_size = _.formatPrice(params.min_lot_size);
+                    IB_RG_LAND_LBL_LT.val(min_lot_size);
+                }
             }
 
             if (IB_RG_LAND_LBL_RT.length) {
-                var max_lot_size = (null == params.max_lot_size) ? word_translate.any_size : (_.formatPrice(params.max_lot_size) + " "+word_translate.sqft);
-                IB_RG_LAND_LBL_RT.val(max_lot_size);
+                if (params.max_lot_size != null && params.max_lot_size != "") {
+                    var max_lot_size = _.formatPrice(params.max_lot_size);
+                    IB_RG_LAND_LBL_RT.val(max_lot_size);
+                }
+
+                // var max_lot_size = (null == params.max_lot_size) ? word_translate.any_size : (_.formatPrice(params.max_lot_size) + " "+word_translate.sqft);
+                // IB_RG_LAND_LBL_RT.val(max_lot_size);
             }
 
             // price for sale
@@ -3443,28 +4017,12 @@ function handleFilterSearchLookup(event) {
                     disableDefaultUI: true
                 });
 
-                // idleListener = IB_MAP.addListener("idle", function() {
-                //     google.maps.event.removeListener(idleListener);
-                //     handleBoundsChangeEvent(map);
-                // });
-
                 IB_MAP.addListener("dragend", function() {
                     var idleListener = IB_MAP.addListener("idle", function() {
                         google.maps.event.removeListener(idleListener);
-                        // handleBoundsChangeEvent(IB_MAP);
                         handleDragSearchEvent();
-                        // console.log('[dragend]');
                     });
                 });
-
-                // IB_MAP.addListener("zoom_changed", function() {
-                //     var idleListener = IB_MAP.addListener("idle", function() {
-                //         google.maps.event.removeListener(idleListener);
-                //         // handleBoundsChangeEvent(IB_MAP);
-                //         handleDragSearchEvent();
-                //         // console.log('[zoom_changed]');
-                //     });
-                // });
 
                 // fill values for mobile form [filter]
                 fillValuesMobileForm(response);
@@ -3478,10 +4036,6 @@ function handleFilterSearchLookup(event) {
                     IB_GMAP_FINISHED_POLYGON = false;
 
                     if (window.innerWidth < 990) {
-                        /*
-                        $('.ib-mobile-sview').val('map');
-                        $('.ib-mobile-sview').change();
-                        */
                         $(".idx-bta-map").click();
 
                         setTimeout(function () {
@@ -3497,7 +4051,6 @@ function handleFilterSearchLookup(event) {
                             }
 
                             if ("undefined" !== typeof IB_DRAWING_POLYGON) {
-                                // console.log("remove polygon draw");
                                 IB_DRAWING_POLYGON.setMap(null);
                             }
         
@@ -3508,7 +4061,6 @@ function handleFilterSearchLookup(event) {
                             var mapBounds = IB_MAP.getBounds();
 
                             IB_MAP_TOOLTIP.addClass("ib-removeb-hide");
-                            // console.log("hide remove boundaries button");
 
                             IB_SEARCH_FILTER_FORM.find('[name="rect"]').val(mapBounds.toUrlValue());
                             IB_SEARCH_FILTER_FORM.find('[name="zm"]').val(mapZoom);
@@ -3528,7 +4080,6 @@ function handleFilterSearchLookup(event) {
                         }
 
                         if ("undefined" !== typeof IB_DRAWING_POLYGON) {
-                            // console.log("remove polygon draw");
                             IB_DRAWING_POLYGON.setMap(null);
                         }
     
@@ -3539,7 +4090,6 @@ function handleFilterSearchLookup(event) {
                         var mapBounds = IB_MAP.getBounds();
                 
                         IB_MAP_TOOLTIP.addClass("ib-removeb-hide");
-                        // console.log("hide remove boundaries button");
                     
                         IB_SEARCH_FILTER_FORM.find('[name="rect"]').val(mapBounds.toUrlValue());
                         IB_SEARCH_FILTER_FORM.find('[name="zm"]').val(mapZoom);
@@ -3602,7 +4152,6 @@ function handleFilterSearchLookup(event) {
 
             // reduce markers [first step]
             for (var i = 0, l = map_items.length; i < l; i++) {
-                // if (i >= 39) { break; }
                 row = map_items[i];
                 geocode = row.lat + ':' + row.lng;
                 if (_.indexOf(hashed_properties, geocode) === -1) {
@@ -3704,20 +4253,12 @@ function handleFilterSearchLookup(event) {
             if (true === IB_GMAP_FIT_TO_BOUNDS) {
                 if (!urlParams.has("rect") && !urlParams.has("zm")) {
                     if (location.search.length > 0) {
-                        // console.log('[fit]');
                         IB_MAP.fitBounds(IB_BOUNDS);
                     }
                 }
                 
                 IB_GMAP_FIT_TO_BOUNDS = false;
             }
-
-            /*
-            @todo map
-            setTimeout(function () {
-                google.maps.event.addListener(IB_MAP, "idle", handleDragSearchEvent);
-            }, 2000);
-            */
         }
     });
 }
@@ -3778,6 +4319,7 @@ $(function () {
     IB_LB_PARKING_OPTIONS = $(".ib-parking-options");
     IB_LB_AMENITIES_OPTIONS = $(".ib-amenities-options");
     IB_LB_TYPES_OPTIONS = $(".ib-types-options");
+    IB_LB_MEASURE_TYPE = $(".lotsize-measure-type");
     IB_RENTAL_TYPE = $(".ib-fforsr:eq(0)");
     IB_RG_PRICE_SALE = $(".ib-rprice-sale");
     IB_RG_PRICE_RENT = $(".ib-rprice-rent");
@@ -3864,9 +4406,6 @@ $(function () {
 
     // handle apply draw
     $("#map-draw-apply-tg").on("click", function() {
-        //IB_USER_IS_DRAWING = false;
-
-        // @todo
         IB_DRAWING_MANAGER.setMap(null);
 
         if (false === IB_GMAP_FINISHED_POLYGON) {
@@ -3918,9 +4457,7 @@ $(function () {
     
                 // make URL friendly
                 encodedPath = encodedPath.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
-    
-                //console.dir(coords);
-    
+        
                 var mapCenter = IB_MAP.getCenter();
                 var mapZoom = IB_MAP.getZoom();
                 var mapBounds = IB_MAP.getBounds();
@@ -3958,13 +4495,12 @@ $(function () {
         loadPropertyInModal(mlsNumber);
     });
 
-    $(document).on("click", ".ib-mmclose", function(event) {
+    $(document).on("click", ".ib-mmclose", function() {
         var $theModal = $(event.target).parents('.ib-modal-master');
         $theModal.addClass('ib-md-hiding');
         setTimeout(function() {
             $theModal.removeClass('ib-md-active ib-md-hiding');
         }, 250);
-        $("body").removeClass('ib-request-float-modal');
     });
 
     $(document).on("click", ".ib-close-mproperty", function(event) {
@@ -3974,8 +4510,6 @@ $(function () {
     });
 
     $(document).on("click", ".ib-paitem-load-schools", function(event) {
-        // console.log("load schools information");
-
         var _self = $(this);
         var lat = _self.data("lat");
         var lng = _self.data("lng");
@@ -4076,53 +4610,28 @@ $(function () {
 
     $(".ib-dbsave").on("click", function() {
             if ("yes" === __flex_g_settings.anonymous) {
-                // if ($(".register").length) {
-                    // $(".register").click();
-                    $("#modal_login").addClass("active_modal")
-                    .find('[data-tab]').removeClass('active');
+                $("#modal_login").addClass("active_modal")
+                .find('[data-tab]').removeClass('active');
+            
+                $("#modal_login").addClass("active_modal")
+                    .find('[data-tab]:eq(1)')
+                    .addClass('active');
                 
-                    $("#modal_login").addClass("active_modal")
-                        .find('[data-tab]:eq(1)')
-                        .addClass('active');
-                    
-                    $("#modal_login")
-                        .find(".item_tab")
-                        .removeClass("active");
-                    
-                    $("#tabRegister")
-                    .addClass("active");
+                $("#modal_login")
+                    .find(".item_tab")
+                    .removeClass("active");
+                
+                $("#tabRegister")
+                .addClass("active");
 
-                    $("button.close-modal").addClass("ib-close-mproperty");
-                    $(".overlay_modal").css("background-color", "rgba(0,0,0,0.8);");
-                // }
+                $("button.close-modal").addClass("ib-close-mproperty");
+                $(".overlay_modal").css("background-color", "rgba(0,0,0,0.8);");
                 
                 return;
             }
 
         $("#ib-fsearch-save-modal").addClass("ib-md-active");
     });
-
-    /*
-     $(".ib-mobile-sview").on("change", function() {
-        var currentValue = $(this).val();
-
-        const $ibMapGridContainer = $('.ib-mapgrid-container');
-        $('.ib-gwvbitem[data-view="' + currentValue + '"]').addClass('ib-gv-active').siblings().removeClass('ib-gv-active');
-
-        if ("map" === currentValue) {
-            $('body').addClass('view-map').removeClass('view-grid view-list');
-            $ibMapGridContainer.removeClass('ib-vgrid-active').addClass('ib-vmap-active');
-            setTimeout(function () {
-                if (false === IB_LOOKUP_DRAG) {
-                    IB_MAP.fitBounds(IB_HIDDEN_BOUNDS);
-                }
-            }, 100);
-        } else if ("grid" === currentValue) {
-            $('body').addClass('view-grid').removeClass('view-map view-list');
-            $ibMapGridContainer.addClass('ib-vgrid-active').removeClass('ib-vmap-active');
-        }
-    });
-    */
 
     $('.ib-gwvbitem').click(function(){
         $('.ib-gviews').val($(this).attr('data-view')).change();
@@ -4139,28 +4648,23 @@ $(function () {
 
         // handle favorite
         IB_MODAL_WRAPPER.on("click", ".ib-pfavorite", function(event) {
-            // console.log(__flex_g_settings.anonymous);
-
             if ("yes" === __flex_g_settings.anonymous) {
-                // if ($(".register").length) {
-                    // $(".register").click();
-                    $("#modal_login").addClass("active_modal")
-                    .find('[data-tab]').removeClass('active');
+                $("#modal_login").addClass("active_modal")
+                .find('[data-tab]').removeClass('active');
+            
+                $("#modal_login").addClass("active_modal")
+                    .find('[data-tab]:eq(1)')
+                    .addClass('active');
                 
-                    $("#modal_login").addClass("active_modal")
-                        .find('[data-tab]:eq(1)')
-                        .addClass('active');
-                    
-                    $("#modal_login")
-                        .find(".item_tab")
-                        .removeClass("active");
-                    
-                    $("#tabRegister")
-                    .addClass("active");
+                $("#modal_login")
+                    .find(".item_tab")
+                    .removeClass("active");
+                
+                $("#tabRegister")
+                .addClass("active");
 
-                    $("button.close-modal").addClass("ib-close-mproperty");
-                    $(".overlay_modal").css("background-color", "rgba(0,0,0,0.8);");
-                // }
+                $("button.close-modal").addClass("ib-close-mproperty");
+                $(".overlay_modal").css("background-color", "rgba(0,0,0,0.8);");
             
                 return;
             }
@@ -4206,11 +4710,6 @@ $(function () {
 
             if (/webOS|iPhone|iPad/i.test(navigator.userAgent)) {
               $('body').removeClass('only-mobile');
-            }
-
-            if (typeof originalPositionY !== "undefined") {
-                console.log('restoring to: ' + originalPositionY);
-                window.scrollTo(0,originalPositionY);
             }
         });
 
@@ -4429,10 +4928,6 @@ $(function () {
             });
 
             $("#ib-email-thankyou").addClass("ib-md-active");
-            $(document).on("click", "#ib-email-thankyou .ib-mmclose", function(event) {
-              event.preventDefault();
-              $("#ib-email-thankyou").removeClass("ib-md-active");
-            });
         });
 
         // handle slider switch fullscreen
@@ -4587,24 +5082,13 @@ $(function () {
     // Header Filters
     if($ibAdvanced.length) {
         $ibAdvanced.on('click', function(){
+            //debugger;
             if (window.innerWidth < 990) {
                 $(".ib-modal-filters-mobile").show();
                 if (/webOS|iPhone|iPad/i.test(navigator.userAgent)) {
                   $('body').addClass('only-mobile');
                 }
             }
-            
-            /*
-            if($filterMobile.hasClass('ib-fmobile-active')) {
-                $ibAdvanced.removeClass('ib-badvanced-active');
-                $filterMobile.removeClass('ib-fmobile-active');
-                if ($('body').width() < 990) $ibFilterContainer.removeClass('ib-filter-container-fixed');
-            } else {
-                $ibAdvanced.addClass('ib-badvanced-active');
-                $filterMobile.addClass('ib-fmobile-active');
-                if ($('body').width() < 990) $ibFilterContainer.addClass('ib-filter-container-fixed');
-            }
-            */
         });
 
         // hide more filter [mobile]
@@ -4699,53 +5183,11 @@ $(function () {
                 }
             });
         }
-
-        /*
-        if (!$wSlider.hasClass('gs-builded')) {
-            // var $newImages = '',
-            //     $mlsCode = $wSlider.attr('data-mls'),
-            //     $imgCnt = $wSlider.attr('data-img-cnt');
-            
-            // if ($mlsCode == undefined) return console.log('MLS code no found!');
-            // if ($imgCnt == undefined) return console.log('Counter not found!');
-            
-            // console.log($wSlider);
-
-            // $.each(getGallery($mlsCode, $imgCnt, 2), function(i, m){
-            //     $newImages += '<img data-lazy="' + m + '" class="gs-lazy">';
-            // });
-
-            // $wSlider.html($newImages);
-
-            $wSlider.greatSlider({
-                type: 'fade',
-                nav: true,
-                bullets: false,
-                autoHeight: false,
-                lazyLoad: true,
-                layout: {
-                    arrowDefaultStyles: false
-                },
-            });
-        }
-        */
     });
 
     // Fixed filter in scroll
     var lastScroll = 0;
-    /*$(window).scroll(function(){
-        let $currentScroll = $(this).scrollTop() + 86;
-        if ($currentScroll > lastScroll) {
-            if ($currentScroll >= $ibFilterContainer.position().top) {
-                if (!$ibFilterContainer.hasClass('ib-filter-container-inscroll')) $ibFilterContainer.addClass('ib-filter-container-inscroll');
-            }
-        } else {
-            if ($currentScroll <= $ibFilterContainer.position().top) {
-                if ($ibFilterContainer.hasClass('ib-filter-container-inscroll')) $ibFilterContainer.removeClass('ib-filter-container-inscroll');
-            }
-        }
-        lastScroll = $currentScroll;
-    });*/
+
     // Close All filters with Matching BTN
     $ibMatchingbtn.on("click", function() {
         $ibAdvanced.find('.ib-oiwrapper').click();
@@ -4756,9 +5198,6 @@ $(function () {
 
     // Cambio de vista desde botonera
     $('.idx-bta-map').click(function(){
-        // $('.ib-mobile-sview').val('map');
-        // $('.ib-mobile-sview').change();
-
         var currentValue = "map";
         var $ibMapGridContainer = $('.ib-mapgrid-container');
 
@@ -4772,7 +5211,6 @@ $(function () {
 
         setTimeout(function () {
             if (false === IB_LOOKUP_DRAG) {
-                // console.log('[fitbounds]');
                 IB_MAP.fitBounds(IB_HIDDEN_BOUNDS);
             }
         }, 100);
@@ -4780,9 +5218,6 @@ $(function () {
 
     // cambio de vista desde botonera
     $('.idx-bta-grid').click(function(){
-        // $('.ib-mobile-sview').val('grid');
-        // $('.ib-mobile-sview').change();
-
         var currentValue = "grid";
         var $ibMapGridContainer = $('.ib-mapgrid-container');
 
@@ -4795,27 +5230,6 @@ $(function () {
         $ibMapGridContainer.addClass('ib-vgrid-active').removeClass('ib-vmap-active');
     });
 
-    // $(".ib-mobile-sview").on("change", function() {
-    //     var currentValue = $(this).val();
-
-    //     const $ibMapGridContainer = $('.ib-mapgrid-container');
-    //     $('.ib-gwvbitem[data-view="' + currentValue + '"]').addClass('ib-gv-active').siblings().removeClass('ib-gv-active');
-
-    //     if ("map" === currentValue) {
-    //         $('body').addClass('view-map').removeClass('view-grid view-list');
-    //         $ibMapGridContainer.removeClass('ib-vgrid-active').addClass('ib-vmap-active');
-    //         setTimeout(function () {
-    //             if (false === IB_LOOKUP_DRAG) {
-    //                 IB_MAP.fitBounds(IB_HIDDEN_BOUNDS);
-    //             }
-    //         }, 100);
-    //     } else if ("grid" === currentValue) {
-    //         $('body').addClass('view-grid').removeClass('view-map view-list');
-    //         $ibMapGridContainer.addClass('ib-vgrid-active').removeClass('ib-vmap-active');
-    //     }
-    // });
-
-
     $('.save-button-responsive').click(()=>{
         $('.ib-dbsave').click()
     });
@@ -4827,9 +5241,7 @@ $(function () {
 
     // Request information
     $('body').on('click', '.ib-requestinfo',()=>{
-        //$('.ib-mmpd').animate({scrollTop: $('.ib-cfsubmit').offset().top - $('.ib-pcheader').height()}, 2000, ()=>{
-            $('.ib-cffitem:first-child input').focus();
-        //});
+        $('.ib-cffitem:first-child input').focus();
     });
 }(jQuery));
 
