@@ -139,21 +139,18 @@ body {
 }
 
 /** Modales en celulares **/
-@media (max-width: 640px){
-  html{
-    &.modal_mobile {
-      //overflow: hidden;
-      //height: 100%;
-      //overflow: hidden;
-      body{
-        top: 0;
-        left: 0;
-        position: fixed !important;
-        min-height: 100vh !important;
-        width: 100%;
-        //height: 100vh;
-        overflow: hidden;
-      }
+html{
+  &.modal_mobile {
+    //overflow: hidden;
+    //height: 100%;
+   // overflow: hidden;
+    body{
+    	overflow: hidden;
+      /*top: 0;
+      left: 0;
+      position: fixed !important;
+      width: 100%;
+      height: 100vh;*/
     }
   }
 }
@@ -884,32 +881,6 @@ img{
 	}
 }
 
-/**RESETEANDO DATATABLE **/
-.dataTable{
-	thead,
-	tbody{
-		tr{
-			display: flex;
-			align-items: center;
-			th, td{
-				width: 14.28% !important;
-				flex-grow: 1;
-			}
-			td{
-				>div{
-					height: 45px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					&.unit.propertie{
-						justify-content: flex-start;
-					}
-				}
-			}
-		}
-	}
-}
-
 /**HACK MOBILE IPHONE**/
 @media (max-width: 767px){
 	body.only-mobile{
@@ -923,9 +894,18 @@ img{
 		footer,
 		.gwr.gwr-breadcrumb,
 		.clidxboost-sc-filters,
-		.property-details.theme-3{
+		.property-details.theme-3,
+		#wrap-neighborhood #header-title,
+		.basic-theme.clidxboost-noscroll .nav-aside,
+		#wrap-neighborhood #neighborhood .wrap-map-img,
+		#wrap-neighborhood #neighborhood .wrap-map-img+div p,
+		#wrap-neighborhood #header-title{
 			display: none !important;
 			height: 0 !important;
+		}
+
+		#wrap-neighborhood #neighborhood .gwr.block-description{
+			width: 100% !important;
 		}
 
 		#flex_idx_modal_wrapper{
@@ -1539,6 +1519,341 @@ img{
 	body.fixed-active .ib-filter-container.ib-filter-container-inscroll,
 	body.fixed-active .ib-filter-container{
 		animation: fadeInDown !important;
+		animation-duration: .8s !important;
+    animation-fill-mode: both !important;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* DRIFT UPDATE
+/*----------------------------------------------------------------------------------*/
+#drift-widget-container {
+	z-index: 32 !important;
+}
+
+.opened-menu #drift-widget-container {
+	z-index: 6 !important;
+}
+
+@media (max-width: 767px) {
+	.opened-menu{
+    overflow: hidden;
+    height: 100vh !important;
+	}
+
+	.ib-badvanced:before{
+		display: none !important;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* FLOORPLANS
+/*----------------------------------------------------------------------------------*/
+.ib-grid-floorsplan{
+	margin-top: 25px;
+	padding: 0 1rem;
+	
+	@media screen and (min-width: 768px){
+		padding: 0;
+	}
+
+	.ib-fp-img{
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+		img{
+			width: 100%;
+		}
+	}
+
+	.ib-fp-table{
+		margin-top: 15px;
+	}
+	
+	&.tbl_properties_wrapper{
+		table{
+			tbody{
+				tr{
+					td:first-child{
+						text-align: center;
+						justify-content: center;
+					}
+				}
+			}
+
+			thead,
+			tbody{
+				tr{
+					th:nth-child(3),
+					td:nth-child(3),
+					th:nth-child(7),
+					td:nth-child(7){
+						display: table-cell !important;
+						@media screen and (min-width: 768px){
+							display: flex !important;
+						}
+					} 
+				}
+			}
+		}
+	}
+	
+	@media (max-width: 640px) {
+		&.tbl_properties_wrapper{
+			table{
+				thead,
+				tbody{
+					tr{
+						th:nth-child(2),
+						td:nth-child(2){
+							display: none !important
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.ib-ms-btn{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* OPEN HOUSE
+/*----------------------------------------------------------------------------------*/
+.ms-open{
+	display: none !important;
+}
+
+#full-main,
+.view-grid,
+.ib-property-detail.ib-pdmodal{
+	.ms-wrap-open{
+		border: 5px solid #5f9b45;
+		padding: 5px 10px;
+		font-size: 12px;
+		text-transform: uppercase;
+		font-weight: 700;
+		background-color: #80be58;
+		color: #FFF;
+		position: absolute;
+		top: 15px;
+		z-index: 3;
+		left: 15px;
+		box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+
+		&:after,
+		&:before{
+			content: "";
+			display: block;
+			width: 5px;
+			height: 15px;
+			position: absolute;
+			top: -20px;
+			background-color: #b7a39f;
+		}
+
+		&:after{
+			right: 15px;
+		}
+
+		&:before{
+			left: 15px;
+		}
+	}
+
+	.ms-open-title{
+		display: block;
+		text-align: center;
+		margin-bottom: 4px;
+	}
+
+	.ms-open-date{
+		font-weight: 400;
+	}
+
+	.ms-open-time{
+		font-weight: 400;
+		display: inline-block;
+		margin-left: 5px;
+	}
+}
+
+#full-main,
+.ib-property-detail.ib-pdmodal{
+	.ms-wrap-open{
+		left: 15px;
+		bottom: 15px;
+		top: auto;
+		right: auto;
+		&:after,
+		&:before{
+			top: auto;
+			bottom: -20px;
+		}
+	}
+}
+
+#full-main{
+	.ms-open{
+		position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 1460px;
+    margin: 0 auto;
+	}
+}
+
+.view-map{
+	.ms-open{
+		position: absolute;
+		background: #5e9b44;
+		width: auto;
+		height: 40px;
+		top: 10px;
+		left: 10px;
+		z-index: 3;
+		overflow: hidden;
+		padding-left: 40px;
+		border-radius: 50%;
+		cursor: pointer;
+
+		&:before{
+			color: #FFF;
+	    width: 40px;
+	    height: 40px;
+	    background: #5e9b44;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    z-index: 2;
+	    border-radius: 50%;
+	    content: "\e919";
+	    font-family: 'idx-icons';
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    font-size: 17px;
+		}
+
+		.ms-wrap-open{
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			left: 20px;
+			width: 315px;
+			display: flex;
+			overflow: hidden;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			font-size: 12px;
+			color: #FFF;
+			padding: 5px 10px;
+			background-color: #80be58;
+			padding-left: 20px;
+			text-transform: uppercase;
+			font-weight: 600;
+			opacity: 0;
+			transition: opacity .4s;
+			span{
+				display: inline-block;
+				margin-right: 5px;
+				&:last-child{
+					margin-right: 0;
+				}
+			}
+		}
+
+		&:hover{
+			overflow: visible;
+			.ms-wrap-open{
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.view-list{
+	.ms-open{
+		display: none;
+	}
+}
+
+body{
+	&:not(.clidxboost-ngrid){
+		.wrap-result,
+		#wrap-result{
+			&.view-grid,
+			&.full-map{
+				.result-search,
+				#result-search{
+					>li{
+						h2{
+							display: block !important;
+							-o-text-overflow: ellipsis !important;
+							text-overflow: ellipsis !important;
+							overflow: hidden !important;
+							white-space: nowrap !important;
+							span{
+								display: inline-block !important;
+							} 
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#ib-push-registration{
+	.footer_md{
+		font-size: 14px;
+		text-align: center;
+		a{
+			color: #648ad2;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.ms-skip.ms-close.ms-close-step{
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 4;
+	overflow: hidden;
+	display: block;
+	color: #afaeb5;
+	&:hover{
+		color: #333;
+	}
+	span{
+		display: flex;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&:before{
+			content: "\e913";
+			display: inline-block;
+			font-family: "idx-icons"!important;
+			font-size: 1rem;
+			text-indent: 0;
+		}
 	}
 }
 

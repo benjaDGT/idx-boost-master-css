@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------*/
 /* All Filters
 /*----------------------------------------------------------------------------------*/
-#luxury-condo-page{
+##{$prefijo}luxury-condo-page{
 
   #wrap-subfilters{
     margin-top: -1px !important;
@@ -10,16 +10,16 @@
     }
   }
 
-  .content-filters{
-    .wrap-filters,
-    #wrap-filters {
-      .gwr{
-        .filters,
-        #filters{
+  .#{$prefijo}content-filters{
+    .#{$prefijo}wrap-filters,
+    ##{$prefijo}wrap-filters {
+      .#{$prefijo}gwr{
+        .#{$prefijo}filters,
+        ##{$prefijo}filters{
           flex-wrap: wrap;
           width: 100%;
           li{
-            &.all{
+            &.#{$prefijo}all{
               button{
                 border: 1px solid $colorweb;
                 font-size: 14px;
@@ -44,7 +44,7 @@
               }
             }
 
-            &.mini-search{
+            &.#{$prefijo}mini-search{
               .search_building{
                 padding-right: 55px !important;
               }
@@ -59,7 +59,7 @@
               width: 100%;
               order: 3;
 
-              &.content_select{
+              &.#{$prefijo}content_select{
                 height: 0;
                 overflow: hidden;
                 transition: all .3s;
@@ -72,7 +72,7 @@
                 }
               }
 
-              &.mini-search{
+              &.#{$prefijo}mini-search{
                 order: 1;
                 width: 70%;
                 .clidxboost-icon-search{
@@ -84,7 +84,7 @@
                 }
               }
 
-              &.all{
+              &.#{$prefijo}all{
                 width: 30% !important;
                 order: 2;
                 height: 46px;
@@ -92,9 +92,9 @@
               }
             }
 
-            &.active-select{
+            &.#{$prefijo}active-select{
               li{
-                &.content_select{
+                &.#{$prefijo}content_select{
                   height: 45px;
                   border-bottom: 1px solid $gris-lineas;
                   overflow: visible;
@@ -279,9 +279,9 @@
 /*----------------------------------------------------------------------------------*/
 /* Vista Mapa
 /*----------------------------------------------------------------------------------*/
-#luxury-condo-page{
+##{$prefijo}luxury-condo-page{
   #wrap-result{
-    &.view-map{
+    &.#{$prefijo}view-map{
       .luxury-condo-title{
         font-size: 18px;
         font-weight: 600;
@@ -291,39 +291,39 @@
         display: none;
       }
 
-      #result-search{
+      ##{$prefijo}result-search{
         >li{
-          .features{
+          .#{$prefijo}features{
             li{
-              &.name{
+              &.#{$prefijo}name{
                 font-family: $opensans;
                 font-weight: 600;
                 font-size: 1rem;
                 width: 100%;
               }
-              &.address{
+              &.#{$prefijo}address{
                 display: block;
                 font-size: 14/16*1rem;
                 width: 100%;
               }
-              &.city,
-              &.unit,
-              &.year,
-              &.type,
-              &.floors{
+              &.#{$prefijo}city,
+              &.#{$prefijo}unit,
+              &.#{$prefijo}year,
+              &.#{$prefijo}type,
+              &.#{$prefijo}floors{
                 display: none;
               }
 
-              &.unit,
-              &.year{
+              &.#{$prefijo}unit,
+              &.#{$prefijo}year{
                 display: none;
               }
 
-              /*&.tg-building-links{
+              /*&.#{$prefijo}tg-building-links{
                 position: relative;
                 order: 6;
                 margin-top: 10px;
-                .view-map-detail{
+                .#{$prefijo}view-map-detail{
                   display: inline-block;
                   color: #333;
                   transition: all .3s;
@@ -344,13 +344,13 @@
             display: none;
           }
 
-          /*.view-detail{
+          /*.#{$prefijo}view-detail{
             display: none !important;
           }*/
         }
       }
 
-      .luxury-condo-title{
+      .#{$prefijo}luxury-condo-title{
         min-height: auto;
       }
 
@@ -367,18 +367,13 @@
 }
 
 #luxury-condo-page{
-
-  /*.content-filters,
-  #wrap-subfilters{
-    display: none;
-  }*/
-
 /*----------------------------------------------------------------------------------*/
 /* Vista Grid
 /*----------------------------------------------------------------------------------*/
   .view-grid{
     margin-top: 25px;
     #wrap-list-result{
+
       padding: 0 15px;
       @media screen and (min-width: 768px){
         padding: 0;
@@ -393,50 +388,19 @@
 
     .result-search,
     #result-search{
-
-      display: block;
-      margin: 0 -18px;
-
-      &:after{
-        content: "";
-        display: block;
-        clear: both;
-      }
-
       .propertie{
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
 
-        float: left;
-        padding: 0 18px !important;
-        margin-right: 0 !important;
-        margin-bottom: 20px;
-
-        width: 100% !important;
-
-        @media screen and (min-width: 640px){
-          width: 50% !important;
-        }
-
-        @media screen and (min-width: 768px){
-          width: 33.33% !important;
-        }
-
-        @media screen and (min-width: 991px){
-          width: 25% !important;
-        }
-
         @media screen and (min-width: 1200px){
-          /*width: 24.24% !important;
+          width: 24.24% !important;
           //width: 19.19% !important;
           margin-right: 1% !important;
           &:nth-child(4n){
           //&:nth-child(5n){
             margin-right: 0 !important;
-          }*/
-          width: 20% !important;
-          margin-bottom: 30px;
+          }
         }
 
         >h2{
@@ -461,20 +425,18 @@
             width: 100%;
           }
 
-          .city,
-          .type{
+          .city{
             display: none;
           }
 
           .name{
-            font-size: 18px;
-            padding-top: 10px;
-            padding-bottom: 5px;
+            min-height: 45px;
+            padding: 5px 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
-            //color: #5d4871;
+            background-color: $colorweb;
+            color: #FFF;
             font-weight: 600;
             text-align: center;
             span{
@@ -486,6 +448,8 @@
           }
 
           .address{
+            min-height: 40px;
+            padding: 5px 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -550,20 +514,15 @@
           overflow: hidden;
           height: 100%;
           width: 100%;
-          border: 0 !important;
         }
 
         .wrap-slider{
           order: 1;
           width: 100%;
           height: auto;
-          margin-bottom: 0;
+          margin-bottom: -5px;
           img{
             transition: opacity .3s, transform 1s, -webkit-transform 1s;
-          }
-          
-          >ul>li:after{
-            padding-bottom: 100%;
           }
         }
 
@@ -1117,29 +1076,4 @@
 
 #wrap-filters #filters>li.mini-search form #submit-ms input[type=submit] {
   height: 100%;
-}
-
-.full-page-luxury{
-  .flex-block-description .title-block{
-    margin-top: 40px;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 26px;
-  }
-}
-
-#luxury-condo-page .view-grid #result-search .propertie .view-detail, 
-#luxury-condo-page .view-grid .result-search .propertie .view-detail,
-#luxury-condo-page .view-grid #result-search .propertie .features .address, 
-#luxury-condo-page .view-grid .result-search .propertie .features .address{
-	border: 0 !important;
-}
-
-#luxury-condo-page .view-grid #result-search .propertie .features .name, 
-#luxury-condo-page .view-grid .result-search .propertie .features .name{
-	background-color: transparent !important;
-	padding-bottom: 5px;
-	padding-top: 10px;
-	margin-top: 0;
-	color: #333;
 }

@@ -643,12 +643,11 @@
 	}
 }
 
-.pr-step.facebook-registration,
-.ib-pr-step.ib-pr-radio{
-	height: 440px;
+.ib-pr-step.ib-pr-radio,
+.pr-step.facebook-registration{
+	min-height: 425px;
 	.ms-header-md{
-		padding: 0;
-		margin-top: 40px;
+		padding-top: 25px;
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
@@ -787,15 +786,34 @@
 }
 
 #ib-push-registration-quizz-ct{
+	height: 100vh;
 	.ms-center{
 		text-align: center;
 		margin: 15px 0 0;
 		.ms-skip{
 			font-size: 16px;
 			font-weight: 600;
-			color: #ffffff;
+			color: #333;
 			background-color: transparent;
+			@media (max-width: 639px){
+				color: #FFF;
+			}
 	  }
+	}
+
+	.ib-mwrapper.ib-mgeneric{
+		padding: 0;
+		.ib-mgcontent{
+			padding: 0 20px 20px;
+		}
+	}
+
+	@media (max-width: 639px){
+		width: 100%;
+		.ib-mmcontent,
+		.ib-mgeneric{
+			width: 100%;
+		}
 	}
 }
 

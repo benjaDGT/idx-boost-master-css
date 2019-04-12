@@ -98,8 +98,9 @@
 						li{
 							&.#{$prefijo}sale,
 							&.#{$prefijo}rent,
-							&.#{$prefijo}sold{
-								width: 33.33%;
+							&.#{$prefijo}sold,
+							&.#{$prefijo}pending{
+								width: 25%;
 								flex-grow: 1;
 								height: 65px;
 								margin-right: -1px;
@@ -116,7 +117,7 @@
 									span{
 										font-weight: 600;
 										color: #333;
-										font-size: 14/16*1rem;
+										font-size: 11px;
 									}
 									&:hover,
 									&.#{$prefijo}active-fbc{

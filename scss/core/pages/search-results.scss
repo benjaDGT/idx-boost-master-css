@@ -28,7 +28,7 @@
 
 .#{$prefijo}fixed-active{
 	.#{$prefijo}fixed-box {
-    background-color: #FFF;
+    /*background-color: #FFF;
     position: fixed;
     z-index: 31;
     top: 0;
@@ -39,7 +39,20 @@
     max-width: 100%;
     animation-duration: 1s;
     animation-fill-mode: both;
-    animation-name: fadeInDown;
+    animation-name: fadeInDown;*/
+
+    background-color: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 31;
+
+    animation-duration: .8s !important;
+    animation-fill-mode: both !important;
+    animation-name: fadeInDown !important;
+    /*z-index: 9999;
+    display: none;*/
   }
 }
 

@@ -552,10 +552,7 @@
   height: 440px; }
   .pr-step.facebook-registration .ms-header-md,
   .ib-pr-step.ib-pr-radio .ms-header-md {
-    padding: 0;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 25px;
+    padding-top: 40px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -576,12 +573,12 @@
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 5px;
-      padding: 0 20px; }
+      padding: 0; }
     .pr-step.facebook-registration .ms-header-md .ms-sub-title,
     .ib-pr-step.ib-pr-radio .ms-header-md .ms-sub-title {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 40px; }
+      margin-bottom: 20px; }
       @media (max-width: 639px) {
         .pr-step.facebook-registration .ms-header-md .ms-sub-title,
         .ib-pr-step.ib-pr-radio .ms-header-md .ms-sub-title {
@@ -710,9 +707,33 @@
           border-color: #333 !important;
           color: #FFF !important; }
 
+#ib-push-registration-quizz-ct {
+  height: 100vh; }
+  #ib-push-registration-quizz-ct .ms-center {
+    text-align: center;
+    margin: 15px 0 0; }
+    #ib-push-registration-quizz-ct .ms-center .ms-skip {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      background-color: transparent; }
+      @media (max-width: 639px) {
+        #ib-push-registration-quizz-ct .ms-center .ms-skip {
+          color: #FFF; } }
+  #ib-push-registration-quizz-ct .ib-mwrapper.ib-mgeneric {
+    padding: 0; }
+    #ib-push-registration-quizz-ct .ib-mwrapper.ib-mgeneric .ib-mgcontent {
+      padding: 0 20px 20px; }
+  @media (max-width: 639px) {
+    #ib-push-registration-quizz-ct {
+      width: 100%; }
+      #ib-push-registration-quizz-ct .ib-mmcontent,
+      #ib-push-registration-quizz-ct .ib-mgeneric {
+        width: 100%; } }
+
 @media (max-width: 639px) {
   #ib-push-registration-quizz-ct {
-    background-color: rgba(0, 0, 0, 0.7) !important; }
+    background-color: rgba(0, 0, 0, 0.1) !important; }
     #ib-push-registration-quizz-ct .ib-mgeneric {
       background: -webkit-gradient(linear, left bottom, left top, color-stop(10%, black), color-stop(50%, rgba(255, 255, 255, 0)), to(black)) !important;
       background: -webkit-linear-gradient(bottom, black 10%, rgba(255, 255, 255, 0) 50%, black 100%) !important;

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'idx-icons';
-  src:  url('fonts/idx-icons.eot?u0jsj9');
-  src:  url('fonts/idx-icons.eot?u0jsj9#iefix') format('embedded-opentype'),
-    url('fonts/idx-icons.ttf?u0jsj9') format('truetype'),
-    url('fonts/idx-icons.woff?u0jsj9') format('woff'),
-    url('fonts/idx-icons.svg?u0jsj9#idx-icons') format('svg');
+  src:  url('fonts/idx-icons.eot?r2xztz');
+  src:  url('fonts/idx-icons.eot?r2xztz#iefix') format('embedded-opentype'),
+    url('fonts/idx-icons.ttf?r2xztz') format('truetype'),
+    url('fonts/idx-icons.woff?r2xztz') format('woff'),
+    url('fonts/idx-icons.svg?r2xztz#idx-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,11 +24,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.idx-icon-mail-envelope-closed:before {
-  content: "\e946";
+.idx-icon-keyboard_backspace:before {
+  content: "\e944";
 }
-.idx-icon-arrow-right:before {
-  content: "\e945";
+.idx-icon-office:before {
+  content: "\e93c";
+}
+.idx-icon-download:before {
+  content: "\e93e";
 }
 .idx-icon-sale:before {
   content: "\e940";
@@ -228,15 +231,6 @@
 .idx-icon-youtube:before {
   content: "\e92a";
 }
-.idx-icon-download:before {
-  content: "\e93e";
-}
-.idx-icon-keyboard_backspace:before {
-  content: "\e944";
-}
-.idx-icon-office:before {
-  content: "\e93c";
-}
 .idx-icon-checkmark:before {
   content: "\e939";
 }
@@ -258,6 +252,7 @@
 .idx-icon-comment-o:before {
   content: "\e93d";
 }
+
 
 @font-face {
   font-family: "idx-boost-icons";

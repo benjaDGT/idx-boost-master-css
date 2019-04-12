@@ -280,13 +280,39 @@
     }
   }
 
+  @media screen and (min-width: 1024px){
+    .content-filters{
+      .wrap-filters,
+      #wrap-filters{
+        .gwr{
+          #all-filters:not(.individual) {
+            left: 50% !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1300px){
+    .content-filters{
+      .wrap-filters,
+      #wrap-filters{
+        .gwr{
+          #all-filters:not(.individual) {
+            left: 63% !important;
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: 1600px){
     .content-filters{
       .wrap-filters,
       #wrap-filters{
         .gwr{
           #all-filters:not(.individual) {
-            left: 50%;
+            left: 50.9% !important;
           }
         }
       }

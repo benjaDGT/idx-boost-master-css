@@ -1,3 +1,58 @@
+/** @todo init global left click on property */
+
+var IB_HAS_LEFT_CLICKS = (__flex_g_settings.hasOwnProperty("signup_left_clicks") && (null != __flex_g_settings.signup_left_clicks));
+
+if (true === IB_HAS_LEFT_CLICKS) {
+  if (typeof Cookies.get("_ib_left_click_force_registration") === "undefined") {
+    Cookies.set("_ib_left_click_force_registration", parseInt(__flex_g_settings.signup_left_clicks, 10));
+  }
+}
+
+if (typeof originalPositionY === "undefined") {
+  var originalPositionY;
+}
+
+function idx_auto_save_building(lead_data){
+          //force registration for building
+          if ( (__flex_g_settings.hasOwnProperty("force_registration")) && (1 == __flex_g_settings.force_registration) ) {
+            if(typeof(idxboostCollecBuil) !== 'undefined' && idxboostCollecBuil.success != false){
+              var search_count=0;
+              var name_alert='';
+              var query_filter='';
+
+              if (document.location.hash=='#!for-rent'){
+                search_count=idxboostCollecBuil.payload.properties.rent.count;
+                name_alert=$('.idx_name_building').val()+' for rent';
+                query_filter=idxboostCollecBuil.payload.filter_query+' and is_rental=1 ';
+              }else{
+                search_count=idxboostCollecBuil.payload.properties.sale.count;
+                name_alert=$('.idx_name_building').val()+' for sale';
+                query_filter=idxboostCollecBuil.payload.filter_query+' and is_rental=0 ';
+              }
+
+              $.ajax({
+                  type: "POST",
+                  url: __flex_g_settings.ajaxUrl,
+                  data: {
+                    action: "track_force_registration_building",
+                    board_id: __flex_g_settings.boardId,
+                    query_generate: query_filter,
+                    search_count:search_count,
+                    search_name:name_alert,
+                    lead_name:lead_data.first_name,
+                    lead_lastname:lead_data.last_name,
+                    lead_email:lead_data.email,                 
+                    search_url:window.location.href
+                  },
+                success: function(response) {
+                    console.log(response);
+                  }
+              });                                
+            }
+          }
+          //force registration for building
+}
+  
 //Pusher.logToConsole = true;
 var socket;
 var channel;
@@ -33,9 +88,9 @@ if ("undefined" !== typeof Cookies.get("ib_lead_token")) {
 function active_modal($modal) {
   if ($modal.hasClass('active_modal')) {
     jQuery('.overlay_modal').removeClass('active_modal');
-    jQuery("html, body").animate({
-      scrollTop: 0
-    }, 1500);
+    // jQuery("html, body").animate({
+    //   scrollTop: 0
+    // }, 1500);
   } else {
     $modal.addClass('active_modal');
     $modal.find('form').find('input').eq(0).focus();
@@ -175,7 +230,7 @@ function validate_price(evt) {
     // @todo check modal
     $(document).on('click', '.close-modal', function (event) {
       event.stopPropagation();
-      
+
       var idModal = $(this).attr('data-id');
       var parentModal = $(this).attr('data-frame');
       $('#' + idModal).removeClass('active_modal');
@@ -283,11 +338,19 @@ function validate_price(evt) {
           if (response.success === true) {
             console.dir(seriaLogin);
 
+            if (typeof dataLayer !== "undefined") {
+              dataLayer.push({'event': 'email_signin'});
+            }
+
             var lead_token = response.lead_token;
 
             Cookies.set('ib_lead_token', lead_token, {
               expires: 30
             });
+
+            if (true === IB_HAS_LEFT_CLICKS) {
+              Cookies.set("_ib_left_click_force_registration", parseInt(__flex_g_settings.signup_left_clicks, 10));
+            }
 
             if ("undefined" !== typeof socket) {
               socket.disconnect();
@@ -364,6 +427,10 @@ function validate_price(evt) {
 
             __flex_g_settings.anonymous = "no";
 
+            //force registration for building
+            idx_auto_save_building(response);            
+            //force registration for building
+
             // track listing view
             $.ajax({
               type: "POST",
@@ -392,6 +459,7 @@ function validate_price(evt) {
               'logon_type': 'email',
               'ib_lead_token': lead_token
             };
+
             localStorage.setItem('idxboost_credential', JSON.stringify(objectCredential));
 
             if (response.message=='Invalid credentials, try again.') 
@@ -406,6 +474,15 @@ function validate_price(evt) {
               timer: 1000,
               showConfirmButton: false
             });
+
+            setTimeout(function () {
+              if (typeof originalPositionY !== "undefined") {
+                if (!$(".ib-modal-master.ib-mmpd").hasClass("ib-md-active")) {
+                  console.log('restoring to: ' + originalPositionY);
+                  window.scrollTo(0,originalPositionY);
+                }
+             }
+            }, 1000);
           } else {
             if (response.message=='Invalid credentials, try again.') 
               textmessage=word_translate.invalid_credentials_try_again;
@@ -520,6 +597,14 @@ function validate_price(evt) {
         success: function (response) {
           // if registration is sucessfully.
           if (true === response.success) {
+            if (typeof dataLayer !== "undefined") {
+              dataLayer.push({'event': 'email_register'});
+            }
+
+            if (true === IB_HAS_LEFT_CLICKS) {
+              Cookies.set("_ib_left_click_force_registration", parseInt(__flex_g_settings.signup_left_clicks, 10));
+            }
+
             // stores into cookies current lead token
             Cookies.set('ib_lead_token', response.lead_token, {
               expires: 30
@@ -562,6 +647,9 @@ function validate_price(evt) {
             $("._ib_ln_inq").val(response.last_name);
             $("._ib_em_inq").val(response.email);
             $("._ib_ph_inq").val(response.phone);
+
+              idx_auto_save_building(response);            
+
 
             //Building default label
             var ob_form_building_footer;
@@ -639,6 +727,15 @@ function validate_price(evt) {
               closeOnEsc: true,
               timer: 3000
             });
+
+            setTimeout(function () {
+              if (typeof originalPositionY !== "undefined") {
+                if (!$(".ib-modal-master.ib-mmpd").hasClass("ib-md-active")) {
+                  console.log('restoring to: ' + originalPositionY);
+                  window.scrollTo(0,originalPositionY);
+                }
+              }
+            }, 3000);
             
             if ( ("undefined" !== typeof IB_IS_SEARCH_FILTER_PAGE) && (true === IB_IS_SEARCH_FILTER_PAGE) ||
                  ("undefined" !== typeof IB_IS_REGULAR_FILTER_PAGE) && (true === IB_IS_REGULAR_FILTER_PAGE) 
@@ -695,6 +792,7 @@ function validate_price(evt) {
       switch (tabId) {
         case 'tabLogin':
           /*$("#modal_login h2").text(word_translate.welcome_back);*/
+          $("#modal_login #msRst").empty().html($("#mstextFst").html());
 
           var $dataText = $(this).attr("data-text");
           var $dataTextForce = $(this).attr("data-text-force");
@@ -712,13 +810,16 @@ function validate_price(evt) {
           break;
 
         case 'tabRegister':
+
+          $("#modal_login #msRst").empty().html($("#mstextRst").html());
+
           /*$("#modal_login h2").text(word_translate.register);*/
           var $dataText = $(this).attr("data-text");
           var $dataTextForce = $(this).attr("data-text-force");
 
           //if ($(this).parents("#modal_login").hasClass("registration_forced")) {
           if ("1" == __flex_g_settings.force_registration) {
-            $registerText = $dataTextForce + "<span>Register for details</span>";
+            $registerText = $dataTextForce;
           } else {
             $registerText = $dataText;
           }
@@ -771,10 +872,30 @@ function validate_price(evt) {
 
     $('.modal_cm .close').click(function () {
       $('#modal_login, #overlay_modal, #modal_add_favorities, #modal_properties_send').removeClass('active_modal');
+
+      if (typeof originalPositionY !== "undefined") {
+        if (!$(".ib-modal-master.ib-mmpd").hasClass("ib-md-active")) {
+          console.log('restoring to: ' + originalPositionY);
+          window.scrollTo(0,originalPositionY);
+        }
+      }
     });
 
     /*$('ul#user-options li').click(function() {var modal_acti = '#' + $(this).attr('data-modal');$(modal_acti).addClass('active_modal');});*/
-    $('ul#user-options li').click(function () {
+    $('ul#user-options li').click(function (event) {
+      var tmpPositionY = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+
+      if (tmpPositionY > 0) {
+        originalPositionY = tmpPositionY;
+      }
+
+      // if (originalPositionY > 0 ) {
+      //   originalPositionY = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+      // }
+      
+      console.log('opening...');
+      console.log(originalPositionY);
+
       var tabactive = '';
       var modal_acti = '#' + $(this).attr('data-modal');
       $(modal_acti).addClass('active_modal');
@@ -1001,6 +1122,10 @@ function validate_price(evt) {
       Cookies.remove("_ib_user_phone");
       Cookies.remove("_ib_user_email");
 
+      if (true === IB_HAS_LEFT_CLICKS) {
+        Cookies.set("_ib_left_click_force_registration", parseInt(__flex_g_settings.signup_left_clicks, 10));
+      }
+
       localStorage.removeItem('idxboost_credential');
       window.location.reload(false);
     });
@@ -1124,10 +1249,12 @@ function idxboostTypeIcon() {
 /* Funcion que fixea los elementos
 /*------------------------------------------------------------------------------------------*/
 function scrollFixedElement(elemento) {
-  var boxTop = elemento.offset().top;
+  //var boxTop = elemento.offset().top;
+
   var boxHeight = elemento.outerHeight();
-  var originalPos = boxHeight;
-  jQuery(document).on("scroll", function (e) {
+
+  //var originalPos = boxHeight;
+  /*jQuery(document).on("scroll", function (e) {
     if (jQuery("body").hasClass("fixed-active")) {
       if (jQuery(document).scrollTop() <= originalPos)
         jQuery("body").removeClass("fixed-active");
@@ -1136,7 +1263,17 @@ function scrollFixedElement(elemento) {
     if ((originalPos = jQuery(document).scrollTop()) >= (boxTop + boxHeight)) {
       jQuery("body").addClass("fixed-active");
     }
+  });*/
+
+
+  jQuery(window).scroll(function(){
+    if (jQuery(window).scrollTop() >= boxHeight) {
+      jQuery("body").addClass("fixed-active");
+    }else {
+      jQuery("body").removeClass("fixed-active");
+    }
   });
+
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -1387,6 +1524,18 @@ function scrollFixedElement(elemento) {
     $("#filters").toggleClass("active-select");
   });
 
+
+  /*------------------------------------------------------------------------------------------*/
+  /* MODAL FLOAT
+  /*------------------------------------------------------------------------------------------*/
+  $(document).on('click', '.ib-active-float-form', function() {
+    $("body").addClass("ib-request-float-modal");
+  });
+
+  $(document).on('click', '.ib-float-form', function() {
+    $("body").removeClass("ib-request-float-modal");
+  });
+
 })(jQuery);
 
 /*----------------------------------------------------------------------------------*/
@@ -1547,17 +1696,20 @@ function scrollFixedElement(elemento) {
     $ibWgrid.on('scroll', function(){
       let currentScroll = $(this).scrollTop();
       let $finalScroll = $('.ib-gheader').height() + $('.ib-cproperties').height() - $(this).height();
-      let $theBottom = Number($('#drift-widget').css('bottom').replace('px', ''));
-      if (currentScroll > ibWgridScroll) {
-        if (currentScroll >= $finalScroll) {
-          if ($theBottom !== 74) $('#drift-widget').css('bottom', '74px');
-        } 
-      } else {
-        if (currentScroll <= ($finalScroll - 60)) {
-          if ($theBottom !== 24) $('#drift-widget').css('bottom', '24px');
-        } 
+      
+      if ($('#drift-widget').length) {
+        let $theBottom = Number($('#drift-widget').css('bottom').replace('px', ''));
+        if (currentScroll > ibWgridScroll) {
+          if (currentScroll >= $finalScroll) {
+            if ($theBottom !== 74) $('#drift-widget').css('bottom', '74px');
+          } 
+        } else {
+          if (currentScroll <= ($finalScroll - 60)) {
+            if ($theBottom !== 24) $('#drift-widget').css('bottom', '24px');
+          } 
+        }
+        ibWgridScroll = currentScroll;
       }
-      ibWgridScroll = currentScroll;
     });
   };
   
