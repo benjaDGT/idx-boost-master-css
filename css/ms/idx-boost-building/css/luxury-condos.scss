@@ -1,0 +1,267 @@
+/** luxury condos **/
+.page-template-page-luxury-condo{
+	.clidxboost-btn-check{
+		display:none !important;
+	}
+}
+.clidxboost-gridv2 {
+	.condo-title{
+		margin-top: 20px;
+	}
+	.content-search-building{
+		margin-top: -20px;
+	}
+	.type_search{
+		text-transform: capitalize;
+	}
+	.clidxboost-btn-check{
+		display:none;
+	}
+	.iwpoint{
+		display: none !important;
+	}
+	.gm-style-iw{
+		background:#fff;
+	}
+	.gm-style > div > div > div > div .close-item-map{
+		position: absolute;
+		right: 7% !important;
+		top: 4% !important;
+	}
+	@media (max-width:767px){
+		.collection #wrap-filters #filters li.item-bubble #bubble-filter span span{
+			line-height:46px;
+		}
+	}
+	@media screen and (max-width: 640px){
+		#wrap-result.view-list .result-search .propertie{
+			padding-top: 25px;
+			.wrap-slider ul li{
+				height:100%;	
+			}
+		}
+		#new-construction #wrap-result.view-list .special-list .result-search .propertie h2{
+			top: 9px !important;
+		}
+	}
+	header#op-header{
+		    margin-bottom: 10px;
+	}
+	.collection #wrap-filters{
+		#filters{
+			
+			li.item-bubble .bubble-filter{
+				@media (min-width:768px){
+					top:0;	
+				}
+			}
+		}
+	}
+	// #wrap-result{
+	// 	margin-top: 30px;
+	// }
+
+	#wrap-result{
+		&.view-list{
+			.special-list .result-search .propertie h2{
+				padding-left:10px;
+				font-weight: normal;
+				span{
+					font-weight: normal;
+					text-transform: capitalize;
+				}
+			}
+		}
+		&.view-grid {
+			.result-search .propertie {
+				display: flex;
+				.wrap-slider{
+					order:1;
+				}
+				h2.n-name{
+					order:2;
+					position: relative;
+					top: 0;
+					padding-left: 0;
+					color:#434343;
+					font-size: 17px;
+					span{
+						width: 100%;
+						font-size: 17px;
+						text-align: center;
+						text-shadow:none;
+						font-weight: normal;
+					}
+				}
+
+				.features{
+					order:3;
+					position: relative;
+					top:0;
+					padding-left: 0 !important;
+					color:#434343;
+					span{
+						text-shadow:none;
+					}
+					.n-address{
+						padding-left:0;
+						position: relative;
+						bottom:0;
+						width: 100%;
+						border-bottom:1px solid rgba(0,0,0,.2);
+						margin-bottom: 6px;
+						padding-bottom: 5px;
+						span{
+							text-align:center;
+							display:block;
+							font-size: 13px;
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							color: rgba(67, 67, 67, 0.7);
+							font-weight: normal;
+						}
+					}
+					.n-stattus{
+						display:none;
+					}
+					.n-year{
+						display: block;
+						font-size: 11px;
+						order: 3;
+						width: 35%;
+						border-bottom:1px solid rgba(0,0,0,.2);
+						position: relative;
+						top: -4px;
+						text-align:right;
+						display:block;
+						&:before{
+							content: "Build";
+							display:inline-block;
+							margin-right: 5px;
+						}
+						
+					}
+					.n-neighborhood{
+						position: relative;
+						top: 0;
+						bottom: 0;
+						width: 65%;
+						order: 2;
+						right: 0;
+						height: 26px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						border-bottom:1px solid rgba(0,0,0,.2);
+						position: relative;
+						top: -4px;
+						span{
+							text-align: left;
+							font-size: 11px;
+							color:#434343;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	@media (min-width:768px){
+		#wrap-result.view-list #result-search .propertie:hover::before,
+		#wrap-result.view-list .result-search .propertie:hover::before,
+		.wrap-result.view-list #result-search .propertie:hover::before,
+		.wrap-result.view-list .result-search .propertie:hover::before {
+		    opacity: 1;
+		    display: block;
+		}
+	}
+	.wrap-result.view-list .special-list #result-search .propertie .blue-color,
+	.wrap-result.view-list .special-list .result-search .propertie .blue-color {
+	    font-weight: normal;
+	}
+
+
+	#wrap-result #nav-results, #wrap-result .nav-results, .wrap-result #nav-results, .wrap-result .nav-results{
+
+		margin-top: 30px;
+		display:flex;
+	}
+	
+	#wrap-subfilters #sub-filters #filter-views.map::after{display:none;}
+}
+
+.linkbuilding{
+	position: absolute;
+    height: calc(100% - 195px);
+    bottom: 0;
+    width: 100%;
+    z-index: 9;
+    display:block;
+}
+
+.view-list{
+	.linkbuilding{
+		display: block;
+		height: 50px;
+		right: 0;
+	}
+}
+@media (min-width:768px) and (max-width:1023px){
+	.collection #wrap-filters #filters li.mini-search{
+		padding-right:0;
+		margin-bottom: 0;
+	}
+
+}
+@media (min-width:960px){
+	.collection #wrap-filters #filters li.item-bubble{
+		width: 100%;
+	}
+}
+
+/*** autcomplete condos **/
+.collection #wrap-filters #filters li.mini-search{
+	position: relative;
+}
+
+#wrap-filters #filters #autocomplete-ui-build {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    top: 56px;
+    display:none;
+    @media (max-width:767px){
+    	top:44px;
+    }
+    .ui-widget-content.ui-autocomplete{
+		position: relative !important;
+		z-index: 9999;
+		display: block ;
+		left: 0 !important;
+		top: 0px !important;
+		li{
+			height: auto;
+		}
+    }
+	
+}
+
+/** view map  buildings **/
+@media screen and (min-width: 1024px){
+	#wrap-result.view-map #wrap-list-result #result-search .propertie .features,
+	#wrap-result.view-map #wrap-list-result .result-search .propertie .features,
+	#wrap-result.view-map .wrap-list-result #result-search .propertie .features,
+	#wrap-result.view-map .wrap-list-result .result-search .propertie .features {
+	    margin-top: 22px;
+	}
+}
+
+
+/*** infowindow  building **/
+.clidxboost-gridv2{
+	.mapview-container .mapviwe-body .mapviwe-item ul{
+		margin-top: 0;
+	}
+}

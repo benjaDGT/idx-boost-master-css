@@ -686,22 +686,24 @@
 	}
 
 	.#{$prefijo}ico-facebook {
-		background: #3a5a93;
+		/*background: #3a5a93;
 		background: linear-gradient(#486db1, #3a5a93);
-		border: 1px solid #3b5995;
+		border: 1px solid #3b5995;*/
+		background-color: #3C5A99;
+		border: 1px solid #3C5A99;
 		border-radius: 4px;
 		transition: all .3s;
 		&:before{
 			content: "\e927";
 			display: inline-block;
-			font-family: $web-icons;
-			font-size: 18/16*1rem;
-			font-weight: 300;
-			margin-right: 10/16*1rem;
+			font-family: "idx-icons"!important;
+			font-size: 24px;
+			font-weight: normal;
+			margin-right: 0.625rem;
 		}
-
 		&:hover{
-			background: #3a5a93;
+			background-color: #2a4879;
+			border-color: #2a4879;
 		}
 	}
 }

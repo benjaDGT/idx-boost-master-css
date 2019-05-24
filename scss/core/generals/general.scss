@@ -22,11 +22,16 @@ body {
 	align-items:center;
 	flex-direction: column;
 	overflow-x: hidden;
+	
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 	> * {
 		width: 100%;
 		flex-grow: 0;
 		flex-shrink: 0;
+		font-display: block;
 	}
 
 	&.fixed {
@@ -1626,9 +1631,9 @@ img{
 /*----------------------------------------------------------------------------------*/
 /* OPEN HOUSE
 /*----------------------------------------------------------------------------------*/
-.ms-open{
+/*.ms-open{
 	display: none !important;
-}
+}*/
 
 #full-main,
 .view-grid,
@@ -1781,11 +1786,11 @@ img{
 	}
 }
 
-.view-list{
+/*.view-list{
 	.ms-open{
 		display: none;
 	}
-}
+}*/
 
 body{
 	&:not(.clidxboost-ngrid){
@@ -1855,6 +1860,62 @@ body{
 			text-indent: 0;
 		}
 	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* FORMULARIOS / RENT / SELL / BUY
+/*----------------------------------------------------------------------------------*/
+/*#lead_submission_rent_form,
+#lead_submission_buy_form{
+	.ib-fsradios:first-child{
+		.ib-fsritem{
+			&:nth-child(4){
+				display: none;
+			}
+		}
+	}
+}*/
+
+@media screen and (min-width: 480px){
+	.ib-filabel {
+		width: calc(100% - 20px);
+		margin-right: 0;
+	}
+}
+
+fieldset{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	legend{
+		position: absolute;
+		z-index: -1;
+		width: 0;
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+/*----------------------------------------------------------------------------------*/
+/* OCULTANDO LABELS DE LOS DIFERENTES FORMULARIOS
+/*----------------------------------------------------------------------------------*/
+#cntLoginForm{
+	label{
+		position: absolute;
+		overflow: hidden;
+		width: 0;
+		height: 0;
+		z-index: -1;
+	}
+}
+
+.ms-hidden{
+	height: 0;
+	width: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 /*----------------------------------------------------------------------------------*/

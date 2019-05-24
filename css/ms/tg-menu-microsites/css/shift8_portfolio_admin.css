@@ -1,0 +1,87 @@
+#eflyer_image_button {
+	display:block;
+}
+.eflyer_gallery_src, .eflyer_image_src, .eflyer_footer_gallery_src, #eflyer_gallery_src, #eflyer_image_src, #eflyer_footer_gallery_src {
+	width: 100%;
+	display: block;
+	height: 170px;
+}
+.eflyer_image_container {
+	position:relative;
+	width:150px;
+	height:150px;
+	background-color: #D7D7D7;
+}
+/*
+.eflyer_gallery_close {
+	cursor: pointer;
+	width: 15px;
+	bottom: 154px;
+	position: relative;
+	display: flex;
+	left: 124px;
+	background: #fff;
+	padding: 2px 0px 2px 7px;
+	border: 2px solid #f70025;
+	text-align: center;
+} */
+.eflyer_gallery_close:after,.eflyer_footer_gallery_close:after,.eflyer_image_close:after {
+	font-size:40px !important;
+	display:block;
+	content: "\00d7";
+	position:absolute;
+	color: #fff;
+	top: 0px;
+	right:5px;
+	text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+#eflyer_mobileimage_button {
+        display:block;
+}
+
+.eflyer_mobileimage_container {
+        position:relative;
+        width:150px;
+        height:150px;
+}
+
+.shift8_mobileportfolio_close:after {
+        font-size:40px !important;
+        display:block;
+        content: "\00d7";
+        position:absolute;
+        color: #fff;
+        top: 0px;
+        right:5px;
+        text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.eflyer_gallery_list li, .eflyer_image_list li  {
+	display:inline;
+	float:left;
+}
+.eflyer_gallery_container, .eflyer_footer_gallery_container, .eflyer_image_container {
+	position:relative;
+	width:150px;
+	height:150px;
+}
+.shift8_gallery_button_container {
+	clear:left;
+}
+
+.eflyer_gallery_close:after, .eflyer_footer_gallery_close:after, .eflyer_image_close:after {
+        font-size:40px !important;
+        display:block;
+        content: "\00d7";
+        position:absolute;
+        color: #fff;
+        top: 0px;
+        right:5px;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#eflyer_gallery_button, #eflyer_footer_gallery_button, #eflyer_image_button {
+	display:block;
+}
+

@@ -1,0 +1,73 @@
+/*----------------------------------------------------------------------------------*/
+/* SEARCH PAGE
+/*----------------------------------------------------------------------------------*/
+.flex-idx-pages-template-default,
+.flex-filter-pages-template-default,
+.flex-landing-pages-template-default{
+
+	.flex-breadcrumb {
+		margin-bottom: 0 !important; 
+	}
+
+	.gwr {
+		max-width: 100% !important;
+	}
+
+	.js-info-bubble-close { 
+		width: 30px; 
+		height: 30px; 
+		opacity: 0 !important; 
+	}
+
+	.ib-search-marker-active{
+		.dgt-richmarker-single,
+		.dgt-richmarker-group{
+			background: rgb(255, 0, 72) !important;
+		}
+	}
+
+	.ib-search-marker-active{
+		.dgt-richmarker-group,
+		.dgt-richmarker-single{
+			&:after{
+				border-top: 5px solid rgb(255, 0, 72) !important;
+			}
+		}
+	}
+
+	.ib-modal-filters-mobile {
+		position: fixed !important;
+	}
+
+	.ui-autocomplete {
+		max-height: 200px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.autocomplete-item-type {
+		font-weight: bold;
+		color: #c1c1c1;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 40px;
+		padding: 0 15px 0 15px;
+		line-height: 40px;
+		text-transform: capitalize;
+	}
+
+	@media (max-width: 989px) {
+		.flex-map-controls-ct { 
+			display: none !important; 
+		}
+	}
+}
+
+.flex-idx-pages-template-default{
+	&.single-flex-idx-pages{
+		#footer { 
+			display: none !important; 
+		}
+	}
+}

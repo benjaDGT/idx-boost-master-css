@@ -413,12 +413,29 @@
 
 	.social_login{
 		.ico-facebook {
-			background: #3a5a93 !important;
-			border-color: #3a5a93;
+			background-color: #3C5A99;
+			border: 1px solid #3C5A99;
 			height: 55px;
+			font-weight: 600;
+			&:before{
+				color: #FFF !important;
+				font-weight: 100;
+				content: "";
+				background-image: url('images/iconfacebook.png');
+				width: 28px;
+				height: 28px;
+				background-size: cover;
+				background-position: 0 0;
+				margin-top: 2px;
+			}
 			&:hover{
-				background: #2a4879 !important;
-				border-color: #2a4879;
+				color: #3C5A99;
+				background-color: #FFF;
+				border-color: #3C5A99;
+				&:before{
+					color: #3C5A99;
+					background-position: 0 -28px;
+				}
 			}
 		}
 	}

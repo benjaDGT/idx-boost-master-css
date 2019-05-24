@@ -21,15 +21,17 @@
           li{
             &.all{
               button{
-                border: 1px solid $colorweb;
                 font-size: 14px;
-                font-weight: 600;
                 line-height: 40px;
                 text-align: center;
                 width: 100%;
                 height: 100%;
-                background-color: $colorweb;;
-                color: #FFF;
+
+                border: 1px solid #eaeaea;
+                background-color: #eaeaea;
+                color: #393939 !important;
+                font-weight: 600;
+
                 label{
                   &.ib-dt{
                     display: block;    
@@ -373,9 +375,9 @@
     display: none;
   }*/
 
-/*----------------------------------------------------------------------------------*/
-/* Vista Grid
-/*----------------------------------------------------------------------------------*/
+  /*----------------------------------------------------------------------------------*/
+  /* Vista Grid
+  /*----------------------------------------------------------------------------------*/
   .view-grid{
     margin-top: 25px;
     #wrap-list-result{
@@ -592,9 +594,9 @@
     }
   }
 
-/*----------------------------------------------------------------------------------*/
-/* Vista List
-/*----------------------------------------------------------------------------------*/
+  /*----------------------------------------------------------------------------------*/
+  /* Vista List
+  /*----------------------------------------------------------------------------------*/
   .view-list{
 
     #head-list{
@@ -698,15 +700,17 @@
 
           .name{
             min-height: 45px;
-            padding: 5px 10px;
+            padding: 5px 30px !important;
             padding-left: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: $colorweb;
-            color: #FFF;
-            font-weight: 600;
-            text-align: center;
+            /*background-color: $colorweb;
+            color: #FFF;*/
+            font-weight: 400;
+            border: 1px solid #eaeaea;
+            border-right: 0;
+            text-align: left;
             span{
               white-space: nowrap;
               overflow: hidden;
@@ -722,11 +726,11 @@
 
           .address{
             min-height: 45px;
-            padding: 5px 10px;
+            padding: 5px 30px !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            text-align: left;
             border: 1px solid $gris-lineas;
             font-size: 14px;
             font-weight: normal !important;
@@ -917,6 +921,129 @@
         display: none;
       }
     }
+    
+    @media (max-width: 990px){
+      .ib-btn-show{
+        display: none;
+      }
+
+      #result-search,
+      .result-search{
+        .propertie{
+          flex-wrap: nowrap !important;
+          align-items: flex-start !important;
+          justify-content: space-between !important;
+          height: auto !important;
+          padding-bottom: 15px;
+          margin-bottom: 15px;
+          border-bottom: 1px solid #eaeaea;
+          .features{
+            height: auto !important;
+            padding-left: 10px;
+
+            .name,
+            .address{
+              min-height: auto !important;
+              padding: 0 !important;
+              border: 0 !important;
+              font-size: 18px;
+              font-weight: 600;
+              margin-bottom: 10px;
+              span{
+                white-space: normal;
+              }
+            }
+
+            .address{
+              font-size: 15px;
+              font-weight: 400;
+              color: #949494;
+            }
+
+            .floors,
+            .unit,
+            .year{
+              flex-direction: row !important;
+              align-items: center !important;
+              justify-content: flex-start !important;
+              font-size: 14px !important;
+              width: auto !important;
+              border: 0;
+              height: auto;
+              padding: 0;
+              margin-right: 10px;
+              flex-grow: 0;
+              font-weight: 600;
+              &:before{
+                font-weight: 400;
+                font-size: 14px;
+                margin-right: 5px;
+                margin-bottom: 0;
+              }
+            }
+          }
+
+          .wrap-slider{
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            opacity: 1 !important;
+            width: 140px !important;
+            height: 90px !important;
+            display: block !important;
+            flex-shrink: 0;
+            z-index: 1;
+            
+            >ul,
+            >ul>li{
+              position: relative !important;
+              width: 100% !important;
+              height: 100% !important;
+              border: 0 !important;
+              top: 0 !important;
+              box-shadow: none !important;
+            }
+            >ul:after{
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 480px){
+      #result-search,
+      .result-search{
+        .propertie{
+          align-items: flex-start !important;
+          .wrap-slider{
+            width: 95px !important;
+            height: 80px !important;
+          }
+
+          .features{
+            .name,
+            .address{
+              font-size: 16px;
+              margin-bottom: 5px;
+            }
+
+            .address{
+              font-size: 13px;
+            }
+
+            .floors,
+            .unit,
+            .year{
+              font-size: 12px !important;
+              &:before{
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .mbt-active{
@@ -929,7 +1056,12 @@
 /*----------------------------------------------------------------------------------*/
 .full-page-luxury{
   &.view-map{
-    overflow: hidden;
+    padding: 0 !important;
+    //overflow: hidden;
+    /*padding-top: 80px;
+    @media screen and (min-width: 1024px){
+      padding-top: 90px;
+    }*/
     footer,
     .contact-area,
     .gwr-breadcrumb,
@@ -949,6 +1081,7 @@
 
     #wrap-result,
     .wrap-result{
+      margin: 0 !important;
       &.view-map{
         >.gwr{
           flex-direction: row-reverse;
@@ -991,6 +1124,7 @@
     }
 
     #luxury-condo-page{
+      padding: 0 !important;
       .mbt-active{
         width: 35px;
         height: 35px;
@@ -1044,6 +1178,7 @@
     }
 
     #header{
+      position: relative !important;
       .wrap-options,
       .wrap-menu{
         .gwr {
@@ -1142,4 +1277,52 @@
 	padding-top: 10px;
 	margin-top: 0;
 	color: #333;
+}
+
+#luxury-condo-page{
+  #wrap-result{
+    &.view-map{
+      .wrap-list-result,
+      #wrap-list-result{
+        .result-search,
+        #result-search{
+          .propertie{
+            .features{
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*----------------------------------------------------------------------------------*/
+/* PARA PASAR AL PLUGIN
+/*----------------------------------------------------------------------------------*/
+@media (max-width: 639px) {
+  #luxury-condo-page{
+    .view-grid{
+      .result-search,
+      #result-search {
+        display: flex;
+        margin: 0 -10px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        
+        .propertie{
+          padding: 0 10px!important;
+          margin-bottom: 15px;
+          width: 50%!important;
+
+          .features{
+            .name{
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

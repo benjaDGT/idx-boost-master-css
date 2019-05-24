@@ -1,11 +1,9 @@
-@import '../fonts/icons/style.css';
-@import 'core/plugins/jquery-ui.scss';
-/*@import '../fonts/fonts.css';*/
-/*@import 'core/icons/style.css';*/
-/*@import 'core/plugins/perfect-scrollbar.scss';*/
-
 @import 'core/helpers/reset.scss';
 @import 'core/helpers/animations.scss';
+
+@import '../fonts/icons/style.css';
+@import 'core/plugins/jquery-ui.scss';
+
 @import 'core/variables/variables.scss';
 @import 'core/generals/general.scss';
 
@@ -30,6 +28,8 @@
 @import 'core/pages/amenities.scss';
 @import 'core/pages/new-condo-list.scss';
 @import 'core/generals/printer.scss';
-
 @import 'core/helpers/resources/buyers-sellers-rentals.scss';
 @import 'core/helpers/resources/flex-idx-search-filter.scss';
+@import 'core/helpers/resources/menu-history.scss';
+
+@import 'core/helpers/resources/aditional-css-pages.scss';
