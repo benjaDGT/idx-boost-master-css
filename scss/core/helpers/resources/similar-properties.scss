@@ -1,7 +1,6 @@
 /*----------------------------------------------------------------------------------*/
 /* Similar Properties
 /*----------------------------------------------------------------------------------*/
-
 .#{$prefijo}similar-properties{
 	margin: 1rem 0;
 	padding: 15/16*1rem;
@@ -35,7 +34,7 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: flex-start;
-				>h2{
+				>h2, .ms-title{
 					font-size: 18/16*1rem;
 					font-weight: 600;
 					font-family: $opensans;
@@ -133,7 +132,6 @@
 			}
 		}
 	}
-
 
 	.#{$prefijo}show-more{
 		font-family: $opensans;

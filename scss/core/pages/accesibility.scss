@@ -28,7 +28,7 @@
 }
 
 .ms-access-accordion {
-  a {
+  .accordion-title {
     border-bottom: 1px solid #e5e5e5;
     color: #333;
     display: flex;
@@ -99,7 +99,29 @@
 
     p {
       font-size: 1rem;
-      font-weight: 300;
+    }
+
+    a{
+      color: #0072ac;
+    }
+
+    ul{
+      li{
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        &:before{
+          content: "";
+          display: block;
+          width: 6px;
+          height: 6px;
+          top: 8px;
+          left: 0;
+          border-radius: 50%;
+          background-color: #333;
+          position: absolute;
+        }
+      }
     }
   }
 }
