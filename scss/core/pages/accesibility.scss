@@ -29,18 +29,20 @@
 
 .ms-access-accordion {
   .accordion-title {
-    border-bottom: 1px solid #e5e5e5;
+    border: 1px solid #ccc;
+    background-color: #eaeaea;
     color: #333;
+
     display: flex;
     flex-direction: column;
     font-size: 1rem;
     font-weight: 400;
-    padding: 1rem 3rem 1rem 0rem;
+    padding: 1rem 3rem 1rem 1rem;
     position: relative;
     width: 100%;
 
     &::after {
-      border: 1px solid #333;
+      //border: 1px solid #333;
       border-radius: 50%;
       color: #333;
       content: "\e902";
@@ -62,18 +64,18 @@
 
     &:hover,
     &:hover::after {
-      color: #7288a2;
+      //color: #7288a2;
       cursor: pointer;
     }
 
-    &:hover::after {
+    /*&:hover::after {
       background-color: #333;
       color: #FFF;
-    }
+    }*/
 
     &.active {
-      color: #7288a2;
-      border-bottom: 1px solid #7288a2;
+      /*color: #7288a2;
+      border-bottom: 1px solid #7288a2;*/
 
       &::after {
         transform: rotate(-180deg);
@@ -82,19 +84,21 @@
   }
 
   .ms-access-content {
-    border-bottom: 1px solid #e5e5e5;
+    border: 1px solid #ccc;
     clear: both;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    padding: 0;
+    padding: 0 2rem;
     transition: all 0.2s ease 0.15s;
+    margin-bottom: 5px;
 
     &.active {
       opacity: 1;
-      padding: 1rem 0;
+      padding: 2rem;
       max-height: 100%;
       transition: all 0.35s ease 0.15s;
+      margin-top: -1px;
     }
 
     p {
@@ -103,6 +107,9 @@
 
     a{
       color: #0072ac;
+      &:hover{
+        text-decoration: underline;
+      }
     }
 
     ul{
@@ -122,6 +129,11 @@
           position: absolute;
         }
       }
+    }
+
+    h2, h3, h4, h5{
+      font-weight: 600;
+      margin-bottom: 15px;
     }
   }
 }
