@@ -1918,6 +1918,34 @@ fieldset{
 	left: 0;
 }
 
+#view_list{
+	.ms-bx-title{
+		padding: 15px 0 0;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: #7d7d7df2;
+		display: none;
+		@media screen and (min-width: 768px){
+			display: block;
+		}
+	}
+}
+
+.form-content.large-form{
+	.ms-big-text{
+		font-size: 16px;
+		font-weight: 600;
+		margin: 15px 0;
+		text-transform: uppercase;
+		text-align: center;
+		@media screen and (min-width: 640px){
+			margin: 0 0 15px 0;
+			text-align: left;
+		}
+	}
+}
+
 /*----------------------------------------------------------------------------------*/
 /* Estructuras generales
 /*----------------------------------------------------------------------------------*/
