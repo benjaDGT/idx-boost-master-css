@@ -1786,12 +1786,6 @@ img{
 	}
 }
 
-/*.view-list{
-	.ms-open{
-		display: none;
-	}
-}*/
-
 body{
 	&:not(.clidxboost-ngrid){
 		.wrap-result,
@@ -1883,19 +1877,6 @@ body{
 	}
 }
 
-fieldset{
-	border: 0;
-	margin: 0;
-	padding: 0;
-	legend{
-		position: absolute;
-		z-index: -1;
-		width: 0;
-		height: 0;
-		overflow: hidden;
-	}
-}
-
 /*----------------------------------------------------------------------------------*/
 /* OCULTANDO LABELS DE LOS DIFERENTES FORMULARIOS
 /*----------------------------------------------------------------------------------*/
@@ -1943,6 +1924,19 @@ fieldset{
 			margin: 0 0 15px 0;
 			text-align: left;
 		}
+	}
+}
+
+fieldset{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	legend{
+		position: absolute;
+		z-index: -1;
+		width: 0;
+		height: 0;
+		overflow: hidden;
 	}
 }
 
