@@ -2,9 +2,14 @@
 	a:after{
 		display: none !important;
 	}
+	
+	html{
+		padding: 0 !important;
+	}
 
 	body {
 		-webkit-print-color-adjust: exact;
+		padding: 0 !important;
 	}
 
 	header nav, 
@@ -76,12 +81,29 @@
 			box-shadow: none;
 			border: 0;
 			left: auto;
+			display: block !important;
 			.content-fixed{
+				width: 100% !important;
+				text-align: right !important;
+				display: block !important;
+				margin-left: auto !important;
+				margin-right: 0 !important;
 				.content-fixed-title{
+					display: block !important;
+					text-align: right !important;
+					width: 100% !important;
 					.title-page{
-						width: 100%;
-						text-align: right;
+						display: block !important;
+						width: 100% !important;
+						text-align: right !important;
 						font-size: 1.25rem;
+						text-overflow: unset !important;
+						white-space: normal !important;
+						margin: 0 !important;
+						padding: 0 !important;
+					}
+					.breadcrumb-options{
+						display: none !important;
 					}
 				}
 			}
@@ -144,12 +166,13 @@
 
 		/*Detalle propiedad*/
 		.main-content{
+			padding: 0 !important;
 			.property-description{
-				margin: 1rem 0;
+				margin: 10px 0;
 				padding: 0;
 				background-color: transparent;
 				p{
-					font-size: 12px;
+					font-size: 11px;
 					text-align: justify;
 				}
 			}
@@ -158,8 +181,8 @@
 				.title-details,
 				.title-amenities{
 					background-color: #eaeaea;
-					font-size: 12px;
-					padding: 10px;
+					font-size: 11px;
+					padding: 7px;
 					font-weight: 600;
 					text-transform: uppercase;
 					&:before{
@@ -173,7 +196,7 @@
 					li{
 						width: 32%;
 						padding: 7px 0;
-						font-size: 12px;
+						font-size: 11px;
 					}
 				}
 				
@@ -333,5 +356,25 @@
 		##{$prefijo}view-list .#{$prefijo}tbl_properties_wrapper table.#{$prefijo}dataTable thead th:first-child{
 			width: 80px !important
 		}
+	}
+
+	.ib-property-detail.ib-pdmodal .ib-pcontent .ib-btn-request{
+		display: none !important
+	}
+
+	.ib-logoprint{
+		display: block;
+	}
+
+	.ib-property-detail.ib-pdmodal .ib-pcheader{
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	.ib-property-detail.ib-pdmodal .ib-pcontent{
+		padding-top: 0;
+	}
+	.ib-plditem{
+		padding: 7px 0;
 	}
 }

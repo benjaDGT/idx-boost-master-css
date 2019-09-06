@@ -66,8 +66,10 @@
 
 .flex-idx-pages-template-default{
 	&.single-flex-idx-pages{
-		#footer { 
-			display: none !important; 
+		#footer {
+			&:not(.ns-hidden){
+				display: none !important;
+			}
 		}
 	}
 }
