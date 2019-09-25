@@ -272,3 +272,264 @@
 		}
 	}
 }
+
+/*----------------------------------------------------------------------------------*/
+/* RESETEANDO MODAL DE PROPIEDADES MOBILE
+/*----------------------------------------------------------------------------------*/
+@media (max-width: 640px){
+	.ib-modal-master{
+
+		.ib-pfavorite{
+			&.ib-pfheart{
+				height: 0;
+				width: 0;
+				overflow: hidden;
+				opacity: 0;
+			}
+		}
+
+		.ms-pc-text{
+			display: none;
+		}
+
+		.ms-mb-text{
+			display: inline-block;
+		}
+
+		.ib-phcta{
+			padding: 5px 10px;
+			.ib-phomodal{
+				justify-content: space-between;
+				&:before{
+					display: none;
+				}
+
+				.ib-pbtnclose{
+					&.ib-phbtn{
+						border-bottom: 0;
+						flex-direction: row-reverse;
+						flex-grow: 0;
+						text-transform: capitalize;
+						font-size: 15px;
+						font-weight: 600;
+						flex-grow: 0;
+						width: auto;
+						&:before{
+							margin-right: 0;
+							margin-left: 10px;
+							font-weight: normal;
+						}
+					}
+				}
+
+				.ib-pbtnphone{
+					flex-grow: 0;
+					font-size: 15px;
+					font-weight: 600;
+					padding: 8px 15px;
+					border-radius: 4px;
+					height: auto;
+					width: auto;
+					&:before{
+						margin-right: 10px !important;
+					}
+				}
+			}
+		}
+
+		.ib-pheader,
+		.ib-pvphotos .gs-container-navs{
+			display: none;
+		}
+
+		.ib-pipn,
+		.ib-pilnumber{
+			font-weight: 700;
+		}
+
+		.ib-pilf{
+			padding-bottom: 10px;
+			.ib-pilist{
+				justify-content: space-between;
+				.ib-pilitem{
+					flex-direction: row;
+					width: auto;
+					flex-grow: 0;
+					font-size: 15px;
+					padding: 0 15px;
+					.ib-pilnumber{
+						width: auto;
+						margin-right: 5px;
+					}
+
+					.ib-piltxt{
+						text-transform: none;
+						color: #333;
+						font-size: 15px;
+					}
+
+					&.ib-pilprice{
+						justify-content: space-between;
+						width: 100%;
+						align-items: flex-end;
+						border-bottom: 0;
+						padding: 15px 15px 10px 15px;
+						.ib-pipn {
+							font-size: 1.7em;
+						}
+
+						.ms-mb-text{
+							font-size: 13px;
+							color: #777777;
+							span{
+								color: #3579dc;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		.ib-psc{
+			padding: 10px;
+    		height: auto;
+			justify-content: space-between;
+			border-bottom: 0;
+			.ib-pscitem{
+				width: auto;
+				height: auto;
+				border-right: 0;
+				&.ib-pscalculator,
+				&.ib-psemailfriend{
+					display: none;
+				}
+			}
+
+			.ib-pshared{
+				.ib-psbtn{
+					padding: 0 5px;
+					.ib-pstxt{
+						font-size: 15px;
+						color: #333;
+						margin-left: 0;
+					}
+
+					&:before {
+						content: "\e90f";
+						font-family: 'idx-icons' !important;
+						font-size: 26px;
+						font-weight: normal !important;
+						color: #333;
+						margin-right: 10px;
+					}
+				}
+			}
+
+			.ms-btn-cta{
+				display: inline-block;
+				font-size: 15px;
+				font-weight: 600;
+				padding: 10px 25px;
+				border-radius: 4px;
+				height: auto;
+				width: auto;
+				background-color: #333;
+				color: #FFF;
+				border: 1px solid #333;
+				transition: all .3s;
+				&:hover{
+					background-color: #FFF;
+					color: #333;
+				}
+			}
+
+			.ms-fv-btn{
+				background-color: transparent;
+				font-size: 15px;
+				font-weight: 600;
+
+				&:before{
+					content: "";
+					display: inline-block;
+					vertical-align: middle;
+					margin-right: 10px;
+					margin-top: -3px;
+					height: 31px;
+					width: 35px;
+					background-image: url('../images/favorite.png');
+					background-position: center -69px;
+				}
+
+				&.active{
+					&:before{
+						background-position: center -2px;
+					}
+				}
+			}
+		}
+
+		.ib-pdescription .ms-mb-text,
+		.ib-paititle {
+			width: 100%;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			font-size: 17px;
+			font-weight: 600;
+			color: #333;
+		}
+
+		.ib-pdescription{
+			margin-bottom: 0;
+			padding: 15px;
+			background-color: #FFF;
+		}
+
+		.ib-pvslider:not(.gs-infs) .gs-wrapper-content {
+			height: 280px;
+		}
+
+		.ib-pacordeon{
+			padding:0;
+			.ib-paitem{
+				padding: 15px;
+				padding-top: 1px solid #e5e5e5;
+			}
+
+			.ib-paititle{
+				&:before,
+				&:after{
+					display: none;
+				}
+			}
+
+			.ib-paicontent{
+				padding-top: 5px;
+				ul{
+					li{
+						padding: 5px 0;
+						border: 0;
+						position: relative;
+						&:after{
+							content: "";
+							display: block;
+							width: 100%;
+							height: 100%;
+							z-index: 1;
+							position: absolute;
+							top: 0;
+							left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.ib-property-detail{
+		&.ib-pdmodal .ib-pcontent {
+			padding-top: 54px;
+		}
+	}
+}

@@ -216,6 +216,7 @@ $colorp: #333333;
 				}
 
 				.ib-btext {
+					color: #fff;
 					position: absolute;
 					top: -400px;
 					left:0;
@@ -332,6 +333,7 @@ $colorp: #333333;
 			}
 
 			.ib-dbitem {
+				background-color: #F0F0F0;
 				width: 70px;
 				height: 100%;
 				transition: all .3s linear;
@@ -347,7 +349,8 @@ $colorp: #333333;
 					transition: all .3s linear;
 				}
 
-				&:hover {
+				&:hover,
+				&:focus {
 					background-color: $colorp;
 					color: #fff;
 					cursor:pointer;
@@ -577,7 +580,7 @@ $colorp: #333333;
 				}
 				.ib-iftxt {
 					font-size: .85em;
-					color: #BCBCBC;
+					color: #333;
 				}
 			//
 
@@ -871,6 +874,7 @@ $colorp: #333333;
 					display:none;
 				}
 				background-color: #fff;
+				display: none;
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
@@ -1028,6 +1032,7 @@ $colorp: #333333;
 				background-color: #fff;
 				border: 1px solid #E5E5E5;
 				border-top: 2px solid $colorp;
+				display: none;
 				width: 300px;
 				position: absolute;
 				top:45px;
@@ -1066,11 +1071,13 @@ $colorp: #333333;
 					z-index: 5;
 
 					.ib-fimini {
+						display: block;
 						opacity: 1;
 						top:55px;
 					}
 
 					.ib-fdesktop {
+						display: block;
 						top:105px;
 						opacity: 1;
 
@@ -1452,10 +1459,10 @@ $colorp: #333333;
 					}
 
 					.ib-ghtypes {
+						color: #333;
 						font-size: .68em;
 						text-align: left;
 						max-width: 335px;
-						color: #A9A9A9;
 					}
 				//
 			//
@@ -1516,9 +1523,9 @@ $colorp: #333333;
 								content: "\61";
 								@include ibfont();
 								position: absolute;
-								top: 50%;
+								top: calc(50% + 2px);
 								transform: translateY(-50%);
-								right: 0;
+								right: 2px;
 								z-index: 3;
 								font-size: .7em;
 
@@ -1532,16 +1539,24 @@ $colorp: #333333;
 							}
 						}
 						.ib-gsort {
-							padding-right: 18px;
-							position: relative;
-							z-index: 4;
-							width: 100%;
-							height: 100%;
 							background-color: transparent;
+							border-radius: 4px;
 							font-size: 13px;
+							height: 100%;
+							padding: 4px 22px 4px 4px;
+							position: relative;
+							transition: all .3s;
+							width: 100%;
+							z-index: 4;
+
+							&:focus {
+								border-color: #80bdff;
+								box-shadow: 0 0 0 3.2px rgba(0, 123, 255, 0.25);
+								outline: 0;
+							}
 
 							@media screen and (min-width: 768px) {
-								padding-right: 15px;
+								padding: 4px 19px 4px 4px;
 							}
 						}
 					//
@@ -1701,12 +1716,12 @@ $colorp: #333333;
 					}
 
 					.ib-pitem {
-						border: 1px solid #E1E1E1;
+						background-color: #333;
 						margin-bottom: 15px;
 						position: relative;
 						transition: all .15s linear;
 						width: 100%;
-						z-index: 1;
+						z-index: 1;		
 
 						&:hover {
 							border: 1px solid $colorp;
@@ -1718,7 +1733,7 @@ $colorp: #333333;
 							.gs-next-arrow {
 								right: 0;
 							}
-						}
+						}				
 
 						&:before {
 							content: "";
@@ -1764,6 +1779,7 @@ $colorp: #333333;
 								overflow: hidden;
 								@include flexpa();
 								z-index: 5;
+								background-color: transparent;
 
 								span {
 									position: absolute;
@@ -1995,15 +2011,41 @@ $colorp: #333333;
 
 				// PERMALINK
 					.ib-pipermalink {
+						border: 1px solid #E1E1E1;
+						height: 100%;
+						left: 0;
 						overflow: hidden;
 						position: absolute;
-						z-index: 4;
 						top: 0;
-						left: 0;
+						transition: all .3s;
 						width: 100%;
-						height: 100%;
+						z-index: 4;
+
+						&:hover {
+							border-color: $colorp;
+						}
+
+						&:focus {
+							border-color: #80bdff;
+							box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+							outline: 0;
+						}
+
+						&:hover,
+						&:focus {
+							~ .ib-pislider {
+								.gs-prev-arrow {
+									left: 0;
+								}
+	
+								.gs-next-arrow {
+									right: 0;
+								}
+							}
+						}						
 
 						span {
+							color: #fff;
 							position: absolute;
 							top: -500px;
 							left: 0;
@@ -2077,7 +2119,8 @@ $colorp: #333333;
 						transition: all .3s linear;
 					}
 
-					&:hover {
+					&:hover,
+					&:focus {
 						background-color: $colorp;
 						border-top-color: $colorp;
 						border-bottom-color: $colorp;
@@ -2125,7 +2168,8 @@ $colorp: #333333;
 					transition: all .3s linear;
 					color: $colorp !important;
 
-					&:hover, &.ib-plitem-active {
+					&:hover, &.ib-plitem-active,
+					&:focus {
 						background-color: $colorp;
 						border-top-color: $colorp;
 						border-bottom-color: $colorp;
@@ -2167,7 +2211,8 @@ $colorp: #333333;
 						font-size: 1.6em
 					}
 
-					&:hover {
+					&:hover,
+					&:focus {
 						background-color: $colorp;
 						border-top-color: $colorp;
 						border-bottom-color: $colorp;
@@ -2903,7 +2948,7 @@ $colorp: #333333;
 				min-height: 24px;
 				@include flexpa();
 				color: #fff;
-				transition: all .2s linear;
+				transition: all .3s linear;
 				background-color:rgba(0, 0, 0, 0.75);
 				text-transform: uppercase;
 				font-size: .66em;
@@ -2926,6 +2971,12 @@ $colorp: #333333;
 
 				&:hover {
 					cursor:pointer;
+				}
+
+				&:focus {
+					border-color: #80bdff;
+					box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+					outline: 0;
 				}
 			}
 
@@ -3016,6 +3067,13 @@ $colorp: #333333;
 					.ib-btnfs {
 						top: 15px;
 						right: 15px;
+						transition: all .3s;
+
+						&:focus {
+							border-color: #80bdff;
+							box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+							outline: 0;
+						}
 
 						/*@media screen and (max-width: 1023px) {
 							display: none;
@@ -3214,9 +3272,7 @@ $colorp: #333333;
 			.ib-pfavorite {
 				transition: all .2s linear;
 				@include flexpa();
-				flex-direction: column;
-
-				
+				flex-direction: column;				
 
 				&:hover {
 					cursor:pointer;
@@ -3299,10 +3355,10 @@ $colorp: #333333;
 					border-bottom: 1px solid #E5E5E5;
 				}
 
-				@media screen and (min-width: 1024px) {
+				/*@media screen and (min-width: 1024px) {
 					padding-left: 15px;
 					padding-right: 15px;
-				}
+				}*/
 			}
 
 			.ib-pscitem {
@@ -3334,6 +3390,7 @@ $colorp: #333333;
 
 				@media screen and (min-width: 1024px) {
 					margin-right: 15px;
+					padding: 4px 0;
 
 					&:last-child {
 						margin-right: 0;
@@ -3348,12 +3405,15 @@ $colorp: #333333;
 			}
 
 			.ib-psbtn {
+				border-radius: 4px;
 				width: 100%;
 				height: 100%;
 				position: relative;
 				overflow: hidden;
 				@include flexpa();
 				padding: 0 10px;
+				transition: all .3s;
+				background-color: transparent;
 
 				&:before {
 					@include flexpa();
@@ -3361,6 +3421,27 @@ $colorp: #333333;
 					@include ibfont();
 					transition: all .2s linear;
 					font-size: 1.15em;
+				}
+
+				&:hover,
+				&:focus {
+					&:before {
+						color: $colorp;
+					}
+
+					.ib-pstxt {
+						color: $colorp
+					}
+				}
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				&:focus {
+					border-color: #80bdff;
+					box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+					outline: 0;
 				}
 			}
 
@@ -3407,12 +3488,19 @@ $colorp: #333333;
 				overflow: hidden;
 				display: block;
 				@include flexpa();
+				transition: all .3s;
 
 				&:before {
 					@include ibfont();
 					@include flexpa();
 					color: #fff;
 					font-size: 1.2em;
+				}
+
+				&:focus {
+					border-color: #80bdff;
+					box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+					outline: 0;
 				}
 
 				@media screen and (min-width: 768px) {
@@ -3457,10 +3545,6 @@ $colorp: #333333;
 				top: -200px;
 				left:0;
 			}
-
-			.ib-plsifb {
-			}
-
 			.ib-pshared {
 
 				.ib-psbtn {
@@ -3812,6 +3896,13 @@ $colorp: #333333;
 					border:1px solid #E5E5E5;
 					border-radius: 3px;
 					font-size: .8em;
+					transition: all .3s;
+
+					&:focus {
+						border-color: #80bdff;
+						box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+						outline: 0;
+					}
 				}
 
 				.ib-cftextarea {
@@ -3847,7 +3938,8 @@ $colorp: #333333;
 					transition: all .2s linear;
 					border: 1px solid $colorp;
 
-					&:hover {
+					&:hover,
+					&:focus {
 						color: $colorp;
 						background-color: #fff;
 
@@ -4620,4 +4712,8 @@ $colorp: #333333;
 .flex-map-draw-erase {
     background-position: 5px -182px;
     display: none;
+}
+
+.ib-pfavorite{
+	background-color: transparent;
 }

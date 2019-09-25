@@ -108,19 +108,27 @@
     margin: 1rem 0;
     .gs-wrapper-bullets{
       .gs-bullet{
-        margin: 0;
-        width: 30px;
-        height: 30px;
         background-color: transparent;
+        height: 30px;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+        width: 30px;
+        text-indent: -999999px;
         &:before{
-          content: "";
-          width: 13px;
-          height: 13px;
-          background-color: #ababad;
-          display: block;
-          border-radius: 100%;
-          transition: all .3s;
-          margin: 0 auto;
+          	content: "";
+    		display: flex;
+    		width: 13px;
+    		height: 13px;
+    		background-color: #d2d2d2;
+    		border-radius: 100%;
+    		margin: auto;
+    		position: absolute;
+    		align-items: center;
+    		justify-content: center;
+    		top: 50%;
+    		left: 50%;
+    		transform: translate(-50%, -50%);
         }
         &.gs-bullet-active{
           &:before{
@@ -156,18 +164,39 @@
   justify-content: center;
   margin: 10/16*1rem 0;
   .gs-bullet{
-    width: 30px;
-    height: 30px;
+    //width: 30px;
+    //height: 30px;
     background-color: transparent;
-    &:before{
-      content: "";
-      display: block;
-      width: 13px;
-      height: 13px;
-      background-color: #d2d2d2;
-      border-radius: 100%;
-      margin: auto;
+    border-radius: 50%;
+    height: 20px;
+    margin: 5px;
+    overflow: hidden;
+    position: relative;
+    text-indent: -999999px;
+    transition: all .3s;
+    width: 20px;
+
+    &:focus {
+      border-color: #80bdff;
+      box-shadow: 0 0 0 3.2px rgba(0,123,255,.25);
+      outline: 0;
     }
+
+    &:before{
+		content: "";
+    		display: flex;
+    		width: 13px;
+    		height: 13px;
+    		background-color: #d2d2d2;
+    		border-radius: 100%;
+    		margin: auto;
+    		position: absolute;
+    		align-items: center;
+    		justify-content: center;
+    		top: 50%;
+    		left: 50%;
+    		transform: translate(-50%, -50%);    
+	}
     &.gs-bullet-active{
       &:before{
         background-color: $colorweb;
@@ -273,7 +302,20 @@
   .gs-next-arrow, 
   .gs-prev-arrow{
     background-color: rgba(0,0,0,0.8);
-    &:before{
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    text-indent: -999999px;
+
+    &:focus {
+      border-color: #80bdff;
+      box-shadow: 0 0 0 3.2px rgba(0, 123, 255, 0.25);
+      outline: 0;
+    }
+
+    &:before {
+      align-items: center;
+      color: #fff;
       content: "\e921";
       font-family: $web-icons;
       display: inline-block;
@@ -288,7 +330,9 @@
       transform: rotate(-90deg);
     }
   }
-  .gs-fs.gs-attached{
+  .gs-fs.gs-attached {
+    display: none;
+    height: 0;
     opacity: 0;
     height: 0;
     width: 0;

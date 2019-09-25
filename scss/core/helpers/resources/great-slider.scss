@@ -180,6 +180,7 @@
 			overflow: hidden;
 			transition: margin .1s linear, opacity .2s linear;
 			position: relative;
+			text-indent: -999999px;
 
 			&:before {
 				content: "";
@@ -195,6 +196,7 @@
 				width: 16px;
 				height: 25px;
 				transition: all .1s linear;
+				text-indent: 0;
 			}
 
 			&:hover {
