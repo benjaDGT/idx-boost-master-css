@@ -329,7 +329,7 @@
 
 				.ib-pbtnphone{
 					flex-grow: 0;
-					font-size: 15px;
+					font-size: 14px;
 					font-weight: 600;
 					padding: 8px 15px;
 					border-radius: 4px;
@@ -423,7 +423,7 @@
 				.ib-psbtn{
 					padding: 0 5px;
 					.ib-pstxt{
-						font-size: 15px;
+						font-size: 14px;
 						color: #333;
 						margin-left: 0;
 					}
@@ -441,7 +441,7 @@
 
 			.ms-btn-cta{
 				display: inline-block;
-				font-size: 15px;
+				font-size: 14px;
 				font-weight: 600;
 				padding: 10px 25px;
 				border-radius: 4px;
@@ -459,7 +459,7 @@
 
 			.ms-fv-btn{
 				background-color: transparent;
-				font-size: 15px;
+				font-size: 14px;
 				font-weight: 600;
 
 				&:before{
@@ -504,10 +504,16 @@
 			height: 280px;
 		}
 
+		.ib-bdisclaimer {
+			padding: 0 15px;
+			margin-bottom: 30px;
+		}
+
 		.ib-pacordeon{
 			padding:0;
+
 			.ib-paitem{
-				padding: 15px;
+				padding: 10px 15px 15px !important;
 				border-top: 1px solid #e5e5e5;
 
 				&:first-of-type {
@@ -529,7 +535,7 @@
 
 			.ib-paicontent {
 				padding-top: 5px;
-
+				margin-bottom: 0 !important;
 				ul{
 					li{
 						padding: 5px 0;
@@ -544,6 +550,25 @@
 							position: absolute;
 							top: 0;
 							left: 0;
+						}
+					}
+				}
+
+				.ib-pldetails{
+					.ib-plditem{
+						align-items: flex-start;
+						.ib-pltxta{
+							color: #858585;
+							width: 40%;
+							font-weight: normal;
+							font-size: 13px;
+						}
+	
+						.ib-pltxtb{
+							width: 60%;
+							padding-left: 15px;
+							text-align: left;
+							font-size: 13px;
 						}
 					}
 				}
@@ -570,8 +595,24 @@
 			}
 		}
 
-		.ib-bdisclaimer {
-			padding: 0;
+		.ib-modal-property-map{
+			background-color:#EEE;
+			height:270px;
+			width:100%;
+			margin:10px 0;
+		}
+
+		.ib-ms-hd{
+			padding-left: 40px;
+			position: relative;
+			&:before{
+				content: "\e91e";
+				font-family: "idx-icons"!important;
+				position: absolute;
+				left: 0;
+				font-size: 29px;
+				top: 4px;
+			}
 		}
 	}
 
